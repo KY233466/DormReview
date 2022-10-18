@@ -1,0 +1,47 @@
+@use "../../App";
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+body {
+    @include App.body;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    img {
+        height: 40px;
+        margin-top: 3px;
+    }
+}
+
+.bold {
+    @include App.BoldText;
+}
+
+.section {
+    margin-right: 20px;
+}
+
+.subSections {
+    display: flex;
+    flex-direction: row;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    margin-right: 10px;
+    div{
+        flex-wrap: wrap;
+        text-align: center;
+        margin-top: 5px;
+    }
+}

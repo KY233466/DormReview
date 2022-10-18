@@ -1,0 +1,15 @@
+@use "../../App";
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+body {
+    @include App.body;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}

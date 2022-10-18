@@ -1,0 +1,16 @@
+@use "../../App";
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+body {
+    @include App.body;
+}
+
+.container {
+    @include App.container;
+    background-color:#F6F7F9;
+    @include App.NormText;
+}

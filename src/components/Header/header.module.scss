@@ -1,0 +1,48 @@
+@use "../../App";
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+body {
+    @include App.body;
+}
+
+.header {
+    display: flex;
+    // justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #2C5A7B;
+    min-height: 3rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #fff;
+}
+
+.btn {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.invisBtn {
+    opacity: 0;
+    margin-right: 20px;
+}
+
+.bold {
+    @include App.BoldText;
+    text-align: center;
+    color: #fff;
+}
+
+.location {
+    background-color: white;
+    color: #303030;
+    border-radius: 15px;
+    padding: 0.5em 1rem;
+    font-size: 0.9rem;
+    margin-right: 20px;
+}
