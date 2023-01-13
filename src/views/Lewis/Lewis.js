@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-
-// import { useAppSelector, useAppDispatch } from "../../app/hooks";
-// import { CoursesList } from "../../components/courses/ CoursesList";
 import styles from "./lewis.module.css";
-// import Title from "../../components/title/Title";
-// import { AddCourse } from "../../components/AddCourse/AddCourse";
-// import MediaQuery from "react-responsive";
 import Details from "../../components/details/details";
 import pic from "../../assets/lewis.png";
 import bathroom from "../../assets/bathroom.png";
@@ -14,7 +8,10 @@ import food from "../../assets/food.png";
 const Content = [
   {
     title: "Lewis Hall",
-    available: "Sophomore ✅ Junior ✅ Senior ✅",
+    path: "Lewis",
+    path2: "Lewis-room",
+    path3: "Lewis-rate",
+    available: "Sophomore ✅",
     bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
     rooms: "57 doubles · 74 singles · 3 triple",
     moreInfo:
@@ -40,47 +37,58 @@ const Con = [
   },
 ];
 
-
 function Lewis() {
-    const [displayDetail, setDisplayDetail] = useState(true);
+  const [displayDetail, setDisplayDetail] = useState(true);
 
-    function changeDetail () {
-
-    }
+  function changeDetail() {
+    setDisplayDetail(!displayDetail);
+  }
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {displayDetail
-        ? Content.map((value, index) => (
-            <Details
-              index={value.index}
-              key={value.title}
-              title={value.title}
-              available={value.available}
-              bed_laundry={value.bed_laundry}
-              rooms={value.rooms}
-              moreInfo={value.moreInfo}
-              description={value.description}
-              location={value.location}
-              pic={value.pic}
-              pro={Pro}
-              con={Con}
-            />
-          ))
-        : null}
-      {/* <h3>Hi! This is harleston :P</h3> */}
-      {/* <Details /> */}
-      {/* <Title />
-
-      <Details changeDetail={changeDetail}/>
-
-      <CoursesList />
-
-      <MediaQuery maxWidth={768}>
-        <div className={styles.AddContainer}>
-          <AddCourse />
-        </div>
-      </MediaQuery> */}
+      {" "}
+      {Content.map((value, index) => (
+        <Details
+          index={value.index}
+          key={value.title}
+          title={value.title}
+          path={value.path}
+          path2={value.path2}
+          path3={value.path3}
+          available={value.available}
+          bed_laundry={value.bed_laundry}
+          rooms={value.rooms}
+          moreInfo={value.moreInfo}
+          description={value.description}
+          location={value.location}
+          pic={value.pic}
+          pro={Pro}
+          con={Con}
+          changeDetail={() => changeDetail()}
+        />
+      ))}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
+      <div className={styles.rightContainer}>
+        {" "}
+        {/* <Lol></Lol> */}
+        Processed floor plan not available.Please go to{" "}
+        <a
+          style={{
+            textDecoration: "underline",
+          }}
+          href="https://dorm-review.com/harleston"
+        >
+          {" "}
+          Harleston{" "}
+        </a>{" "}
+        to view what it would look like.{" "}
+      </div>{" "}
+      {/* <div className={styles.compass}>
+                            <img alt="compass" src={Compass} />
+                          </div>
+                          <div className={styles.legend}>
+                            <img src={legend} alt="legend"></img>
+                          </div> */}{" "}
     </div>
   );
 }

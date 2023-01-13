@@ -2,14 +2,120 @@
 
 body,
 html {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
-    @include App.body;
+  @include App.body;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  border: 1.5px solid #7d98ab;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin: 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  background-color: #f6f7f9;
+  align-items: center;
+  display: flex;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.reviewSection {
+  width: 100%;
+  margin-bottom: 5rem;
+  margin-top: 1.5rem;
+}
+
+.bold {
+  @include App.BoldText;
+}
+
+.btnS {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.leftRight {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  // margin-right: 20px;
+  align-items: center;
+}
+
+.form {
+  font-family: "Avenir";
+  font-style: normal;
+  color: #303030;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // text-align: center;
+  overflow-y: auto;
+  input {
+    margin-bottom: 10px;
+    width: 90%;
+    font-family: "Avenir";
+    font-style: normal;
+    background-color: #fbfafa;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+  }
+  textarea {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 95%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fbfafa;
+    font-family: "Avenir";
+    font-style: normal;
+    font-size: 0.85rem;
+  }
+  select {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fbfafa;
+    padding: 12px 20px;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: "Avenir";
+    font-style: normal;
+    font-size: 0.85rem;
+  }
+}
+
+.question {
+  text-align: left;
+  width: 100%;
+  margin-top: 10px;
 }

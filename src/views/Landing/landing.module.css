@@ -11,10 +11,12 @@ body {
   vertical-align: baseline;
   height: 100%;
 }
+
 body a {
   color: inherit;
   text-decoration: none;
 }
+
 body html,
 body body,
 body div,
@@ -102,18 +104,25 @@ body video {
   font-weight: 400;
   font-size: 1rem;
   color: #303030;
+  flex-direction: row;
 }
 
 .leftContainer {
-  width: 480px;
-  left: 0;
+  width: 780px;
   background-color: white;
   height: 100vh;
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
+    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  z-index: 1;
+}
+
+.rightContainer {
+  background-color: white;
+  height: 100vh;
+  width: 100%;
 }
 
 .bold {
@@ -127,7 +136,7 @@ body video {
 }
 
 .link {
-  margin-bottom: 25px;
+  margin-top: 25px;
 }
 
 .info {
@@ -138,6 +147,7 @@ body video {
   justify-content: flex-start;
   margin-bottom: 25px;
 }
+
 .info a {
   text-decoration: underline;
   margin-bottom: 15px;
@@ -146,6 +156,8 @@ body video {
 @media (max-width: 899px) {
   .container {
     justify-content: center;
-    background-color: #F6F7F9;
+    background-color: #f6f7f9;
   }
-}/*# sourceMappingURL=landing.module.css.map */
+}
+
+/*# sourceMappingURL=landing.module.css.map */

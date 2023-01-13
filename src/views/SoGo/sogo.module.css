@@ -1,8 +1,3 @@
-body,
-html {
-  overflow-x: hidden;
-}
-
 body {
   font-family: "Poppins";
   margin: 0;
@@ -11,10 +6,12 @@ body {
   vertical-align: baseline;
   height: 100%;
 }
+
 body a {
   color: inherit;
   text-decoration: none;
 }
+
 body html,
 body body,
 body div,
@@ -97,10 +94,56 @@ body video {
   width: 100%;
   margin: 0;
   min-height: 100vh;
-  background-color: #F6F7F9;
   font-family: "Avenir";
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
   color: #303030;
-}/*# sourceMappingURL=sogo.module.css.map */
+  background-color: #f6f7f9;
+  align-items: flex-start;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.rightContainer {
+  width: 100%;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  width: 480px;
+  background-color: pink;
+  height: 100vh;
+  left: 0;
+}
+
+.pic {
+  height: 90vh;
+}
+
+.legend {
+  position: absolute;
+  right: 30px;
+  bottom: 90px;
+  width: 150px;
+}
+
+.legend img {
+  width: 100%;
+}
+
+.compass {
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+  width: 50px;
+}
+
+.compass img {
+  width: 100%;
+}

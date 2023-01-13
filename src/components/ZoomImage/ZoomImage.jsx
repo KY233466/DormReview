@@ -62,8 +62,8 @@ const ZoomImage = ({ image }) => {
       context.clearRect(0, 0, width, height);
 
       // Make sure we're zooming to the center
-    //   const x = zoom;
-    //   const y = zoom;
+      //   const x = zoom;
+      //   const y = zoom;
       const x = (context.canvas.width / zoom - background.width) / 2;
       const y = (context.canvas.height / zoom - background.height) / 2;
 
@@ -116,7 +116,7 @@ const ZoomImage = ({ image }) => {
   }, [zoom, offset]);
 
   return (
-    <div ref={containerRef}>
+    <div style={{ cursor: "grab" }} ref={containerRef}>
       <canvas
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import Rating from "@mui/material/Rating";
 
 // import { useAppSelector, useAppDispatch } from "../../app/hooks";
 // import { CoursesList } from "../../components/courses/ CoursesList";
@@ -8,7 +11,7 @@ import styles from "./details.module.css";
 // import MediaQuery from "react-responsive";
 // import pic from "../../assets/hhall.jpeg"
 import Header from "../Header/header";
-import Lottery from "../Lottery/lottery"
+import Lottery from "../Lottery/lottery";
 import Rooms from "../Rooms/rooms";
 import ProCon from "../ProCon/ProCon";
 import Review from "../Review/review";
@@ -21,6 +24,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 function Details({
   title,
   index,
+  path,
+  path2,
+  path3,
   available,
   bed_laundry,
   rooms,
@@ -35,6 +41,17 @@ function Details({
   const dormName = title;
 
   const [displayLeft, setDisplayLeft] = useState(true);
+  const [reviews, setReviews] = useState(null);
+  const [rate, setRate] = useState(0);
+
+  useEffect(() => {
+    const getReviews = async () => {
+      const data = await getDocs(collection(db, path3));
+      setReviews(data.docs.map((doc) => ({ ...doc.data() })));
+    };
+
+    getReviews();
+  }, []);
 
   function changeLeft() {
     changeDetail();
@@ -46,44 +63,70 @@ function Details({
       {displayLeft ? (
         <div className={styles.leftContainer}>
           <Header key={dormName} title={dormName} location={location} />
-          <img alt="harleston hall" src={pic} className={styles.dormPic}></img>
+          <img alt="dorm" src={pic} className={styles.dormPic}></img>
           <div className={styles.info}>
             <div className={styles.sum}>
               <div className={styles.data}>
-                <div>🌟 🌟 🌟 🌟 🌟</div>
-                <div>{available} </div>
+                {reviews?.map((element, index) => {
+                  return (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "10px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          marginTop: "2px",
+                        }}
+                      >
+                        {element.Rate.toFixed(1)}
+                      </div>
+                      <Rating
+                        key="{element}"
+                        index={element.index}
+                        name="read-only"
+                        value={element.Rate}
+                        precision={0.5}
+                        readOnly
+                      />
+                      <div
+                        style={{
+                          marginTop: "2px",
+                        }}
+                      >
+                        {element.nReviews} reviews
+                      </div>
+                    </div>
+                  );
+                })}
+                <div> {available} </div>
               </div>
-
               <div>
-                <div>{bed_laundry} </div>
-                <div>{rooms}</div>
+                <div> {bed_laundry} </div> <div> {rooms} </div>
               </div>
             </div>
-
             <hr />
-
             <ProCon key={pro} pro={pro} con={con} />
-
-            <a href={moreInfo} target={"_blank"} rel="noreferrer">
+            <a
+              className={styles.link}
+              href={moreInfo}
+              target={"_blank"}
+              rel="noreferrer"
+            >
               View more about room, bathroom, and amenities
             </a>
-
-            <Lottery />
-
             <hr />
-
             <div className={styles.text}>
-              <div>{description}</div>
+              <div> {description} </div>
               {/* <div> This hall houses mostly Second-Year students.</div> */}
             </div>
-
             <hr />
-
-            <Review />
+            <Review path={path} path2={path2} path3={path3} />
           </div>
         </div>
       ) : null}
-
       <div className={styles.btn} onClick={() => changeLeft()}>
         {displayLeft ? (
           <img

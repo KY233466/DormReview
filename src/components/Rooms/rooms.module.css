@@ -11,10 +11,12 @@ body {
   vertical-align: baseline;
   height: 100%;
 }
+
 body a {
   color: inherit;
   text-decoration: none;
 }
+
 body html,
 body body,
 body div,
@@ -95,6 +97,7 @@ body video {
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
+
 .container div {
   margin-right: 30px;
 }
@@ -102,4 +105,6 @@ body video {
 .specifics {
   display: flex;
   flex-direction: column;
-}/*# sourceMappingURL=rooms.module.css.map */
+}
+
+/*# sourceMappingURL=rooms.module.css.map */

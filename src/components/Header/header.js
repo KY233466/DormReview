@@ -9,15 +9,15 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 // import MediaQuery from "react-responsive";
 // import pic from "../../assets/hhall.jpeg";
 
-function Header({title, location}) {
+function Header({ title, location }) {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.header}>
       <a href="/" className={styles.btn}>
         <ArrowBackIosIcon />
-      </a>
-      <div className={styles.bold}>{title}</div>
-      <div className={styles.location}>{location}</div>
+      </a>{" "}
+      <div className={styles.bold}> {title} </div>{" "}
+      <div className={styles.location}> {location} </div>{" "}
     </div>
   );
 }

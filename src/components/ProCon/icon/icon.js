@@ -1,11 +1,13 @@
 import styles from "./icon.module.css";
 
-function icon({title, index, pic}) {
+function icon({ title, index, pic }) {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.icons}>
-      <img alt={title} src={pic}></img>
-      <div>{title}</div>
+      <img alt={title} src={pic}>
+        {" "}
+      </img>{" "}
+      <div> {title} </div>{" "}
     </div>
   );
 }
