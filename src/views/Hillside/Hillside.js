@@ -11,6 +11,36 @@ import food from "../../assets/food.png";
 import Bed from "../../assets/Bed.jpg";
 import Location from "../../assets/location.png";
 import Washer from "../../assets/Washer.png";
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import GFloor from "../../assets/floor/Hillside/HillsideG.png";
+import OneFloor from "../../assets/floor/Hillside/Hillside1.png";
+import TwoFloor from "../../assets/floor/Hillside/Hillside2.png";
+import ThreeFloor from "../../assets/floor/Hillside/Hillside3.png";
+import FourFloor from "../../assets/floor/Hillside/Hillside4.png";
+
+const floor = [
+  {
+    title: 4,
+    pic: FourFloor,
+  },
+  {
+    title: 3,
+    pic: ThreeFloor,
+  },
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
+  },
+  {
+    title: "G",
+    pic: GFloor,
+  },
+];
 
 const Content = [
   {
@@ -19,7 +49,7 @@ const Content = [
     path2: "Hillside-room",
     path3: "Hillside-rate",
     available: "Sophomore ✅ Junior ✅ Senior ✅",
-    bed_laundry: "Extra-long twin bed",
+    bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
     rooms:
       "Five 10-person suites of 6 singles and 3 doubles · Twenty-three 6-person suites of 4 singles and 1 double",
     moreInfo:
@@ -58,7 +88,6 @@ function Hillside() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       {Content.map((value, index) => (
         <Details
           index={value.index}
@@ -79,28 +108,8 @@ function Hillside() {
           changeDetail={() => changeDetail()}
         />
       ))}
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        <div>
-          Processed floor plan not available.Please go to{" "}
-          <a
-            style={{
-              textDecoration: "underline",
-            }}
-            href="https://dorm-review.com/harleston"
-          >
-            Harleston{" "}
-          </a>{" "}
-          to view what it would look like.{" "}
-        </div>{" "}
-        {/* <Lol></Lol> */}{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

@@ -6,12 +6,10 @@ body {
   vertical-align: baseline;
   height: 100%;
 }
-
 body a {
   color: inherit;
   text-decoration: none;
 }
-
 body html,
 body body,
 body div,
@@ -106,8 +104,7 @@ hr {
   background-color: white;
   height: 100%;
   width: 360pt;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -118,8 +115,7 @@ hr {
 .btn {
   z-index: 1;
   border: 0;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   width: 23px;
   height: 48px;
   cursor: pointer;
@@ -144,7 +140,7 @@ hr {
 .dormPic {
   width: 480px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   height: 200px;
 }
 
@@ -152,7 +148,6 @@ hr {
   width: 90%;
   padding-top: 20px;
 }
-
 .info a {
   text-decoration: underline;
   margin-bottom: 20px;
@@ -163,7 +158,6 @@ hr {
   display: flex;
   flex-direction: column;
 }
-
 .sum div {
   margin-bottom: 5px;
 }
@@ -178,13 +172,9 @@ hr {
 .text {
   margin: 20px 0 25px 0;
 }
-
 .text div {
   margin-top: 10px;
 }
-
 .text a {
   text-decoration: underline;
-}
-
-/*# sourceMappingURL=details.module.css.map */
+}/*# sourceMappingURL=details.module.css.map */

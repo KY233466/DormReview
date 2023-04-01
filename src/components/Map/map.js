@@ -235,11 +235,10 @@ export default function Map({ center, zoom }) {
           getPixelPositionOffset={getPixelPositionOffset}
         >
           <div onClick={() => navigate(value.path)} className={styles.bubble}>
-            {" "}
-            {value.title}{" "}
-          </div>{" "}
+            {value.title}
+          </div>
         </OverlayView>
-      ))}{" "}
+      ))}
     </GoogleMap>
   );
 }

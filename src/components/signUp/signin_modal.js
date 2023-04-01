@@ -34,8 +34,8 @@ const SigninSignup = () => {
   return (
     <div>
       <div className={styles.click} onClick={handleOpen}>
-        Login{" "}
-      </div>{" "}
+        Login
+      </div>
       <Modal
         open={open}
         onClose={handleClose}
@@ -44,8 +44,8 @@ const SigninSignup = () => {
       >
         <Box sx={style}>
           <Signin />
-        </Box>{" "}
-      </Modal>{" "}
+        </Box>
+      </Modal>
     </div>
   );
 };

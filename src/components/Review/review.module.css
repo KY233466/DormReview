@@ -11,12 +11,10 @@ body {
   vertical-align: baseline;
   height: 100%;
 }
-
 body a {
   color: inherit;
   text-decoration: none;
 }
-
 body html,
 body body,
 body div,
@@ -162,7 +160,6 @@ body video {
   align-items: center;
   overflow-y: auto;
 }
-
 .form input {
   margin-bottom: 10px;
   width: 90%;
@@ -172,7 +169,6 @@ body video {
   border: 1px solid #ccc;
   font-size: 0.85rem;
 }
-
 .form textarea {
   margin-bottom: 10px;
   margin-top: 10px;
@@ -186,7 +182,6 @@ body video {
   font-style: normal;
   font-size: 0.85rem;
 }
-
 .form select {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -205,6 +200,4 @@ body video {
   text-align: left;
   width: 100%;
   margin-top: 10px;
-}
-
-/*# sourceMappingURL=review.module.css.map */
+}/*# sourceMappingURL=review.module.css.map */

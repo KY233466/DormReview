@@ -7,6 +7,11 @@ import bathroom from "../../assets/bathroom.png";
 import kitchen from "../../assets/Kitchen.png";
 import Location from "../../assets/location.png";
 
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import TwoFloor from "../../assets/floor/Sunset/Sunset2.png";
+import OneFloor from "../../assets/floor/Sunset/Sunset1.png";
+
 const Content = [
   {
     title: "9-11 Sunset Road",
@@ -22,6 +27,17 @@ const Content = [
       "9-11 Sunset is located off Curtis Street near Carmichael Dining Hall, and contains a full kitchen, and one washer/dryer for the two apartments.",
     location: "Uphill",
     pic: pic,
+  },
+];
+
+const floor = [
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
   },
 ];
 
@@ -74,27 +90,7 @@ function Sunset() {
         />
       ))}
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

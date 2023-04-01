@@ -18,12 +18,12 @@ import TwoFloor from "../../assets/floor/Winthrop/2Win.png";
 
 const floor = [
   {
-    title: 1,
-    pic: OneFloor,
-  },
-  {
     title: 2,
     pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
   },
 ];
 

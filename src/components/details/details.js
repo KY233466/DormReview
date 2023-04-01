@@ -70,6 +70,7 @@ function Details({
                 {reviews?.map((element, index) => {
                   return (
                     <div
+                      key={element.nReviews}
                       style={{
                         display: "flex",
                         flexDirection: "row",

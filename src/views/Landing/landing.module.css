@@ -11,12 +11,10 @@ body {
   vertical-align: baseline;
   height: 100%;
 }
-
 body a {
   color: inherit;
   text-decoration: none;
 }
-
 body html,
 body body,
 body div,
@@ -114,8 +112,7 @@ body video {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   z-index: 1;
 }
 
@@ -147,7 +144,6 @@ body video {
   justify-content: flex-start;
   margin-bottom: 25px;
 }
-
 .info a {
   text-decoration: underline;
   margin-bottom: 15px;
@@ -158,6 +154,4 @@ body video {
     justify-content: center;
     background-color: #f6f7f9;
   }
-}
-
-/*# sourceMappingURL=landing.module.css.map */
+}/*# sourceMappingURL=landing.module.css.map */

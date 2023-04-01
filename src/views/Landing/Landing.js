@@ -52,13 +52,10 @@ function Landing() {
         <LandingHeader />
         <div className={styles.leftContainer}>
           <div className={styles.info}>
-            {" "}
-            {/* <div>Only Halleston and Lewis are supported as of now</div> */}{" "}
             <div className={styles.bold}>
               Select a continuing - student dorm below <br />
-              or click on map{" "}
+              or click on map
             </div>
-            {/* <div className={styles.bold}>Select a continuing-student dorm</div> */}
             <ComboBox setZoom={setZoom} setCenter={setCenter} />
             <SigninSignup />
             <div
@@ -66,7 +63,7 @@ function Landing() {
                 width: "70%",
               }}
             >
-              <div> All dorms except CoHo are open for reviews. </div>{" "}
+              <div> All dorms except CoHo are open for reviews. </div>
               <div>
                 Please go to{" "}
                 <a
@@ -75,12 +72,12 @@ function Landing() {
                   }}
                   href="https://dorm-review.com/harleston"
                 >
-                  Harleston{" "}
+                  Harleston
                 </a>{" "}
-                to view what processed floor plan would be like.{" "}
-              </div>{" "}
+                to view what processed floor plan would be like.
+              </div>
               <div>
-                Have something to say ? Want to build DormReview together ?{" "}
+                Have something to say ? Want to build DormReview together? {" "}
                 <a
                   style={{
                     textDecoration: "underline",
@@ -88,9 +85,10 @@ function Landing() {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdSfkubPNpIOzKNkE4bRGeYpibw9J6GhKaXkLHJxxbT6foosA/viewform?usp=sf_link"
                 >
                   Contact!
-                </a>{" "}
-              </div>{" "}
+                </a>
+              </div>
             </div>
+
             {/* <a
                           href="https://forms.gle/NM79gaE7YWNVNkke6"
                           target={"_blank"}
@@ -98,15 +96,14 @@ function Landing() {
                           className={styles.link}
                         >
                           Which dorm is the best? Cast your vote!
-                        </a> */}{" "}
-          </div>{" "}
-        </div>{" "}
-        {/* <Map/> */}{" "}
+                        </a> */}
+          </div>
+        </div>
+
         <div className={styles.rightContainer}>
-          <Map center={center} zoom={zoom} />{" "}
-        </div>{" "}
-        {/* <img alt="map" src={map} /> */}{" "}
-      </MediaQuery>{" "}
+          <Map center={center} zoom={zoom} />
+        </div>
+      </MediaQuery>
     </div>
   );
 }

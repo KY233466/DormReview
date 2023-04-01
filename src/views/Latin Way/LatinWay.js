@@ -5,6 +5,31 @@ import pic from "../../assets/latin-way1.jpeg";
 import bathroom from "../../assets/bathroom.png";
 import food from "../../assets/food.png";
 import kitchen from "../../assets/Kitchen.png";
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import OneFloor from "../../assets/floor/Latinway/Latinway1.png";
+import TwoFloor from "../../assets/floor/Latinway/Latinway2.png";
+import ThreeFloor from "../../assets/floor/Latinway/Latinway3.png";
+import FourFloor from "../../assets/floor/Latinway/Latinway4.png";
+
+const floor = [
+  {
+    title: 4,
+    pic: FourFloor,
+  },
+  {
+    title: 3,
+    pic: ThreeFloor,
+  },
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
+  },
+];
 
 const Content = [
   {
@@ -52,7 +77,6 @@ function LatinWay() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       {Content.map((value, index) => (
         <Details
           index={value.index}
@@ -73,28 +97,8 @@ function LatinWay() {
           changeDetail={() => changeDetail()}
         />
       ))}
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

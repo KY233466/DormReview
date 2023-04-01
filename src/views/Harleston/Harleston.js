@@ -18,25 +18,25 @@ import Location from "../../assets/location.png";
 
 import OneFloor from "../../assets/floor/Harleston/1Harleston.png";
 import TwoFloor from "../../assets/floor/Harleston/2Harleston.png";
-import TreeFloor from "../../assets/floor/Harleston/3Harleston.png";
+import ThreeFloor from "../../assets/floor/Harleston/3Harleston.png";
 import FourFloor from "../../assets/floor/Harleston/4Harleston.png";
 
 const floor = [
   {
-    title: 1,
-    pic: OneFloor,
+    title: 4,
+    pic: FourFloor,
+  },
+  {
+    title: 3,
+    pic: ThreeFloor,
   },
   {
     title: 2,
     pic: TwoFloor,
   },
   {
-    title: 3,
-    pic: TreeFloor,
-  },
-  {
-    title: 4,
-    pic: FourFloor,
+    title: 1,
+    pic: OneFloor,
   },
 ];
 
@@ -112,7 +112,6 @@ function Harleston() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       {Content.map((value, index) => (
         <Details
           index={value.index}
@@ -133,8 +132,8 @@ function Harleston() {
           changeDetail={() => changeDetail()}
         />
       ))}
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <FloorPlan displayDetail={displayDetail} floor={floor} />{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

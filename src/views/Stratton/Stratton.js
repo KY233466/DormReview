@@ -11,6 +11,31 @@ import food from "../../assets/food.png";
 import Bed from "../../assets/Bed.jpg";
 import Washer from "../../assets/Washer.png";
 import Location from "../../assets/location.png";
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import GFloor from "../../assets/floor/Stratton/StrattonG.png";
+import OneFloor from "../../assets/floor/Stratton/Stratton1.png";
+import TwoFloor from "../../assets/floor/Stratton/Stratton2.png";
+import ThreeFloor from "../../assets/floor/Stratton/Stratton3.png";
+
+const floor = [
+  {
+    title: 3,
+    pic: ThreeFloor,
+  },
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
+  },
+    {
+    title: "G",
+    pic: GFloor,
+  },
+];
 
 const Content = [
   {
@@ -74,27 +99,7 @@ function Stratton() {
         />
       ))}
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

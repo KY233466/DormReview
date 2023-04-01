@@ -20,13 +20,12 @@ const Signin_signup = () => {
 
   return (
     <div className={styles.signinsignup}>
-      {" "}
       {user ? null : (
         <div className={styles.subsectionM}>
           <LoginModal />
           <SignupModal />
         </div>
-      )}{" "}
+      )}
     </div>
   );
 };
