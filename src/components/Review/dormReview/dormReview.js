@@ -31,7 +31,7 @@ const style = {
   alignItems: "center",
 };
 
-function DormReview({ path, path2, open, setOpen }) {
+function DormReview({ name, path, path2, open, setOpen }) {
   const handleClose = () => {
     setOpen(false);
     setRate(null);
@@ -43,6 +43,7 @@ function DormReview({ path, path2, open, setOpen }) {
   const userCollectionRef = collection(db, path);
 
   const [rate, setRate] = useState(-1);
+  const [uid, setUid] = useState(0);
   const [message, setMessage] = useState("");
   const [year, setYear] = useState(undefined);
   const [loader, setLoader] = useState(false);
@@ -80,6 +81,19 @@ function DormReview({ path, path2, open, setOpen }) {
       });
   }, [getAuth().currentUser]);
 
+  useEffect(() => {
+    getAuth()
+      .currentUser?.reload()
+      .then(() => {
+        if (getAuth().currentUser != null) {
+          setUid(getAuth().currentUser.uid);
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, [getAuth().currentUser]);
+
   const handleSubmit = (e) => {
     setLoader(true);
     if (rate === -1) {
@@ -92,9 +106,11 @@ function DormReview({ path, path2, open, setOpen }) {
       setLoader(false);
     } else {
       addDoc(userCollectionRef, {
+        dName: name,
         rate: rate,
         year: year,
         message: message,
+        uid: uid,
       })
         .then(() => {
           if (histReview == null) {

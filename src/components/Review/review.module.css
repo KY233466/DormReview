@@ -95,6 +95,14 @@ body video {
   align-items: center;
 }
 
+.isWaitlist {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 .btn {
   border: 1.5px solid #7d98ab;
   padding: 10px 20px;
@@ -131,7 +139,7 @@ body video {
   flex-direction: row;
   width: 100%;
   justify-content: flex-end;
-  gap: 30px;
+  gap: 20px;
   margin-top: 20px;
 }
 

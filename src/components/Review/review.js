@@ -34,8 +34,14 @@ function Review({ path, path2, path3 }) {
         />
         Write review for room{" "}
       </div>
-      <DormReview path={path} path2={path3} open={open} setOpen={setOpen} />
-      <RoomReview path={path2} open={openR} setOpen={setOpenR} />
+      <DormReview
+        name={path}
+        path={path}
+        path2={path3}
+        open={open}
+        setOpen={setOpen}
+      />
+      <RoomReview name={path} path={path2} open={openR} setOpen={setOpenR} />
       <div className={styles.reviewSection}>
         <Tabs path={path} path2={path2} />{" "}
       </div>{" "}

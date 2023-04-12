@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import styles from "./sogo.module.css";
 import Details from "../../components/details/details";
-import pic from "../../assets/sogo.jpeg";
+import pic from "../../assets/coho.jpeg";
 import bathroom from "../../assets/bathroom.png";
 import elevator from "../../assets/elevator.png";
 import kitchen from "../../assets/Kitchen.png";
@@ -10,12 +10,15 @@ import Hard from "../../assets/Hard.jpg";
 import food from "../../assets/food.png";
 import Bed from "../../assets/Bed.jpg";
 import Washer from "../../assets/Washer.png";
+import CoHoMap from "../../components/Map/cohoMap";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 const Content = [
   {
     title: "CoHo (Community Housing)",
     path: "CoHo",
     path2: "CoHo-room",
+    path3: "CoHo-rate",
     available: "Junior ✅ Senior ✅",
     bed_laundry: "Full-size bed · 3 washers · 3 dryers",
     rooms:
@@ -50,13 +53,26 @@ const Con = [
 function CoHo() {
   const [displayDetail, setDisplayDetail] = useState(true);
 
+    const [center, setCenter] = useState({
+      lat: 42.41024428222851,
+      lng: -71.12156863095187,
+    });
+
+    const [zoom, setZoom] = useState(18.7);
+
+      const { isLoaded } = useLoadScript({
+        // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
+        googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+      });
+
+      if (!isLoaded) return <div> Loading... </div>;
+
   function changeDetail() {
     setDisplayDetail(!displayDetail);
   }
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       {Content.map((value, index) => (
         <Details
           index={value.index}
@@ -79,9 +95,9 @@ function CoHo() {
       ))}
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
       <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
+        <CoHoMap center={center} zoom={zoom} />
+
+                {/* Processed floor plan not available.Please go to{" "}
         <a
           style={{
             textDecoration: "underline",
@@ -92,13 +108,8 @@ function CoHo() {
           Harleston{" "}
         </a>{" "}
         to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      </div>{" "} */}
+      </div>
     </div>
   );
 }

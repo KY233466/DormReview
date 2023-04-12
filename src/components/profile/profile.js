@@ -7,8 +7,16 @@ import Avatar from "@mui/material/Avatar";
 import profile from "../../assets/profile.png";
 import Divider from "@mui/material/Divider";
 import { useUserAuth } from "../../context/userAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function BasicMenu() {
+
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/profile`;
+    navigate(path);
+  };
+
   const { logOut, user } = useUserAuth();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -63,12 +71,13 @@ export default function BasicMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}> Profile </MenuItem>{" "}
+        {/* <MenuItem onClick={handleClose}> Profile </MenuItem>{" "} */}
         {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}{" "}
         {user ? (
           <div>
+            <MenuItem onClick={routeChange}>Profile</MenuItem>
             <Divider />
-            <MenuItem onClick={handleLogout}> Logout </MenuItem>{" "}
+            <MenuItem onClick={handleLogout}> Logout </MenuItem>
           </div>
         ) : null}{" "}
       </Menu>{" "}

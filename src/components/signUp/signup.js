@@ -150,11 +150,11 @@ const Signup = () => {
   return (
     <>
       <div className={styles.container2}>
-        <h2> Signup with your Tufts email </h2>{" "}
+        <h2> Signup with your Tufts email </h2>
         <h2>
-          Please use format <span> Tufts_ID </span>@tufts.edu.{" "}
-        </h2>{" "}
-        <h2> Ex: example01 @tufts.edu </h2>{" "}
+          Please use format <span> Tufts_Username</span>@tufts.edu.
+        </h2>
+        <h2> Ex: jsmith03@tufts.edu </h2>
         {error && (
           <Alert
             onClose={() => setError("")}
@@ -165,9 +165,9 @@ const Signup = () => {
               marginTop: "5px",
             }}
           >
-            {error}{" "}
+            {error}
           </Alert>
-        )}{" "}
+        )}
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control

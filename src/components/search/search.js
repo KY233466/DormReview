@@ -24,9 +24,6 @@ export default function ComboBox({ setZoom, setCenter }) {
     setZoom(19);
 
     switch (value.label) {
-      // case "Carpenter House":
-      //   setCenter({ lat: 42.40941424096112, lng: -71.12358797547878 });
-      //   return;
       case "CoHo (Community Housing)":
         setCenter({
           lat: 42.410239549677414,
@@ -117,10 +114,6 @@ export default function ComboBox({ setZoom, setCenter }) {
 
   function go(value) {
     switch (value.label) {
-      // case "Carpenter House":
-      //   window.location.href = "/carpenter";
-      //   setCenter({ lat: 42.40941424096112, lng: -71.12358797547878 });
-      //   return;
       case "CoHo (Community Housing)":
         window.location.href = "/coho";
         setCenter({
@@ -128,9 +121,6 @@ export default function ComboBox({ setZoom, setCenter }) {
           lng: -71.12123496015069,
         });
         return;
-      // case "Fairmount House":
-      //   window.location.href = "/fairmount";
-      //   return;
       case "Harleston Hall":
         window.location.href = "/harleston";
         return;
@@ -172,13 +162,11 @@ export default function ComboBox({ setZoom, setCenter }) {
 
   return (
     <div className={styles.container}>
-      {" "}
       {warning ? (
         <Alert
           onClose={() => {
             setWarning(false);
           }}
-          // variant="outlined"
           severity="warning"
           sx={{
             width: "270px",
@@ -191,7 +179,7 @@ export default function ComboBox({ setZoom, setCenter }) {
       <Autocomplete
         disablePortal
         id="combo-box-demo"
-        options={top100Films}
+        options={dorms}
         sx={{
           width: 300,
           marginBottom: "25px",
@@ -207,12 +195,10 @@ export default function ComboBox({ setZoom, setCenter }) {
   );
 }
 
-const top100Films = [
-  // { label: "Carpenter House" },
+const dorms = [
   {
     label: "CoHo (Community Housing)",
   },
-  // { label: "Fairmount House" },
   {
     label: "Harleston Hall",
   },
@@ -246,14 +232,4 @@ const top100Films = [
   {
     label: "9-11 Sunset Road",
   },
-
-  //   { label: "Bush Hall", year: 1994 },
-  //   { label: "Carmichael Hall", year: 1972 },
-  //   { label: "Hill Hall", year: 2003 },
-  //   { label: "Hodgdon Hall", year: 1999 },
-  //   { label: "Metcalf Hall", year: 2001 },
-  //   { label: "Miller Hall", year: 2001 },
-  //   { label: "Richardson House", year: 2001 },
-  //   { label: "Tilton Hall", year: 2001 },
-  //   { label: "Wilson House", year: 2001 },
 ];

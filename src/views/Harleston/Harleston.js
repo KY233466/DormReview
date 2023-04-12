@@ -16,6 +16,7 @@ import html2canvas from "html2canvas";
 import Lol from "../../components/pic/pic";
 import Location from "../../assets/location.png";
 
+import GFloor from "../../assets/floor/Harleston/HarlestionG.png";
 import OneFloor from "../../assets/floor/Harleston/1Harleston.png";
 import TwoFloor from "../../assets/floor/Harleston/2Harleston.png";
 import ThreeFloor from "../../assets/floor/Harleston/3Harleston.png";
@@ -37,6 +38,10 @@ const floor = [
   {
     title: 1,
     pic: OneFloor,
+  },
+    {
+    title: "G",
+    pic: GFloor,
   },
 ];
 

@@ -32,7 +32,7 @@ function LandingHeader() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.header}>
-      <div className={styles.bold}> DormReview </div>{" "}
+      <div className={styles.bold}> DormReview </div>
       <div className={styles.headerR}>
         {/* {status ? "please verify!" : "hmm"} */}{" "}
         {/* {getAuth().currentUser != null ? State() : null} */}{" "}

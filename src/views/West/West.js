@@ -11,6 +11,36 @@ import food from "../../assets/food.png";
 import Bed from "../../assets/Bed.jpg";
 import Washer from "../../assets/Washer.png";
 import Location from "../../assets/location.png";
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import GFloor from "../../assets/floor/West/WestG.png";
+import OneFloor from "../../assets/floor/West/West1.png";
+import TwoFloor from "../../assets/floor/West/West2.png";
+import ThreeFloor from "../../assets/floor/West/West3.png";
+import FourFloor from "../../assets/floor/West/West4.png";
+
+const floor = [
+  {
+    title: 4,
+    pic: FourFloor,
+  },
+  {
+    title: 3,
+    pic: ThreeFloor,
+  },
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
+  },
+  {
+    title: "G",
+    pic: GFloor,
+  },
+];
 
 const Content = [
   {
@@ -19,7 +49,7 @@ const Content = [
     path2: "West-room",
     path3: "West-rate",
     available: "Sophomore ✅",
-    bed_laundry: "Extra-long twin bed",
+    bed_laundry: "Extra-long twin bed · 4 washers · 4 dryers",
     rooms:
       "doubles · triples · quads made up of 1 common room and 2 attached bedrooms",
     moreInfo:
@@ -75,27 +105,7 @@ function West() {
         />
       ))}
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

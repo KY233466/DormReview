@@ -7,6 +7,36 @@ import bathroom from "../../assets/bathroom.png";
 import elevator from "../../assets/elevator.png";
 import kitchen from "../../assets/Kitchen.png";
 import Hard from "../../assets/Hard.jpg";
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import OneFloor from "../../assets/floor/SoGo/SoGo1.png";
+import TwoFloor from "../../assets/floor/SoGo/SoGo2.png";
+import ThreeFloor from "../../assets/floor/SoGo/SoGo3.png";
+import FourFloor from "../../assets/floor/SoGo/SoGo4.png";
+import FiveFloor from "../../assets/floor/SoGo/SoGo5.png";
+
+const floor = [
+  {
+    title: 5,
+    pic: FiveFloor,
+  },
+  {
+    title: 4,
+    pic: FourFloor,
+  },
+  {
+    title: 3,
+    pic: ThreeFloor,
+  },
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
+  },
+];
 
 const Content = [
   {
@@ -80,27 +110,7 @@ function SoGo() {
         />
       ))}
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

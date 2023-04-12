@@ -10,22 +10,23 @@ export default function RoomReviewBlock({
   lottery,
   schoolYear,
   message,
+  divider,
 }) {
   return (
     <div className={styles.container}>
       <div className={styles.header1}>
-        <div> Room: {room} </div>{" "}
+        <div> Room: {room} </div>
         {lottery !== -1 ? <div> Lottery number : {lottery} </div> : null}{" "}
         <div className={styles.schoolYear}> {schoolYear} </div>{" "}
-      </div>{" "}
+      </div>
       <div className={styles.header}>
         <Rating name="read-only" value={rate} precision={0.5} readOnly />
-        <div> {year} </div>{" "}
-      </div>{" "}
+        <div> {year} </div>
+      </div>
       {message !== "" ? (
         <div className={styles.message}> {message} </div>
-      ) : null}{" "}
-      <hr />
+      ) : null}
+      {divider ? <hr /> : null}
     </div>
   );
 }

@@ -24,7 +24,7 @@ const style = {
   alignItems: "center",
 };
 
-function RoomReview({ path, open, setOpen }) {
+function RoomReview({ name, path, open, setOpen }) {
   const handleClose = () => {
     setOpen(false);
     setLoader(false);
@@ -47,10 +47,25 @@ function RoomReview({ path, open, setOpen }) {
   const [schoolYear, setSchoolYear] = useState(undefined);
 
   const [loader, setLoader] = useState(false);
+  const [checkWaitlist, setCheckWaitlist] = useState(false);
   const [error, setError] = useState("");
   const [warning, setWarning] = useState(false);
 
   const [verified, setVerified] = useState(false);
+  const [uid, setUid] = useState(0);
+
+    useEffect(() => {
+      getAuth()
+        .currentUser?.reload()
+        .then(() => {
+          if (getAuth().currentUser != null) {
+            setUid(getAuth().currentUser.uid);
+          }
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+    }, [getAuth().currentUser]);
 
   useEffect(() => {
     getAuth()
@@ -84,13 +99,19 @@ function RoomReview({ path, open, setOpen }) {
       setError("Please select your grade");
       setLoader(false);
     } else {
+      if (checkWaitlist) {
+        setLottery(lottery.toString() + " (waitlist)");
+      }
+
       addDoc(userCollectionRef, {
+        dName: name,
         room: room,
         rate: rate,
         year: year,
-        lottery: lottery,
+        lottery: checkWaitlist ? lottery.toString() + " (waitlist)" : lottery,
         schoolYear: schoolYear,
         message: message,
+        uid: uid,
       })
         .then(() => {
           setLoader(false);
@@ -114,7 +135,6 @@ function RoomReview({ path, open, setOpen }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        {" "}
         {!verified ? (
           <div
             style={{
@@ -126,7 +146,6 @@ function RoomReview({ path, open, setOpen }) {
           </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
-            {" "}
             {warning ? (
               <Alert
                 onClose={() => {
@@ -138,14 +157,14 @@ function RoomReview({ path, open, setOpen }) {
                   marginBottom: "5px",
                 }}
               >
-                {error}{" "}
+                {error}
               </Alert>
-            ) : null}{" "}
+            ) : null}
             <div className={styles.bold}> Write a review for room </div>{" "}
             <div> All posts are anonymous </div>
             <label className={styles.question}>
               What was the room number ? *
-            </label>{" "}
+            </label>
             <input
               style={{
                 width: "150px",
@@ -191,8 +210,8 @@ function RoomReview({ path, open, setOpen }) {
                   sx={{
                     marginBottom: "10px",
                   }}
-                />{" "}
-              </div>{" "}
+                />
+              </div>
             </div>
             <div className={styles.leftRight}>
               <div className={styles.vertical}>
@@ -216,26 +235,37 @@ function RoomReview({ path, open, setOpen }) {
                   id="lottery"
                   name="lottery"
                   onChange={(e) => setLottery(e.target.value)}
-                ></input>{" "}
+                ></input>
+                <div className={styles.isWaitlist}>
+                  <input
+                    type="checkbox"
+                    id="waitlist_num"
+                    name="waitlist_num"
+                    value="waitlist_num"
+                    style={{ marginRight: "10px", width: "auto" }}
+                    onChange={(e) =>setCheckWaitlist(e.target.checked)}
+                  ></input>
+                  <label> It is the waitlist number</label>
+                </div>
               </div>
               <div className={styles.vertical}>
-                <label className={styles.question}> You were a * </label>{" "}
+                <label className={styles.question}> You were a * </label>
                 <select
                   value={schoolYear}
                   name="year"
                   required
                   onChange={(e) => setSchoolYear(e.target.value)}
                 >
-                  <option value=""> --select an option-- </option>{" "}
-                  <option value="sophomore"> Sophomore </option>{" "}
-                  <option value="junior"> Junior </option>{" "}
-                  <option value="senior"> Senior </option>{" "}
-                </select>{" "}
-              </div>{" "}
+                  <option value=""> --select an option-- </option>
+                  <option value="sophomore"> Sophomore </option>
+                  <option value="junior"> Junior </option>
+                  <option value="senior"> Senior </option>
+                </select>
+              </div>
             </div>
             <label className={styles.question}>
               What comments do you have ?
-            </label>{" "}
+            </label>
             <textarea
               maxLength="400"
               rows="5"

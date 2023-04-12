@@ -15,7 +15,7 @@ function Header({ title, location }) {
     <div className={styles.header}>
       <a href="/" className={styles.btn}>
         <ArrowBackIosIcon />
-      </a>{" "}
+      </a>
       <div className={styles.bold}> {title} </div>{" "}
       <div className={styles.location}> {location} </div>{" "}
     </div>

@@ -8,6 +8,41 @@ import elevator from "../../assets/elevator.png";
 import kitchen from "../../assets/Kitchen.png";
 import Hard from "../../assets/Hard.jpg";
 import food from "../../assets/food.png";
+import FloorPlan from "../../components/FloorPlan/FloorPlan";
+
+import GFloor from "../../assets/floor/Wren/WrenG.png";
+import OneFloor from "../../assets/floor/Wren/Wren1.png";
+import TwoFloor from "../../assets/floor/Wren/Wren2.png";
+import ThreeFloor from "../../assets/floor/Wren/Wren3.png";
+import FourFloor from "../../assets/floor/Wren/Wren4.png";
+import FiveFloor from "../../assets/floor/Wren/Wren5.png";
+
+const floor = [
+  {
+    title: 5,
+    pic: FiveFloor,
+  },
+  {
+    title: 4,
+    pic: FourFloor,
+  },
+  {
+    title: 3,
+    pic: ThreeFloor,
+  },
+  {
+    title: 2,
+    pic: TwoFloor,
+  },
+  {
+    title: 1,
+    pic: OneFloor,
+  },
+  {
+    title: "G",
+    pic: GFloor,
+  },
+];
 
 const Content = [
   {
@@ -72,27 +107,7 @@ function Wren() {
         />
       ))}
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
-      {/* <div className={styles.compass}>
-                            <img alt="compass" src={Compass} />
-                          </div>
-                          <div className={styles.legend}>
-                            <img src={legend} alt="legend"></img>
-                          </div> */}{" "}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

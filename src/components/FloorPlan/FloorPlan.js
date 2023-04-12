@@ -16,6 +16,10 @@ function FloorPlan({ floor, displayDetail }) {
       ? [...Array(floor.length).keys()].reverse()
       : [...Array(floor.length).keys(), floor.length - 1].reverse();
 
+  function isString(x) {
+    return Object.prototype.toString.call(x) === '[object String]';
+}
+
   return (
     <div className={displayDetail ? styles.container : styles.containerExpand}>
       <div className={styles.rightContainer}>
@@ -27,12 +31,12 @@ function FloorPlan({ floor, displayDetail }) {
           return (
             <div
               key={index}
-              onClick={() => setFloorNum(element.title === "G" ? 0 : element.title)}
+              onClick={() => setFloorNum(isString(element.title) ? 0 : element.title)}
               className={
                 index === floorN[floorNum] ? styles.btnClicked : styles.btn
               }
             >
-              {element.title === "G" ? "G" : "L" + element.title}
+              {isString(element.title) ? element.title : "L" + element.title}
             </div>
           );
         })}
