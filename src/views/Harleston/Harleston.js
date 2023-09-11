@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./harleston.module.css";
 import Details from "../../components/details/details";
 import FloorPlan from "../../components/FloorPlan/FloorPlan";
@@ -6,14 +6,6 @@ import FloorPlan from "../../components/FloorPlan/FloorPlan";
 import pic from "../../assets/hhall.jpeg";
 import bathroom from "../../assets/bathroom.png";
 import elevator from "../../assets/elevator.png";
-import kitchen from "../../assets/Kitchen.png";
-// import twoFloor from "../../assets/2Harleston.png"
-// import legend from "../../assets/Legend.png"
-// import ZoomImage from "../../components/ZoomImage";
-// import Compass from "../../assets/Compass.png";
-import Hmm from "../../components/pic/pic";
-import html2canvas from "html2canvas";
-import Lol from "../../components/pic/pic";
 import Location from "../../assets/location.png";
 
 import GFloor from "../../assets/floor/Harleston/HarlestionG.png";
@@ -39,7 +31,7 @@ const floor = [
     title: 1,
     pic: OneFloor,
   },
-    {
+  {
     title: "G",
     pic: GFloor,
   },

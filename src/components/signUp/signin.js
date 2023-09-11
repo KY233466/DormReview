@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Form } from "react-bootstrap";
 import Alert from "@mui/material/Alert";
 import { Button } from "react-bootstrap";
-// import GoogleButton from "react-google-button";
 import { useUserAuth } from "../../context/userAuthContext";
 import styles from "./signup.module.css";
 
@@ -11,8 +9,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, googleSignIn } = useUserAuth();
-  const navigate = useNavigate();
+  const { logIn } = useUserAuth();
+  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,32 +47,32 @@ const Login = () => {
               marginTop: "5px",
             }}
           >
-            {error}{" "}
+            {error}
           </Alert>
-        )}{" "}
+        )}
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control
               type="email"
               placeholder="Email address"
               onChange={(e) => setEmail(e.target.value)}
-            />{" "}
+            />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Control
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-            />{" "}
+            />
           </Form.Group>
           <Button variant="primary" type="Submit">
-            Log In{" "}
-          </Button>{" "}
-        </Form>{" "}
-      </div>{" "}
+            Log In
+          </Button>
+        </Form>
+      </div>
       {/* <div>
                     Don't have an account? <Link to="/signup">Sign up</Link>
-                  </div> */}{" "}
+                  </div> */}
     </>
   );
 };

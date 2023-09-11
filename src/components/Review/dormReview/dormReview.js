@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
-import {
-  addDoc,
-  doc,
-  collection,
-  getDoc,
-  getDocs,
-  setDoc,
-} from "firebase/firestore";
+import { addDoc, doc, collection, getDoc, setDoc } from "firebase/firestore";
 import styles from "../review.module.css";
 import { db } from "../../../firebase";
 import { getAuth } from "firebase/auth";

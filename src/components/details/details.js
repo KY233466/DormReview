@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import Rating from "@mui/material/Rating";
-
-// import { useAppSelector, useAppDispatch } from "../../app/hooks";
-// import { CoursesList } from "../../components/courses/ CoursesList";
-import styles from "./details.module.css";
-// import Title from "../../components/title/Title";
-// import { AddCourse } from "../../components/AddCourse/AddCourse";
-// import MediaQuery from "react-responsive";
-// import pic from "../../assets/hhall.jpeg"
 import Header from "../Header/header";
-import Lottery from "../Lottery/lottery";
-import Rooms from "../Rooms/rooms";
 import ProCon from "../ProCon/ProCon";
 import Review from "../Review/review";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PropTypes from "prop-types";
+import styles from "./details.module.css";
+
+Details.propTypes = {
+  title: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  path: PropTypes.string.isRequired,
+  path2: PropTypes.string.isRequired,
+  path3: PropTypes.string.isRequired,
+  available: PropTypes.string.isRequired,
+  bed_laundry: PropTypes.string.isRequired,
+  rooms: PropTypes.number.isRequired,
+  moreInfo: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  pic: PropTypes.string.isRequired,
+  pro: PropTypes.string.isRequired,
+  con: PropTypes.string.isRequired,
+  changeDetail: PropTypes.func.isRequired,
+};
 
 function Details({
   title,
@@ -42,7 +47,6 @@ function Details({
 
   const [displayLeft, setDisplayLeft] = useState(true);
   const [reviews, setReviews] = useState(null);
-  const [rate, setRate] = useState(0);
 
   useEffect(() => {
     const getReviews = async () => {
@@ -132,14 +136,14 @@ function Details({
         {displayLeft ? (
           <img
             alt=""
-            jstcache="10"
+            // jstcache="10"
             src="//maps.gstatic.com/tactile/pane/arrow_left_2x.png"
             className={styles.img}
           ></img>
         ) : (
           <img
             alt=""
-            jstcache="10"
+            // jstcache="10"
             src="//maps.gstatic.com/tactile/pane/arrow_left_2x.png"
             className={styles.imgR}
           ></img>

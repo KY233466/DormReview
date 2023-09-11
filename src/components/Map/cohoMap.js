@@ -1,15 +1,7 @@
-import React, { useState } from "react";
-import { useMemo } from "react";
-import styles from "./map.module.css";
 import { useNavigate } from "react-router";
+import styles from "./map.module.css";
 
-import {
-  GoogleMap,
-  LoadScript,
-  useLoadScript,
-  MarkerF,
-  OverlayView,
-} from "@react-google-maps/api";
+import { GoogleMap, OverlayView } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",

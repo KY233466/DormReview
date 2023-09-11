@@ -1,32 +1,13 @@
-import React, { useState } from "react";
-
-// import { useAppSelector, useAppDispatch } from "../../app/hooks";
-// import { CoursesList } from "../../components/courses/ CoursesList";
-// import styles from "../../views/landings/Landing.module.scss";
-// import Title from "../../components/title/Title";
-// import { AddCourse } from "../../components/AddCourse/AddCourse";
-// import MediaQuery from "react-responsive";
+import { useState } from "react";
 import ComboBox from "../../components/search/search";
 import styles from "./landing.module.css";
-// import map from "../../assets/4.png";
 import MediaQuery from "react-responsive";
-// import firebaseConfig from "../../components/config/config";
-import Login from "../../components/signUp/signin";
 import SigninSignup from "../../components/signUp/signin_signup";
-// import blank from "../../assets/blank.png";
-import Alert from "@mui/material/Alert";
-import Profile from "../../components/profile/profile";
 import LandingHeader from "../../components/landingHeader/landingHeader";
 import Map from "../../components/Map/map";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-
-// import Auth from "../../components/signUp/auth";
-// import Dashboard from "../../components/signUp/dashboard";
-// import { useUserContext } from "../../context/userContext";
+import { useLoadScript } from "@react-google-maps/api";
 
 function Landing() {
-  // const [accCreated, setAccCreated] = useState(false);
-  // const [dorm, setDorm] = useState("");
   const [center, setCenter] = useState({
     lat: 42.40735001860593,
     lng: -71.12106588226075,
@@ -77,7 +58,7 @@ function Landing() {
                 to view what processed floor plan would be like.
               </div>
               <div>
-                Have something to say ? Want to build DormReview together? {" "}
+                Have something to say ? Want to build DormReview together?{" "}
                 <a
                   style={{
                     textDecoration: "underline",

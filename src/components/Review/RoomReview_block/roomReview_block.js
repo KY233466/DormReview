@@ -1,4 +1,3 @@
-import React from "react";
 import Rating from "@mui/material/Rating";
 import styles from "./roomReview_block.module.css";
 

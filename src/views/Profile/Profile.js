@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { firestore } from "firebase/app";
 import { db } from "../../firebase";
 import styles from "./profile.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -45,32 +44,32 @@ const ProfilePage = () => {
     fetchComments();
   }, [uid]);
 
-    useEffect(() => {
-      // Fetch documents from collections based on the path obtained from "Users" document
-      const fetchDocsData = async () => {
-        try {
-          if (comments?.length > 0) {
-            const Info = [];
+  useEffect(() => {
+    // Fetch documents from collections based on the path obtained from "Users" document
+    const fetchDocsData = async () => {
+      try {
+        if (comments?.length > 0) {
+          const Info = [];
 
-            for (const collectionName of comments) {
-              const docRef = collection(db, collectionName);
-              const q = query(docRef, where("uid", "==", uid));
-              const docSnapshot = await getDocs(q);
+          for (const collectionName of comments) {
+            const docRef = collection(db, collectionName);
+            const q = query(docRef, where("uid", "==", uid));
+            const docSnapshot = await getDocs(q);
 
-              const docData = docSnapshot.docs.map((doc) => doc.data());
+            const docData = docSnapshot.docs.map((doc) => doc.data());
 
-              Info.push(docData[0]);
-            }
-
-            setDocs(Info);
+            Info.push(docData[0]);
           }
-        } catch (error) {
-          console.error("Error fetching documents:", error);
-        }
-      };
 
-      fetchDocsData();
-    }, [comments, uid]);
+          setDocs(Info);
+        }
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      }
+    };
+
+    fetchDocsData();
+  }, [comments, uid]);
 
   return (
     <div
@@ -84,7 +83,7 @@ const ProfilePage = () => {
 
       <div className={styles.content}>
         <h1>My Reviews</h1>
-        
+
         {docs?.map((doc, index) => (
           <div className={styles.review} key={index}>
             <div style={{ textAlign: "Center" }}>{doc.dName}</div>

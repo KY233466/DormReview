@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-// import GoogleButton from "react-google-button";
-import { useUserAuth } from "../../context/userAuthContext";
+import { useState } from "react";
 import styles from "./signup.module.css";
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Signup from "./signup";
 

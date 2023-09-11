@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import Alert from "@mui/material/Alert";
 import { Button } from "react-bootstrap";
-import { useUserAuth } from "../../context/userAuthContext";
 import styles from "./signup.module.css";
-import auth from "../../firebase";
 import { getAuth } from "firebase/auth";
-// import { useAuth } from "../../context/userAuthContext";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -18,9 +15,9 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-  const { signUp } = useUserAuth();
+  // const { signUp } = useUserAuth();
   const navigate = useNavigate();
-  const { user } = useUserAuth();
+  // const { user } = useUserAuth();
   // const { setTimeActive } = useAuthValue();
   // let navigate = useNavigate();
 
@@ -51,7 +48,7 @@ const Signup = () => {
     } else if (err.toString().includes("auth/email-already-in-use")) {
       // return alert("Please enter a valid email address");
       setError(
-        "There already is an account associated with this email. Please go to log in."
+        "There already is an account associated with this email. Please go to log in.",
       );
     } else {
       // return alert(err);
@@ -64,7 +61,7 @@ const Signup = () => {
     console.log(email);
     if (email.includes(".") && !email.includes("@")) {
       setError(
-        "Please use school-issued email in the formate of your_Tufts_ID@tufts.edu"
+        "Please use school-issued email in the formate of your_Tufts_ID@tufts.edu",
       );
     }
   }
@@ -75,7 +72,7 @@ const Signup = () => {
 
     if (email.substring(0, email.indexOf("@")).includes(".")) {
       setError(
-        "Please use school-issued email in the formate of your_Tufts_ID@tufts.edu"
+        "Please use school-issued email in the formate of your_Tufts_ID@tufts.edu",
       );
       return;
     }

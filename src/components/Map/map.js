@@ -1,35 +1,12 @@
-import React, { useState } from "react";
-import { useMemo } from "react";
-import styles from "./map.module.css";
 import { useNavigate } from "react-router";
+import styles from "./map.module.css";
 
-import {
-  GoogleMap,
-  LoadScript,
-  useLoadScript,
-  MarkerF,
-  OverlayView,
-} from "@react-google-maps/api";
+import { GoogleMap, OverlayView } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
   height: "100vh",
 };
-
-const divStyle = {
-  background: "#f6f7f9",
-  opacity: "0.8",
-  borderRadius: "10px",
-  border: "1px solid #2c5a7b",
-  padding: 10,
-  cursor: "pointer",
-};
-
-// type MapOptions = google.maps.MapOptions;
-
-const key = "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM";
-const id = ["c74cb64c84d8e1b2"];
-const lib = ["places"];
 
 const options = {
   mapId: "c74cb64c84d8e1b2",
@@ -38,11 +15,6 @@ const options = {
 };
 
 const Dorms = [
-  // {
-  //   title: "Carpenter House",
-  //   path: "/carpenter",
-  //   location: { lat: 42.40941424096112, lng: -71.12358797547878 },
-  // },
   {
     title: "CoHo",
     path: "/coho",
@@ -51,11 +23,6 @@ const Dorms = [
       lng: -71.12123496015069,
     },
   },
-  // {
-  //   title: "Fairmount House",
-  //   path: "/fairmount",
-  //   location: { lat: 42.409912676660966, lng: -71.12124490144829 },
-  // },
   {
     title: "Harleston Hall",
     path: "/harleston",

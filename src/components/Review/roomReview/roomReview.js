@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -54,18 +54,18 @@ function RoomReview({ name, path, open, setOpen }) {
   const [verified, setVerified] = useState(false);
   const [uid, setUid] = useState(0);
 
-    useEffect(() => {
-      getAuth()
-        .currentUser?.reload()
-        .then(() => {
-          if (getAuth().currentUser != null) {
-            setUid(getAuth().currentUser.uid);
-          }
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    }, [getAuth().currentUser]);
+  useEffect(() => {
+    getAuth()
+      .currentUser?.reload()
+      .then(() => {
+        if (getAuth().currentUser != null) {
+          setUid(getAuth().currentUser.uid);
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }, [getAuth().currentUser]);
 
   useEffect(() => {
     getAuth()
@@ -216,7 +216,7 @@ function RoomReview({ name, path, open, setOpen }) {
             <div className={styles.leftRight}>
               <div className={styles.vertical}>
                 <label className={styles.question}>
-                  What 's the lottery number
+                  What is the lottery number
                 </label>
                 <label
                   style={{
@@ -243,7 +243,7 @@ function RoomReview({ name, path, open, setOpen }) {
                     name="waitlist_num"
                     value="waitlist_num"
                     style={{ marginRight: "10px", width: "auto" }}
-                    onChange={(e) =>setCheckWaitlist(e.target.checked)}
+                    onChange={(e) => setCheckWaitlist(e.target.checked)}
                   ></input>
                   <label> It is the waitlist number</label>
                 </div>

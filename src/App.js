@@ -1,11 +1,3 @@
-import React from "react";
-
-// import { Landing } from "./views/landings/Landing";
-// import { Counter } from "./components/counter/Counter";
-// import { JoinQueue } from "./views/JoinQueue/JoinQueue";
-// import LoginPage from "./views/SignIn/SignIn";
-// import { Enroll } from "./views/enroll/Enroll";
-// import { TAQueue } from "./views/TAQueue/TAQueue";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./views/Landing/Landing";
 import Harleston from "./views/Harleston/Harleston";

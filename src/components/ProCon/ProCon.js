@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-
 import styles from "./procon.module.css";
-import Bathroom from "../../assets/bathroom.png";
-import Elevator from "../../assets/elevator.png";
-import Kitchen from "../../assets/Kitchen.png";
 import Icon from "./icon/icon";
 
-function ProCon({ pro, con }) {
-  // const instructorCourses = useAppSelector(selectInstructorCourses);
+const ProCon = ({ pro, con }) => {
   return (
     <div className={styles.container}>
       <div className={styles.section}>
@@ -38,6 +32,6 @@ function ProCon({ pro, con }) {
       </div>
     </div>
   );
-}
+};
 
 export default ProCon;

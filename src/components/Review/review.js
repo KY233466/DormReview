@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from "react";
-
+import { useState } from "react";
 import styles from "./review.module.css";
 import CreateIcon from "@mui/icons-material/Create";
 import DormReview from "./dormReview/dormReview";

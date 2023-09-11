@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -6,9 +7,53 @@ import Alert from "@mui/material/Alert";
 
 import styles from "./search.module.css";
 
-export default function ComboBox({ setZoom, setCenter }) {
+ComboBox.propTypes = {
+  setZoom: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+function ComboBox(setZoom, setCenter) {
   const [value, setValue] = useState("");
   const [warning, setWarning] = useState(false);
+
+  const dorms = [
+    {
+      label: "CoHo (Community Housing)",
+    },
+    {
+      label: "Harleston Hall",
+    },
+    {
+      label: "Haskell Hall",
+    },
+    {
+      label: "Hillside Apartments",
+    },
+    {
+      label: "Latin Way",
+    },
+    {
+      label: "Lewis Hall",
+    },
+    {
+      label: "Sophia Gordon Hall",
+    },
+    {
+      label: "Stratton Hall",
+    },
+    {
+      label: "West Hall",
+    },
+    {
+      label: "Wren Hall",
+    },
+    {
+      label: "10 Winthrop Street",
+    },
+    {
+      label: "9-11 Sunset Road",
+    },
+  ];
 
   function newValue(value) {
     setValue(value);
@@ -195,41 +240,4 @@ export default function ComboBox({ setZoom, setCenter }) {
   );
 }
 
-const dorms = [
-  {
-    label: "CoHo (Community Housing)",
-  },
-  {
-    label: "Harleston Hall",
-  },
-  {
-    label: "Haskell Hall",
-  },
-  {
-    label: "Hillside Apartments",
-  },
-  {
-    label: "Latin Way",
-  },
-  {
-    label: "Lewis Hall",
-  },
-  {
-    label: "Sophia Gordon Hall",
-  },
-  {
-    label: "Stratton Hall",
-  },
-  {
-    label: "West Hall",
-  },
-  {
-    label: "Wren Hall",
-  },
-  {
-    label: "10 Winthrop Street",
-  },
-  {
-    label: "9-11 Sunset Road",
-  },
-];
+export default ComboBox;

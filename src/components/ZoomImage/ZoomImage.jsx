@@ -1,5 +1,5 @@
 // Only made possible with Bernard Bado's https://www.upbeatcode.com/react/how-to-implement-zoom-image-in-react/
-import React, { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 
 const SCROLL_SENSITIVITY = 0.005;
 const MAX_ZOOM = 10;

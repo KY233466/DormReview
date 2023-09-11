@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./latinway.module.css";
 import Details from "../../components/details/details";
 import pic from "../../assets/latin-way1.jpeg";

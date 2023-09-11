@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import ReviewBlock from "../review_block/review_block";
 import RoomReviewBlock from "../RoomReview_block/roomReview_block";

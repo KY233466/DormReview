@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-
-//   import { useAppSelector, useAppDispatch } from "../../app/hooks";
-//   import { CoursesList } from "../../components/courses/ CoursesList";
-import styles from "./FloorPlan.module.css";
-import twoFloor from "../../assets/floor/Harleston/2Harleston.png";
 import legend from "../../assets/Legend.png";
 import ZoomImage from "../ZoomImage/ZoomImage";
 import Compass from "../../assets/Compass.png";
+
+import styles from "./FloorPlan.module.css";
 
 function FloorPlan({ floor, displayDetail }) {
   const [floorNum, setFloorNum] = useState(0);
@@ -17,8 +14,8 @@ function FloorPlan({ floor, displayDetail }) {
       : [...Array(floor.length).keys(), floor.length - 1].reverse();
 
   function isString(x) {
-    return Object.prototype.toString.call(x) === '[object String]';
-}
+    return Object.prototype.toString.call(x) === "[object String]";
+  }
 
   return (
     <div className={displayDetail ? styles.container : styles.containerExpand}>
@@ -31,7 +28,9 @@ function FloorPlan({ floor, displayDetail }) {
           return (
             <div
               key={index}
-              onClick={() => setFloorNum(isString(element.title) ? 0 : element.title)}
+              onClick={() =>
+                setFloorNum(isString(element.title) ? 0 : element.title)
+              }
               className={
                 index === floorN[floorNum] ? styles.btnClicked : styles.btn
               }

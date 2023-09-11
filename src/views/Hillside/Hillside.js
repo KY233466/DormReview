@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "./sogo.module.css";
 import Details from "../../components/details/details";
 import pic from "../../assets/hillside.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import elevator from "../../assets/elevator.png";
 import kitchen from "../../assets/Kitchen.png";
-import Hard from "../../assets/Hard.jpg";
-import food from "../../assets/food.png";
-import Bed from "../../assets/Bed.jpg";
 import Location from "../../assets/location.png";
-import Washer from "../../assets/Washer.png";
 import FloorPlan from "../../components/FloorPlan/FloorPlan";
 
 import GFloor from "../../assets/floor/Hillside/HillsideG.png";

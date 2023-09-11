@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "./sogo.module.css";
 import Details from "../../components/details/details";
 import pic from "../../assets/coho.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import elevator from "../../assets/elevator.png";
 import kitchen from "../../assets/Kitchen.png";
-import Hard from "../../assets/Hard.jpg";
-import food from "../../assets/food.png";
 import Bed from "../../assets/Bed.jpg";
 import Washer from "../../assets/Washer.png";
 import CoHoMap from "../../components/Map/cohoMap";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { useLoadScript } from "@react-google-maps/api";
 
 const Content = [
   {
@@ -53,19 +49,19 @@ const Con = [
 function CoHo() {
   const [displayDetail, setDisplayDetail] = useState(true);
 
-    const [center, setCenter] = useState({
-      lat: 42.41024428222851,
-      lng: -71.12156863095187,
-    });
+  const [center] = useState({
+    lat: 42.41024428222851,
+    lng: -71.12156863095187,
+  });
 
-    const [zoom, setZoom] = useState(18.7);
+  const [zoom] = useState(18.7);
 
-      const { isLoaded } = useLoadScript({
-        // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
-        googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
-      });
+  const { isLoaded } = useLoadScript({
+    // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+  });
 
-      if (!isLoaded) return <div> Loading... </div>;
+  if (!isLoaded) return <div> Loading... </div>;
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -97,7 +93,7 @@ function CoHo() {
       <div className={styles.rightContainer}>
         <CoHoMap center={center} zoom={zoom} />
 
-                {/* Processed floor plan not available.Please go to{" "}
+        {/* Processed floor plan not available.Please go to{" "}
         <a
           style={{
             textDecoration: "underline",

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
@@ -10,7 +9,6 @@ import { useUserAuth } from "../../context/userAuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function BasicMenu() {
-
   let navigate = useNavigate();
   const routeChange = () => {
     let path = `/profile`;
