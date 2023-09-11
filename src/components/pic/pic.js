@@ -262,8 +262,7 @@ function Pic() {
         alt="lol"
         useMap="#image-map"
       />
-      <map name="image-map">
-        {" "}
+      <map name="image-map">        
         {Select.map((element, key) => {
           return (
             <area
@@ -277,7 +276,7 @@ function Pic() {
               shape="rect"
             />
           );
-        })}{" "}
+        })}
         {/*     <area target="" className={styles.lol} onClick={()=> console.log("clicked")} alt="288" title="288" href="\288" coords="430,2208,525,2403" shape="rect"/>
                 <area target="" className={styles.lol} onClick={()=> console.log("clicked")} alt="286" title="286" href="\286" coords="530,2210,619,2402" shape="rect"/>
                 <area target="" className={styles.lol} onClick={()=> console.log("clicked")} alt="284" title="284" href="\284" coords="626,2211,715,2406" shape="rect"/>
