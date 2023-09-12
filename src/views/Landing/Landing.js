@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 import ComboBox from "../../components/search/search";
 import styles from "./landing.module.css";
 import MediaQuery from "react-responsive";
@@ -8,23 +10,27 @@ import Map from "../../components/Map/map";
 import { useLoadScript } from "@react-google-maps/api";
 
 function Landing() {
+  const [zoom, setZoom] = useState(17);
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
   const [center, setCenter] = useState({
     lat: 42.40735001860593,
     lng: -71.12106588226075,
   });
 
-  const [zoom, setZoom] = useState(17);
+  useEffect(() => {
+    const getAPIKey = async () => {
+      const data = await getDocs(collection(db, "APIKeys"));
+      setGoogleMapsApiKey(data.docs[0], data);
+    };
+
+    getAPIKey();
+  }, []);
 
   const { isLoaded } = useLoadScript({
-    // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
-    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+    googleMapsApiKey: googleMapsApiKey,
   });
 
   if (!isLoaded) return <div> Loading... </div>;
-
-  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
 
   return (
     <div className={styles.container}>

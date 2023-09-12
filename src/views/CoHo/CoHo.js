@@ -1,5 +1,6 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 import styles from "./sogo.module.css";
 import Details from "../../components/details/details";
 import pic from "../../assets/coho.jpeg";
@@ -48,17 +49,25 @@ const Con = [
 
 function CoHo() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
+  const [zoom] = useState(18.7);
 
   const [center] = useState({
     lat: 42.41024428222851,
     lng: -71.12156863095187,
   });
 
-  const [zoom] = useState(18.7);
+  useEffect(() => {
+    const getAPIKey = async () => {
+      const data = await getDocs(collection(db, "APIKeys"));
+      setGoogleMapsApiKey(data.docs[0], data);
+    };
+
+    getAPIKey();
+  }, []);
 
   const { isLoaded } = useLoadScript({
-    // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
-    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+    googleMapsApiKey: googleMapsApiKey,
   });
 
   if (!isLoaded) return <div> Loading... </div>;

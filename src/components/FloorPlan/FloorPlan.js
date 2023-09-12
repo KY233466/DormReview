@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import legend from "../../assets/Legend.png";
 import ZoomImage from "../ZoomImage/ZoomImage";
 import Compass from "../../assets/Compass.png";
