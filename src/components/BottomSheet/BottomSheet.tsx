@@ -33,7 +33,7 @@ type TBottomSheetProps = {
   /**
    * nested children
    */
-  children: JSX.Element;
+  children: any;
   /**
    * optional specific aria label for close button
    */
@@ -261,7 +261,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
               (title || subtitle ? COLLAPSED_HEIGHT : THUMB_HEIGHT)
             }
           >
-            {isDebugMode ? <DebugLog>{debugLog}</DebugLog> : children}
+            {children}
           </SheetBody>
         </BottomSheetStyled>
       </animated.div>

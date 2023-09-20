@@ -95,7 +95,7 @@ body video {
   align-items: center;
   width: 100%;
   background-color: #2c5a7b;
-  min-height: 3rem;
+  height: 3rem;
   padding-top: 5px;
   padding-bottom: 5px;
   color: #fff;
@@ -115,7 +115,7 @@ body video {
   font-family: "Avenir";
   font-style: normal;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #303030;
   text-align: center;
   color: #fff;
@@ -128,4 +128,4 @@ body video {
   padding: 0.5em 1rem;
   font-size: 0.9rem;
   margin-right: 20px;
-}/*# sourceMappingURL=header.module.css.map */
+} /*# sourceMappingURL=header.module.css.map */

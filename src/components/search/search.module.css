@@ -1,8 +1,8 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
 }
 
 .container a {
@@ -10,14 +10,16 @@
 }
 
 .btn {
-  background-color: #2c5a7b;
+  background-color: #e96a34;
   text-align: center;
   color: white;
   border-radius: 15px;
-  padding: 0.7em 4rem;
-  font-size: 1rem;
+  padding: 11px 20px;
+  margin-left: 10px;
+  font-size: 0.8rem;
   font-weight: 500;
-  transform: translate(0, -20px);
+  width: auto;
+  height: auto;
+  border: none;
   cursor: pointer;
-  margin-top: 25px;
 }

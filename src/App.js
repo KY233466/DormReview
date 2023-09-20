@@ -15,7 +15,8 @@ import Sunset from "./views/Sunset/Sunset";
 import Uni19 from "./views/CoHo/19-uni/Uni19";
 import Profile from "./views/Profile/Profile";
 import { UserAuthContextProvider } from "./context/userAuthContext";
-// import Home from "./Home";
+import Example from "./views/Mobile/hmmm.tsx";
+import Lol from "./views/Mobile/Lol";
 import Verify from "./views/Verification/verification";
 // import { auth } from "./config/firebase";
 // import firebaseConfig from "./config/config";
@@ -31,6 +32,7 @@ function App() {
     <UserAuthContextProvider>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/mobile" element={<Lol />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/coho" element={<CoHo />} />
         <Route path="/coho/11-fairmount" element={<CoHo />} />

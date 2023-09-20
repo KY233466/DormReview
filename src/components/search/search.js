@@ -1,16 +1,10 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Alert from "@mui/material/Alert";
 
 import styles from "./search.module.css";
-
-ComboBox.propTypes = {
-  setZoom: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 function ComboBox(setZoom, setCenter) {
   const [value, setValue] = useState("");
@@ -207,35 +201,30 @@ function ComboBox(setZoom, setCenter) {
 
   return (
     <div className={styles.container}>
-      {warning ? (
-        <Alert
-          onClose={() => {
-            setWarning(false);
-          }}
-          severity="warning"
-          sx={{
-            width: "270px",
-            marginBottom: "25px",
-          }}
-        >
-          Please select a dorm{" "}
-        </Alert>
-      ) : null}
       <Autocomplete
         disablePortal
         id="combo-box-demo"
+        size="small"
         options={dorms}
+        getOptionLabel={(option) => option.label}
         sx={{
-          width: 300,
-          marginBottom: "25px",
+          width: 250,
         }}
-        renderInput={(params) => <TextField {...params} label="Select Dorm" />}
+        renderInput={(params) => (
+          <TextField
+            size="small"
+            sx={{
+              color: "orange",
+            }}
+            {...params}
+            label="Select Dorm"
+          />
+        )}
         onChange={(event, value) => newValue(value)}
-      />{" "}
-      <div className={styles.btn} onClick={() => go(value)}>
-        {" "}
-        Go{" "}
-      </div>{" "}
+      />
+      <button className={styles.btn} onClick={() => go(value)}>
+        Go
+      </button>
     </div>
   );
 }

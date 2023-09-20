@@ -173,23 +173,23 @@ const Signup = () => {
               type="email"
               placeholder="Email address"
               onChange={(e) => validateEmail(e)}
-            />{" "}
+            />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Control
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-            />{" "}
+            />
           </Form.Group>
-          <Button variant="primary" type="Submit">
-            Sign up{" "}
-          </Button>{" "}
-        </Form>{" "}
-      </div>{" "}
+          <Button className={styles.button} variant="primary" type="Submit">
+            Sign up
+          </Button>
+        </Form>
+      </div>
       {/* <div className={styles.click}>
                     Already have an account? Log In
-                  </div> */}{" "}
+                  </div> */}
     </>
   );
 };

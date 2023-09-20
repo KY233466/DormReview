@@ -46,7 +46,7 @@ input {
   width: 93%;
 }
 
-button {
+.button {
   background-color: teal;
   border: none;
   color: white;
