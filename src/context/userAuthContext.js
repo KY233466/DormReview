@@ -59,7 +59,7 @@ export function UserAuthContextProvider({ children }) {
         logOut,
       }}
     >
-      {children}{" "}
+      {children}
     </userAuthContext.Provider>
   );
 }

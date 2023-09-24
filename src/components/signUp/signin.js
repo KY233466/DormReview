@@ -10,7 +10,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { logIn } = useUserAuth();
-  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,16 +27,22 @@ const Login = () => {
         setError("Please enter both email and password");
       } else if (err.toString().includes("auth/invalid-email")) {
         setError("Please enter a valid email address");
+      } else if (err.toString().includes("auth/network-request-failed")) {
+        setError(
+          "Could not reach server. Please check your network connectivity.",
+        );
       } else {
         setError(err.message);
       }
+      return;
     }
+    window.location.reload();
   };
 
   return (
     <>
       <div className={styles.container2}>
-        <h2> Login </h2>{" "}
+        <h2>Login</h2>
         {error && (
           <Alert
             severity="warning"

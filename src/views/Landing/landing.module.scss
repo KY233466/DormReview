@@ -56,6 +56,23 @@ body {
   }
 }
 
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: Avenir;
+  background-color: #e96a34;
+  color: white;
+  border-radius: 15px;
+  padding: 11px 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
 @media (max-width: 899px) {
   .container {
     justify-content: center;

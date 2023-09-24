@@ -4,7 +4,7 @@ import ProCon from "../../components/ProCon/ProCon";
 import bathroom from "../../assets/bathroom.png";
 import elevator from "../../assets/elevator.png";
 import Location from "../../assets/location.png";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import styles from "./mobileLandingBottomSheet.module.css";
 
@@ -77,7 +77,7 @@ const MobileLandingBottomSheet = ({ isOpen, closeBottomSheet }) => {
               <p>Downhill</p>
             </div>
             <a href="/harleston" style={{ padding: "7px" }}>
-              <ArrowBackIosIcon style={{ width: "15px", color: "grey" }} />
+              <ArrowForwardIosIcon style={{ width: "15px", color: "grey" }} />
             </a>
           </div>
 

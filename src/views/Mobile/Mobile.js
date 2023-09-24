@@ -7,7 +7,6 @@ const Mobile = () => {
 
   return (
     <>
-      <div>???</div>
       <button onClick={() => setOpen(true)}>Open</button>
       <BottomSheet open={open}>My awesome content here</BottomSheet>
     </>

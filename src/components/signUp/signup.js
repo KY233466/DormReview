@@ -147,11 +147,13 @@ const Signup = () => {
   return (
     <>
       <div className={styles.container2}>
-        <h2> Signup with your Tufts email </h2>
-        <h2>
+        <h2 style={{ marginBottom: "10px" }}> Signup with your Tufts email </h2>
+        <h2 style={{ fontWeight: "200", fontSize: "13px" }}>
           Please use format <span> Tufts_Username</span>@tufts.edu.
         </h2>
-        <h2> Ex: jsmith03@tufts.edu </h2>
+        <h2 style={{ fontWeight: "200", fontSize: "13px" }}>
+          Ex: jsmith03@tufts.edu
+        </h2>
         {error && (
           <Alert
             onClose={() => setError("")}

@@ -58,8 +58,8 @@ export default function BasicMenu() {
           }}
           alt="Profile"
           src={profile}
-        />{" "}
-      </IconButton>{" "}
+        />
+      </IconButton>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -77,8 +77,8 @@ export default function BasicMenu() {
             <Divider />
             <MenuItem onClick={handleLogout}> Logout </MenuItem>
           </div>
-        ) : null}{" "}
-      </Menu>{" "}
+        ) : null}
+      </Menu>
     </div>
   );
 }

@@ -8,35 +8,33 @@ import SigninSignup from "../../components/signUp/signin_signup";
 import LandingHeader from "../../components/landingHeader/landingHeader";
 import Map from "../../components/Map/map";
 import { useLoadScript } from "@react-google-maps/api";
-import MobileLandingBottomSheet from "../../components/MobileLandingBottomSheet";
+import MobileHeader from "./MobileHeader";
+import MapIcon from "@mui/icons-material/Map";
 
 function Landing() {
   const [zoom, setZoom] = useState(17);
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const openBottomSheet = () => setIsOpen(true);
-  const closeBottomSheet = () => setIsOpen(false);
-
   const [center, setCenter] = useState({
     lat: 42.40735001860593,
     lng: -71.12106588226075,
   });
 
-  useEffect(() => {
-    const getAPIKey = async () => {
-      const docRef = doc(db, "APIKeys", "GoogleMaps");
-      const docSnap = await getDoc(docRef);
+  // useEffect(() => {
+  //   const getAPIKey = async () => {
+  //     const docRef = doc(db, "APIKeys", "GoogleMaps");
+  //     const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        setGoogleMapsApiKey(docSnap.data().googleMapsApiKey);
-      } else {
-        console.log("could not retrieve Google Maps API Key");
-      }
-    };
+  //     if (docSnap.exists()) {
+  //       setGoogleMapsApiKey(docSnap.data().googleMapsApiKey);
+  //     } else {
+  //       console.log("could not retrieve Google Maps API Key");
+  //     }
+  //   };
 
-    getAPIKey();
-  }, []);
+  //   getAPIKey();
+  // }, []);
 
   // const { isLoaded } = useLoadScript({
   //   googleMapsApiKey: googleMapsApiKey,
@@ -47,12 +45,117 @@ function Landing() {
   return (
     <>
       <MediaQuery maxWidth={899}>
-        <button onClick={() => setIsOpen(true)}>Click!</button>
-        <MobileLandingBottomSheet
-          isOpen={isOpen}
-          closeBottomSheet={() => setIsOpen(false)}
-        />
+        <MobileHeader />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            marginTop: "20px",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "0.9rem",
+              width: "80%",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "1.1rem",
+                marginBottom: "10px",
+                color: "#e96a34",
+                lineHeight: "1.4rem",
+              }}
+              className={styles.bold}
+            >
+              Tired of not knowing what Tufts dorms is like during Housing
+              Selection?
+            </div>
+            <div>
+              Bad shower water pressure? 🚿 Wish someone warned you against your
+              current dorm? 🤦 Dorm Review is the place to know/share secretes
+              one would otherwise not know about!
+            </div>
+          </div>
+
+          <hr style={{ width: "80%", margin: "20px 0" }} />
+          <div style={{ width: "80%" }} className={styles.info}>
+            <div className={styles.bold}>Select a continuing-student dorm</div>
+            <ComboBox setZoom={setZoom} setCenter={setCenter} />
+
+            <div className={styles.bold}>OR</div>
+            <a
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "8px",
+                textDecoration: "none",
+                fontFamily: "Avenir",
+              }}
+              className={styles.btn}
+              href="/map"
+            >
+              <MapIcon />
+              View Location On Map
+            </a>
+          </div>
+        </div>
       </MediaQuery>
+      {/* <MediaQuery maxWidth={899}>
+        <LandingHeader />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            marginTop: "calc(3rem + 20px)",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "0.9rem",
+              width: "80%",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: "800",
+                marginBottom: "10px",
+                color: "#e96a34",
+              }}
+            >
+              Tired of not knowing what Tufts dorms is like during Housing
+              Selection?
+            </div>
+            <div style={{ paddingBottom: "10px" }}>
+              Hoping the nearest shower will not have bad water pressure? 🚿
+              Wish someone warned you against your current dorm?
+            </div>
+            <div>
+              Dorm Review is the place to know/share that information one would
+              otherwise not know about!
+            </div>
+          </div>
+
+          <hr style={{ width: "80%", margin: "20px 0" }} />
+          <div style={{width: "80%"}} className={styles.info}>
+            <div className={styles.bold}>
+              Select a continuing-student dorm below
+            </div>
+            <ComboBox setZoom={setZoom} setCenter={setCenter} />
+
+            <div className={styles.bold}>Or go to map page</div>
+            <button className={styles.btn}>Go</button>
+          </div>
+        </div>
+      </MediaQuery> */}
 
       <MediaQuery minWidth={900}>
         <div className={styles.container}>
@@ -77,8 +180,8 @@ function Landing() {
                   Selection?
                 </div>
                 <div style={{ paddingBottom: "10px" }}>
-                  Hoping the nearest shower will not have bad water pressure? 🚿
-                  Wish someone warned you against your current dorm?
+                  Hope the nearest shower will not have bad water pressure? 🚿
+                  Wish someone warned you against your current dorm? 🤦
                 </div>
                 <div>
                   Dorm Review is the place to know/share that information one

@@ -1,14 +1,37 @@
 import { useState } from "react";
-
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import Alert from "@mui/material/Alert";
-
+import Box from "@mui/material/Box";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "./search.module.css";
 
-function ComboBox(setZoom, setCenter) {
+const textfieldStyle = {
+  "& .MuiInputBase-input.MuiAutocomplete-input": {
+    fontSize: "0.8rem",
+  },
+};
+
+const autocompleteStyle = {
+  width: "60%",
+  "& .MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
+    background: "white",
+    borderRadius: "25px",
+  },
+};
+
+const lol = {
+  "& .MuiAutocomplete-option": {
+    border: "2px solid grey",
+    color: "green",
+    fontSize: 18,
+  },
+};
+
+function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
   const [value, setValue] = useState("");
   const [warning, setWarning] = useState(false);
+
+  const isMobile = useMediaQuery("(max-width:899px)");
 
   const dorms = [
     {
@@ -206,25 +229,26 @@ function ComboBox(setZoom, setCenter) {
         id="combo-box-demo"
         size="small"
         options={dorms}
+        // forcePopupIcon={!isMobile}
+        disableClearable={isMobile}
         getOptionLabel={(option) => option.label}
-        sx={{
-          width: 250,
-        }}
+        sx={autocompleteStyle}
+        renderOption={(props, option) => (
+          <Box component="li" sx={lol} {...props}>
+            {option.label}
+          </Box>
+        )}
         renderInput={(params) => (
-          <TextField
-            size="small"
-            sx={{
-              color: "orange",
-            }}
-            {...params}
-            label="Select Dorm"
-          />
+          <TextField size="small" sx={textfieldStyle} {...params} />
         )}
         onChange={(event, value) => newValue(value)}
       />
-      <button className={styles.btn} onClick={() => go(value)}>
-        Go
-      </button>
+
+      {showGoBtn && (
+        <button className={styles.btn} onClick={() => go(value)}>
+          Go
+        </button>
+      )}
     </div>
   );
 }
