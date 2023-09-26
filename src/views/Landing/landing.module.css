@@ -4,7 +4,8 @@ html {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: Poppins;
+  font-family: san-serif;
   margin: 0;
   padding: 0;
   border: 0;
@@ -97,7 +98,8 @@ body video {
   width: 100%;
   margin: 0;
   min-height: 100vh;
-  font-family: "Avenir";
+  font-family: Avenir;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -126,7 +128,8 @@ body video {
 }
 
 .bold {
-  font-family: "Avenir";
+  font-family: Avenir;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 1rem;
@@ -150,6 +153,8 @@ body video {
 .info a {
   text-decoration: underline;
   margin-bottom: 15px;
+  font-family: Avenir;
+  font-family: sans-serif;
 }
 
 .btn {
@@ -159,6 +164,7 @@ body video {
   gap: 8px;
   text-decoration: none;
   font-family: Avenir;
+  font-family: sans-serif;
   background-color: #e96a34;
   color: white;
   border-radius: 15px;

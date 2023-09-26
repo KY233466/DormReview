@@ -4,7 +4,8 @@ html {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: Poppins;
+  font-family: san-serif;
   margin: 0;
   padding: 0;
   border: 0;
@@ -102,4 +103,4 @@ body video {
 .specifics {
   display: flex;
   flex-direction: column;
-}/*# sourceMappingURL=rooms.module.css.map */
+} /*# sourceMappingURL=rooms.module.css.map */

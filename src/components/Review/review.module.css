@@ -4,7 +4,8 @@ html {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: Poppins;
+  font-family: san-serif;
   margin: 0;
   padding: 0;
   border: 0;
@@ -127,10 +128,11 @@ body video {
 }
 
 .bold {
-  font-family: "Avenir";
+  font-family: Avenir;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #303030;
 }
 
@@ -158,7 +160,7 @@ body video {
 }
 
 .form {
-  font-family: "Avenir";
+  font-family: Avenir;
   font-style: normal;
   color: #303030;
   width: 100%;
@@ -171,7 +173,7 @@ body video {
 .form input {
   margin-bottom: 10px;
   width: 90%;
-  font-family: "Avenir";
+  font-family: Avenir;
   font-style: normal;
   background-color: #fbfafa;
   border: 1px solid #ccc;
@@ -186,7 +188,7 @@ body video {
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #fbfafa;
-  font-family: "Avenir";
+  font-family: Avenir;
   font-style: normal;
   font-size: 0.85rem;
 }
@@ -199,7 +201,7 @@ body video {
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
-  font-family: "Avenir";
+  font-family: Avenir;
   font-style: normal;
   font-size: 0.85rem;
 }
@@ -208,4 +210,4 @@ body video {
   text-align: left;
   width: 100%;
   margin-top: 10px;
-}/*# sourceMappingURL=review.module.css.map */
+} /*# sourceMappingURL=review.module.css.map */

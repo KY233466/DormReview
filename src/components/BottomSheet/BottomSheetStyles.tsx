@@ -16,7 +16,7 @@ export const BottomSheetStyled = styled.div`
 
 export const CloseButton = styled.button`
   ${({ theme }) => css`
-    backgroundColor: pink;
+    backgroundcolor: pink;
     cursor: pointer;
     border: none;
     padding: 8px;

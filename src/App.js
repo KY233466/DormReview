@@ -17,7 +17,7 @@ import Profile from "./views/Profile/Profile";
 import { UserAuthContextProvider } from "./context/userAuthContext";
 import Lol from "./views/Mobile/Lol";
 import Verify from "./views/Verification/verification";
-import MobileMap from "./views/MobileMap/MobileMap";
+import MobileMap from "./views/MobileMap";
 // import { auth } from "./config/firebase";
 // import firebaseConfig from "./config/config";
 // import { initializeApp } from "firebase/app";

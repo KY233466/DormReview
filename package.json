@@ -12,6 +12,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
+    "eslint-formatter-pretty": "^5.0.0",
     "firebase": "^9.12.1",
     "html2canvas": "^1.4.1",
     "prop-types": "^15.8.1",
@@ -30,7 +31,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lintCheck": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lintPrettier": "prettier -c --write \"src/**/*.{js,ts,tsx}\" --end-of-line lf",
+    "lintFix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "prettierCheck": "prettier -c \"src/**/*.{js,ts,tsx}\" --end-of-line lf",
+    "prettier": "prettier -c --write \"src/**/*\""
   },
   "eslintConfig": {
     "extends": [

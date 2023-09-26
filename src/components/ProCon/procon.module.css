@@ -4,7 +4,8 @@ html {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: Poppins;
+  font-family: san-serif;
   margin: 0;
   padding: 0;
   border: 0;
@@ -101,10 +102,11 @@ body video {
 }
 
 .bold {
-  font-family: "Avenir";
+  font-family: Avenir;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #303030;
 }
 
@@ -128,4 +130,4 @@ body video {
   flex-wrap: wrap;
   text-align: center;
   margin-top: 5px;
-}/*# sourceMappingURL=procon.module.css.map */
+} /*# sourceMappingURL=procon.module.css.map */

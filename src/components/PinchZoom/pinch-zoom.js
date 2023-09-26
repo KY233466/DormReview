@@ -237,7 +237,7 @@ var definePinchZoom = function () {
         updateProgress = function (progress) {
           this.scaleTo(
             startZoomFactor + progress * (zoomFactor - startZoomFactor),
-            center
+            center,
           );
         }.bind(this);
 
@@ -268,12 +268,12 @@ var definePinchZoom = function () {
         x:
           -Math.abs(
             this.el.offsetWidth * this.getInitialZoomFactor() -
-              this.container.offsetWidth
+              this.container.offsetWidth,
           ) / 2,
         y:
           -Math.abs(
             this.el.offsetHeight * this.getInitialZoomFactor() -
-              this.container.offsetHeight
+              this.container.offsetHeight,
           ) / 2,
       };
     },
@@ -368,7 +368,7 @@ var definePinchZoom = function () {
       this.zoomFactor *= scale;
       this.zoomFactor = Math.min(
         this.options.maxZoom,
-        Math.max(this.zoomFactor, this.options.minZoom)
+        Math.max(this.zoomFactor, this.options.minZoom),
       );
       return this.zoomFactor / originalZoomFactor;
     },
@@ -515,7 +515,7 @@ var definePinchZoom = function () {
         updateProgress = function (progress) {
           this.scaleTo(
             startZoomFactor + progress * (zoomFactor - startZoomFactor),
-            center
+            center,
           );
         }.bind(this);
 
@@ -793,7 +793,7 @@ var definePinchZoom = function () {
             this.is3d = false;
           }
         }.bind(this),
-        0
+        0,
       );
     },
 
@@ -923,7 +923,7 @@ var definePinchZoom = function () {
           detectDoubleTap(event);
         }
       },
-      { passive: false }
+      { passive: false },
     );
 
     el.addEventListener(
@@ -942,7 +942,7 @@ var definePinchZoom = function () {
                 if (startTouches.length == 2 && event.touches.length == 2) {
                   target.handleZoom(
                     event,
-                    calculateScale(startTouches, targetTouches(event.touches))
+                    calculateScale(startTouches, targetTouches(event.touches)),
                   );
                 }
                 break;
@@ -959,7 +959,7 @@ var definePinchZoom = function () {
           firstMove = false;
         }
       },
-      { passive: false }
+      { passive: false },
     );
 
     el.addEventListener("touchend", function (event) {
