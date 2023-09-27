@@ -58,7 +58,14 @@ const MobileMap = () => {
   if (!isLoaded) return <div> Loading... </div>;
 
   return (
-    <div style={{ background: "grey", height: "100vh", width: "100vw" }}>
+    <div
+      style={{
+        background: "grey",
+        height: "100vh",
+        width: "100vw",
+        overscrollBehavior: "none",
+      }}
+    >
       <Map center={center} zoom={zoom} />
       <ComboBox
         setSelectedDormName={setSelectedDormName}

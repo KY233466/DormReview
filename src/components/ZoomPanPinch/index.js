@@ -8,7 +8,6 @@ const ZoomPanPinch = ({ src }) => {
         width: "100vw",
         height: "100vh",
         cursor: "grab",
-        backgroundColor: "pink",
       }}
     >
       <TransformWrapper

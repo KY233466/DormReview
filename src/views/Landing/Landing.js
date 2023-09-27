@@ -7,6 +7,7 @@ import Map from "../../components/Map/map";
 import { useLoadScript } from "@react-google-maps/api";
 import MobileHeader from "./MobileHeader";
 import MapIcon from "@mui/icons-material/Map";
+// import ReactGA from 'react-ga4';
 
 function Landing() {
   const [zoom, setZoom] = useState(17);
@@ -15,6 +16,8 @@ function Landing() {
     lat: 42.40735001860593,
     lng: -71.12106588226075,
   });
+
+  // ReactGA.pageview(window.location.pathname + window.location.search);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
@@ -149,29 +152,49 @@ function Landing() {
               >
                 <div
                   style={{
-                    fontSize: "1.1rem",
-                    fontWeight: "800",
-                    marginBottom: "10px",
+                    fontSize: "1.3rem",
+                    fontWeight: "700",
+                    lineHeight: "1.9rem",
+                    margin: "20px 0",
                     color: "#e96a34",
                   }}
                 >
                   Tired of not knowing what Tufts dorms is like during Housing
                   Selection?
                 </div>
-                <div style={{ paddingBottom: "10px" }}>
+                <div
+                  style={{
+                    paddingBottom: "10px",
+                    fontSize: "1.1rem",
+                    lineHeight: "1.6rem",
+                  }}
+                >
                   Hope the nearest shower will not have bad water pressure? 🚿
                   Wish someone warned you against your current dorm? 🤦
                 </div>
-                <div>
+                <div
+                  style={{
+                    paddingBottom: "10px",
+                    fontSize: "1.1rem",
+                    lineHeight: "1.6rem",
+                  }}
+                >
                   Dorm Review is the place to know/share that information one
                   would otherwise not know about!
                 </div>
               </div>
               <hr style={{ width: "85%", margin: "20px 0" }} />
               <div className={styles.info}>
-                <div className={styles.bold}>
-                  Select a continuing-student dorm below <br />
-                  or click on map
+                <div
+                  className={styles.bold}
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "700",
+                    lineHeight: "1.8rem",
+                    width: "80%",
+                  }}
+                >
+                  Select a continuing-student dorm below or click on map
                 </div>
                 <ComboBox setZoom={setZoom} setCenter={setCenter} />
               </div>

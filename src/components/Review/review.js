@@ -22,7 +22,7 @@ function Review({ path, path2, path3 }) {
             color: "#2C5A7B",
           }}
         />
-        Write review for dorm{" "}
+        Write review for dorm
       </div>
       <div className={styles.btn} onClick={handleOpenR}>
         <CreateIcon
@@ -31,7 +31,7 @@ function Review({ path, path2, path3 }) {
             color: "#2C5A7B",
           }}
         />
-        Write review for room{" "}
+        Write review for room
       </div>
       <DormReview
         name={path}
@@ -42,8 +42,8 @@ function Review({ path, path2, path3 }) {
       />
       <RoomReview name={path} path={path2} open={openR} setOpen={setOpenR} />
       <div className={styles.reviewSection}>
-        <Tabs path={path} path2={path2} />{" "}
-      </div>{" "}
+        <Tabs path={path} path2={path2} />
+      </div>
     </div>
   );
 }

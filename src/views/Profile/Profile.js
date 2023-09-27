@@ -5,12 +5,15 @@ import { db } from "../../firebase";
 import styles from "./profile.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ReviewBlock from "../../components/Review/review_block/review_block";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import RoomReviewBlock from "../../components/Review/RoomReview_block/roomReview_block";
 
 const ProfilePage = () => {
   const [comments, setComments] = useState([]);
   const [uid, setUid] = useState(0);
   const [docs, setDocs] = useState([]);
+
+  const isMobile = useMediaQuery("(max-width:899px)");
 
   useEffect(() => {
     getAuth()
@@ -81,12 +84,20 @@ const ProfilePage = () => {
         </a>
       </div>
 
-      <div className={styles.content}>
+      <div className={styles.content} style={isMobile && { width: "95%" }}>
         <h1>My Reviews</h1>
 
+        {uid === 0 ? <div>Empty here...</div> : null}
+
         {docs?.map((doc, index) => (
-          <div className={styles.review} key={index}>
-            <div style={{ textAlign: "Center" }}>{doc.dName}</div>
+          <div
+            className={styles.review}
+            style={isMobile && { width: "100%" }}
+            key={index}
+          >
+            <div style={{ textAlign: "center", marginTop: "30px" }}>
+              {doc.dName}
+            </div>
             {Object.keys(doc).length === 5 ? (
               <ReviewBlock
                 key={doc.message}

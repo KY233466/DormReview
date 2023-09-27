@@ -397,7 +397,7 @@ function ComboBox({
           <Box
             component="li"
             {...props}
-            sx={{ fontSize: "0.8rem", height: "auto !important" }}
+            // sx={{ height: "auto !important" }}
           >
             {option.label}
           </Box>

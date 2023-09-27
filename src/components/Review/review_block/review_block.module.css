@@ -1,8 +1,15 @@
 .container {
-  margin-bottom: 25px;
+  margin: 0px 40px 25px 40px;
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.headerMobile {
   display: flex;
   flex-direction: row;
   gap: 20px;

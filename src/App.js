@@ -17,10 +17,12 @@ import Profile from "./views/Profile/Profile";
 import { UserAuthContextProvider } from "./context/userAuthContext";
 import Verify from "./views/Verification/verification";
 import MobileMap from "./views/MobileMap";
-
+import ReactGA from "react-ga4";
 import "./App.css";
 
 function App() {
+  ReactGA.initialize("G-5EE2SGKP2Y");
+
   return (
     <UserAuthContextProvider>
       <Routes>

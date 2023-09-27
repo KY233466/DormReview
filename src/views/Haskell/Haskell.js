@@ -95,7 +95,7 @@ function Haskell() {
         con={Con}
         changeDetail={() => changeDetail()}
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
       <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );

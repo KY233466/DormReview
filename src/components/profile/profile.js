@@ -59,25 +59,27 @@ export default function BasicMenu() {
           src={profile}
         />
       </IconButton>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        {/* <MenuItem onClick={handleClose}> Profile </MenuItem>{" "} */}
-        {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}{" "}
-        {user ? (
-          <div>
-            <MenuItem onClick={routeChange}>Profile</MenuItem>
-            <Divider />
-            <MenuItem onClick={handleLogout}> Logout </MenuItem>
-          </div>
-        ) : null}
-      </Menu>
+      {user && (
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
+          {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+          {user && (
+            <div>
+              <MenuItem onClick={routeChange}>Profile</MenuItem>
+              <Divider />
+              <MenuItem onClick={handleLogout}> Logout </MenuItem>
+            </div>
+          )}
+        </Menu>
+      )}
     </div>
   );
 }

@@ -67,7 +67,6 @@ function Winthrop() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       <Details
         title={Content.title}
         path={Content.path}
@@ -84,8 +83,8 @@ function Winthrop() {
         con={Con}
         changeDetail={() => changeDetail()}
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
-      <FloorPlan displayDetail={displayDetail} floor={floor} />{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
+      <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );
 }

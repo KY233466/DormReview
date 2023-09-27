@@ -6,7 +6,7 @@ function Rooms() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      <div> 167 doubles </div> <div> 51 singles </div> <div> 1 triple </div>{" "}
+      <div> 167 doubles </div> <div> 51 singles </div> <div> 1 triple </div>
     </div>
   );
 }

@@ -142,7 +142,7 @@ function RoomReview({ name, path, open, setOpen }) {
               textAlign: "center",
             }}
           >
-            Please sign - up and verify with your Tufts email first{" "}
+            Please sign - up and verify with your Tufts email first
           </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -160,7 +160,7 @@ function RoomReview({ name, path, open, setOpen }) {
                 {error}
               </Alert>
             ) : null}
-            <div className={styles.bold}> Write a review for room </div>{" "}
+            <div className={styles.bold}> Write a review for room </div>
             <div> All posts are anonymous </div>
             <label className={styles.question}>
               What was the room number ? *

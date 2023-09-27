@@ -88,7 +88,6 @@ function SoGo() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       <Details
         title={Content.title}
         path={Content.path}
@@ -105,7 +104,7 @@ function SoGo() {
         con={Con}
         changeDetail={() => changeDetail()}
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
       <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>
   );

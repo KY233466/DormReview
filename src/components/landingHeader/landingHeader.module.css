@@ -21,11 +21,12 @@
 
 .bold {
   font-family: Avenir;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: white;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .mobileBold {

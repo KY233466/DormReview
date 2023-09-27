@@ -46,7 +46,6 @@ function Lewis() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
       <Details
         title={Content.title}
         path={Content.path}
@@ -63,10 +62,8 @@ function Lewis() {
         con={Con}
         changeDetail={() => changeDetail()}
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
       <div className={styles.rightContainer}>
-        {" "}
-        {/* <Lol></Lol> */}
         Processed floor plan not available.Please go to{" "}
         <a
           style={{
@@ -77,8 +74,8 @@ function Lewis() {
           {" "}
           Harleston{" "}
         </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "}
+        to view what it would look like.
+      </div>
       {/* <div className={styles.compass}>
                             <img alt="compass" src={Compass} />
                           </div>

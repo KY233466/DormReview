@@ -94,7 +94,7 @@ function CoHo() {
         con={Con}
         changeDetail={() => changeDetail()}
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
+      {displayDetail ? <div className={styles.placeholder}> </div> : null}
       <div className={styles.rightContainer}>
         <CoHoMap center={center} zoom={zoom} />
 
