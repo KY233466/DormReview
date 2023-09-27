@@ -155,7 +155,6 @@ function Landing() {
                     fontSize: "1.3rem",
                     fontWeight: "700",
                     lineHeight: "1.9rem",
-                    margin: "20px 0",
                     color: "#e96a34",
                   }}
                 >
@@ -165,8 +164,8 @@ function Landing() {
                 <div
                   style={{
                     paddingBottom: "10px",
-                    fontSize: "1.1rem",
-                    lineHeight: "1.6rem",
+                    fontSize: "1rem",
+                    lineHeight: "1.5rem",
                   }}
                 >
                   Hope the nearest shower will not have bad water pressure? 🚿
@@ -175,8 +174,8 @@ function Landing() {
                 <div
                   style={{
                     paddingBottom: "10px",
-                    fontSize: "1.1rem",
-                    lineHeight: "1.6rem",
+                    fontSize: "1rem",
+                    lineHeight: "1.5rem",
                   }}
                 >
                   Dorm Review is the place to know/share that information one
