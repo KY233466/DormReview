@@ -1,6 +1,6 @@
 import { useState } from "react";
 import legend from "../../assets/Legend.png";
-import ZoomImage from "../ZoomImage/ZoomImage";
+import ZoomPanPinch from "../ZoomPanPinch";
 import Compass from "../../assets/Compass.png";
 
 import styles from "./FloorPlan.module.css";
@@ -20,7 +20,7 @@ function FloorPlan({ floor, displayDetail }) {
   return (
     <div className={displayDetail ? styles.container : styles.containerExpand}>
       <div className={styles.rightContainer}>
-        <ZoomImage image={floor.at(floorN[floorNum]).pic} />
+        <ZoomPanPinch src={floor.at(floorN[floorNum]).pic} />
       </div>
 
       <div className={styles.select}>
