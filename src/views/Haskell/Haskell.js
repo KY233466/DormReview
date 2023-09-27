@@ -77,27 +77,24 @@ function Haskell() {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.container}>
-      {" "}
-      {Content.map((value, index) => (
-        <Details
-          index={value.index}
-          key={value.title}
-          title={value.title}
-          path={value.path}
-          path2={value.path2}
-          path3={value.path3}
-          available={value.available}
-          bed_laundry={value.bed_laundry}
-          rooms={value.rooms}
-          moreInfo={value.moreInfo}
-          description={value.description}
-          location={value.location}
-          pic={value.pic}
-          pro={Pro}
-          con={Con}
-          changeDetail={() => changeDetail()}
-        />
-      ))}
+      <Details
+        index={Content.index}
+        key={Content.title}
+        title={Content.title}
+        path={Content.path}
+        path2={Content.path2}
+        path3={Content.path3}
+        available={Content.available}
+        bed_laundry={Content.bed_laundry}
+        rooms={Content.rooms}
+        moreInfo={Content.moreInfo}
+        description={Content.description}
+        location={Content.location}
+        pic={Content.pic}
+        pro={Pro}
+        con={Con}
+        changeDetail={() => changeDetail()}
+      />
       {displayDetail ? <div className={styles.placeholder}> </div> : null}{" "}
       <FloorPlan displayDetail={displayDetail} floor={floor} />
     </div>

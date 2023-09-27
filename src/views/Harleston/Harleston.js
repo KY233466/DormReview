@@ -40,23 +40,21 @@ const floor = [
   },
 ];
 
-const Content = [
-  {
-    title: "Harleston Hall",
-    path: "Harleston",
-    path2: "Harleston-room",
-    path3: "Harleston-rate",
-    available: "Sophomore ✅",
-    bed_laundry: "Extra-long twin bed · 13 washers · 14 dryers",
-    rooms: "167 doubles · 51 singles · 1 triple",
-    moreInfo:
-      "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/harleston-hall",
-    description:
-      "Once known as South Hall, it is located downhill next to basketball courts, tennis courts, and the Ellis Oval with an adjacent student parking lot. This hall houses mostly Second-Year students.",
-    location: "Downhill",
-    pic: pic,
-  },
-];
+const Content = {
+  title: "Harleston Hall",
+  path: "Harleston",
+  path2: "Harleston-room",
+  path3: "Harleston-rate",
+  available: "Sophomore ✅",
+  bed_laundry: "Extra-long twin bed · 13 washers · 14 dryers",
+  rooms: "167 doubles · 51 singles · 1 triple",
+  moreInfo:
+    "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/harleston-hall",
+  description:
+    "Once known as South Hall, it is located downhill next to basketball courts, tennis courts, and the Ellis Oval with an adjacent student parking lot. This hall houses mostly Second-Year students.",
+  location: "Downhill",
+  pic: pic,
+};
 
 const Pro = [
   {
@@ -76,6 +74,8 @@ const Con = [
   },
 ];
 
+// console.log(Harleston-rate)
+
 function Harleston() {
   const [displayDetail, setDisplayDetail] = useState(true);
 
@@ -92,26 +92,22 @@ function Harleston() {
 
       <MediaQuery minWidth={900}>
         <div className={styles.container}>
-          {Content.map((value, index) => (
-            <Details
-              index={value.index}
-              key={value.title}
-              title={value.title}
-              path={value.path}
-              path2={value.path2}
-              path3={value.path3}
-              available={value.available}
-              bed_laundry={value.bed_laundry}
-              rooms={value.rooms}
-              moreInfo={value.moreInfo}
-              description={value.description}
-              location={value.location}
-              pic={value.pic}
-              pro={Pro}
-              con={Con}
-              changeDetail={() => changeDetail()}
-            />
-          ))}
+          <Details
+            title={Content.title}
+            path={Content.path}
+            path2={Content.path2}
+            path3={Content.path3}
+            available={Content.available}
+            bed_laundry={Content.bed_laundry}
+            rooms={Content.rooms}
+            moreInfo={Content.moreInfo}
+            description={Content.description}
+            location={Content.location}
+            pic={Content.pic}
+            pro={Pro}
+            con={Con}
+            changeDetail={() => changeDetail()}
+          />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />
         </div>

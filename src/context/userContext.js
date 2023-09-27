@@ -40,7 +40,7 @@ export const UserContextProvider = ({ children }) => {
       .then(() =>
         updateProfile(auth.currentUser, {
           displayName: name,
-        })
+        }),
       )
       .then((res) => console.log(res))
       .catch((err) => setError(err.message))

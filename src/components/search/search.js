@@ -12,26 +12,32 @@ const textfieldStyle = {
 };
 
 const autocompleteStyle = {
-  width: "60%",
+  width: "70%",
   "& .MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
     background: "white",
     borderRadius: "25px",
   },
 };
 
-const lol = {
-  "& .MuiAutocomplete-option": {
-    border: "2px solid grey",
-    color: "green",
-    fontSize: 18,
+const autocompleteStyleTablet = {
+  width: "260px",
+  "& .MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
+    background: "white",
+    borderRadius: "25px",
   },
 };
 
-function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
-  const [value, setValue] = useState("");
+function ComboBox({
+  setZoom,
+  setCenter,
+  showGoBtn = true,
+  setSelectedDormName,
+}) {
+  const [selectedDorm, setSelectedDorm] = useState("");
   const [warning, setWarning] = useState(false);
 
   const isMobile = useMediaQuery("(max-width:899px)");
+  const isTablet = useMediaQuery("(min-width:460px)");
 
   const dorms = [
     {
@@ -72,8 +78,150 @@ function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
     },
   ];
 
+  const location = {
+    "CoHo (Community Housing)": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.410239549677414,
+        lng: -71.12123496015069,
+      },
+    },
+    "Harleston Hall": {
+      mobile: {
+        lat: 42.40355311542904,
+        lng: -71.12046098315965,
+      },
+      pc: {
+        lat: 42.403637698129884,
+        lng: -71.12040219459307,
+      },
+    },
+    "Fairmount House": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.409912676660966,
+        lng: -71.12124490144829,
+      },
+    },
+    "Haskell Hall": {
+      mobile: {
+        lat: 42.40422369976813,
+        lng: -71.12191802857237,
+      },
+      pc: {
+        lat: 42.404287303183715,
+        lng: -71.12190497763478,
+      },
+    },
+    "Hillside Apartments": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40894509417623,
+        lng: -71.11935062690905,
+      },
+    },
+    "Latin Way": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40394891986206,
+        lng: -71.12119008700702,
+      },
+    },
+    "Lewis Hall": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40486195456316,
+        lng: -71.12269480624146,
+      },
+    },
+    "Sophia Gordon Hall": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40509748849349,
+        lng: -71.11842243463789,
+      },
+    },
+    "Stratton Hall": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.405121254856375,
+        lng: -71.11925928377993,
+      },
+    },
+    "West Hall": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.408253977552356,
+        lng: -71.12031835750494,
+      },
+    },
+    "Wren Hall": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40982536583952,
+        lng: -71.12189014665391,
+      },
+    },
+    "10 Winthrop Street": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.409562415825704,
+        lng: -71.12346426525042,
+      },
+    },
+    "9-11 Sunset Road": {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40871799441268,
+        lng: -71.12420763414914,
+      },
+    },
+    default: {
+      mobile: {
+        // lat: 42.410239549677414,
+        // lng: -71.12123496015069,
+      },
+      pc: {
+        lat: 42.40735001860593,
+        lng: -71.12106588226075,
+      },
+    },
+  };
+
   function newValue(value) {
-    setValue(value);
     if (value === null) {
       setCenter({
         lat: 42.40735001860593,
@@ -83,6 +231,8 @@ function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
       return;
     }
 
+    setSelectedDorm(value.label);
+    setSelectedDormName?.(value.label);
     setZoom(19);
 
     switch (value.label) {
@@ -98,18 +248,20 @@ function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
           lng: -71.12124490144829,
         });
         return;
-      case "Harleston Hall":
-        setCenter({
-          lat: 42.403637698129884,
-          lng: -71.12040219459307,
-        });
-        return;
-      case "Haskell Hall":
-        setCenter({
-          lat: 42.40455656040672,
-          lng: -71.12177003837492,
-        });
-        return;
+      case "Harleston Hall": {
+        const dormLocation = isMobile
+          ? location[value.label].mobile
+          : location[value.label].pc;
+        setCenter(dormLocation);
+        break;
+      }
+      case "Haskell Hall": {
+        const dormLocation = isMobile
+          ? location[value.label].mobile
+          : location[value.label].pc;
+        setCenter(dormLocation);
+        break;
+      }
       case "Hillside Apartments":
         setCenter({
           lat: 42.40894509417623,
@@ -175,7 +327,7 @@ function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
   }
 
   function go(value) {
-    switch (value.label) {
+    switch (value) {
       case "CoHo (Community Housing)":
         window.location.href = "/coho";
         setCenter({
@@ -222,19 +374,31 @@ function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
     }
   }
 
+  const shouldDisableClearable = () => {
+    if (isMobile && isTablet) {
+      return false;
+    }
+    return isMobile;
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={showGoBtn ? styles.container : styles.floatContainer}>
       <Autocomplete
         disablePortal
         id="combo-box-demo"
         size="small"
         options={dorms}
-        // forcePopupIcon={!isMobile}
-        disableClearable={isMobile}
+        isOptionEqualToValue={(option, value) => option.label === value.label}
+        disableClearable={shouldDisableClearable()}
         getOptionLabel={(option) => option.label}
-        sx={autocompleteStyle}
+        sx={isMobile && isTablet ? autocompleteStyleTablet : autocompleteStyle}
+        ListboxProps={{ style: { maxHeight: "9.5rem" } }}
         renderOption={(props, option) => (
-          <Box component="li" sx={lol} {...props}>
+          <Box
+            component="li"
+            {...props}
+            sx={{ fontSize: "0.8rem", height: "auto !important" }}
+          >
             {option.label}
           </Box>
         )}
@@ -245,7 +409,7 @@ function ComboBox({ setZoom, setCenter, showGoBtn = true }) {
       />
 
       {showGoBtn && (
-        <button className={styles.btn} onClick={() => go(value)}>
+        <button className={styles.btn} onClick={() => go(selectedDorm)}>
           Go
         </button>
       )}

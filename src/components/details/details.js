@@ -5,30 +5,10 @@ import Rating from "@mui/material/Rating";
 import Header from "../Header/header";
 import ProCon from "../ProCon/ProCon";
 import Review from "../Review/review";
-import PropTypes from "prop-types";
 import styles from "./details.module.css";
-
-Details.propTypes = {
-  title: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  path: PropTypes.string.isRequired,
-  path2: PropTypes.string.isRequired,
-  path3: PropTypes.string.isRequired,
-  available: PropTypes.string.isRequired,
-  bed_laundry: PropTypes.string.isRequired,
-  rooms: PropTypes.number.isRequired,
-  moreInfo: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  pic: PropTypes.string.isRequired,
-  pro: PropTypes.string.isRequired,
-  con: PropTypes.string.isRequired,
-  changeDetail: PropTypes.func.isRequired,
-};
 
 function Details({
   title,
-  index,
   path,
   path2,
   path3,
@@ -55,7 +35,7 @@ function Details({
     };
 
     getReviews();
-  }, []);
+  });
 
   function changeLeft() {
     changeDetail();
@@ -71,7 +51,7 @@ function Details({
           <div className={styles.info}>
             <div className={styles.sum}>
               <div className={styles.data}>
-                {reviews?.map((element, index) => {
+                {reviews?.map((element) => {
                   return (
                     <div
                       key={element.nReviews}

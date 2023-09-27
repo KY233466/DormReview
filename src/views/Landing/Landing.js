@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { useState } from "react";
 import ComboBox from "../../components/search/search";
 import styles from "./landing.module.css";
 import MediaQuery from "react-responsive";
-import SigninSignup from "../../components/signUp/signin_signup";
 import LandingHeader from "../../components/landingHeader/landingHeader";
 import Map from "../../components/Map/map";
 import { useLoadScript } from "@react-google-maps/api";
@@ -13,34 +10,17 @@ import MapIcon from "@mui/icons-material/Map";
 
 function Landing() {
   const [zoom, setZoom] = useState(17);
-  const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
 
   const [center, setCenter] = useState({
     lat: 42.40735001860593,
     lng: -71.12106588226075,
   });
 
-  // useEffect(() => {
-  //   const getAPIKey = async () => {
-  //     const docRef = doc(db, "APIKeys", "GoogleMaps");
-  //     const docSnap = await getDoc(docRef);
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+  });
 
-  //     if (docSnap.exists()) {
-  //       setGoogleMapsApiKey(docSnap.data().googleMapsApiKey);
-  //     } else {
-  //       console.log("could not retrieve Google Maps API Key");
-  //     }
-  //   };
-
-  //   getAPIKey();
-  // }, []);
-
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: googleMapsApiKey,
-  // });
-
-  // if (!isLoaded) return <div> Loading... </div>;
+  if (!isLoaded) return <div> Loading... </div>;
 
   return (
     <>
@@ -94,7 +74,6 @@ function Landing() {
                 alignItems: "center",
                 gap: "8px",
                 textDecoration: "none",
-                fontFamily: "Avenir",
               }}
               className={styles.btn}
               href="/map"
@@ -195,7 +174,6 @@ function Landing() {
                   or click on map
                 </div>
                 <ComboBox setZoom={setZoom} setCenter={setCenter} />
-                <SigninSignup />
               </div>
               {/* <div
               style={{ width: "80%", textAlign: "center", fontSize: "0.9rem" }}
@@ -274,7 +252,7 @@ function Landing() {
           </div>
 
           <div className={styles.rightContainer}>
-            {/* <Map center={center} zoom={zoom} /> */}
+            <Map center={center} zoom={zoom} />
           </div>
         </div>
       </MediaQuery>

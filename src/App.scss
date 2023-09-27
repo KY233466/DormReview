@@ -1,5 +1,6 @@
 @mixin body {
-  font-family: "Poppins";
+  font-family: Poppins;
+  font-family: san-serif;
   margin: 0;
   padding: 0;
   border: 0;
@@ -97,7 +98,8 @@
 }
 
 @mixin NormText {
-  font-family: "Avenir";
+  font-family: Avenir;
+  font-family:  sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -105,7 +107,8 @@
 }
 
 @mixin BoldText {
-  font-family: "Avenir";
+  font-family: Avenir;
+  font-family:  sans-serif;
   font-style: normal;
   font-weight: 900;
   font-size: 1rem;

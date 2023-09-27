@@ -7,6 +7,18 @@
   width: 100%;
 }
 
+.floatContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  width: 100%;
+  position: absolute;
+  top: 25px;
+  z-index: 4;
+}
+
 .container a {
   text-decoration: none !important;
 }

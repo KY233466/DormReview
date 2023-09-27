@@ -6,6 +6,7 @@ import { GoogleMap, OverlayView } from "@react-google-maps/api";
 const containerStyle = {
   width: "100%",
   height: "100vh",
+  zIndex: 0,
 };
 
 const options = {
@@ -112,74 +113,8 @@ const Dorms = [
     },
   },
 ];
-//   useMemo <
-//   MapOptions >
-//   (() => ({
-//     mapId: "c74cb64c84d8e1b2",
-//     disableDefaultUI: true,
-//     clickableIcons: false,
-//   }));
-
-// const onLoad = (polygon) => {
-//   console.log("polygon: ", polygon);
-// };
 
 export default function Map({ center, zoom }) {
-  // const [center, setCenter] = useState({
-  //   lat: 42.40735001860593,
-  //   lng: -71.12106588226075,
-  // });
-
-  // function centerLocation() {
-  //   switch (value.label) {
-  //     case "Carpenter House":
-  //       setCenter({ lat: 42.40941424096112, lng: -71.12358797547878 });
-  //       return;
-  //     case "CoHo (Community Housing)":
-  //        setCenter({ lat: 42.410239549677414, lng: -71.12123496015069 });
-  //       return;
-  // case "Fairmount House":
-  //   window.location.href = "/fairmount";
-  //   return;
-  // case "Harleston Hall":
-  //   window.location.href = "/harleston";
-  //   return;
-  // case "Haskell Hall":
-  //   window.location.href = "/haskell";
-  //   return;
-  // case "Hillside Apartments":
-  //   window.location.href = "/hillside";
-  //   return;
-  // case "Latin Way":
-  //   window.location.href = "/latin_way";
-  //   return;
-  // case "Lewis Hall":
-  //   window.location.href = "/lewis";
-  //   return;
-  // case "Sophia Gordon Hall":
-  //   window.location.href = "/sogo";
-  //   return;
-  // case "Stratton Hall":
-  //   window.location.href = "/stratton";
-  //   return;
-  // case "West Hall":
-  //   window.location.href = "/west";
-  //   return;
-  // case "Wren Hall":
-  //   window.location.href = "/wren";
-  //   return;
-  // case "10 Winthrop Street":
-  //   window.location.href = "/10_winthrop";
-  //   return;
-  // case "9-11 Sunset Road":
-  //   window.location.href = "/9-11_sunset";
-  //   return;
-  //     default:
-  //       setCenter({ lat: 42.40735001860593, lng: -71.12106588226075 });
-  //       return;
-  //   }
-  // }
-
   const navigate = useNavigate();
 
   const getPixelPositionOffset = (width, height) => ({

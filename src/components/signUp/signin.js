@@ -16,8 +16,6 @@ const Login = () => {
     setError("");
     try {
       await logIn(email, password);
-      console.log("logged in with");
-      console.log(email);
     } catch (err) {
       if (err.toString().includes("auth/wrong-password")) {
         setError("Wrong email or password");

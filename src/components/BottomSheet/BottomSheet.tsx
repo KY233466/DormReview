@@ -88,7 +88,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [bottom, setBottom] = React.useState(-DRAWER_HEIGHT);
   const [draggingPosition, setDraggingPosition] = React.useState<number | null>(
-    null
+    null,
   );
   const [debugLog, setDebugLog] = React.useState<string>("");
 
@@ -102,7 +102,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
 
   // HANDLERS
   const handlePointerDown = (
-    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>
+    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
     // @ts-ignore
     const event = (e?.touches != null ? e.touches[0] : e) as MouseEvent;
@@ -125,7 +125,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
         }
       }
     },
-    [bottom, draggingPosition]
+    [bottom, draggingPosition],
   );
 
   const handleScrollRepositioning = () => {
@@ -142,7 +142,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
       setDebugLog(newDebugLog);
       onStatusChange && onStatusChange(newStatus);
     },
-    [debugLog, onStatusChange]
+    [debugLog, onStatusChange],
   );
 
   // LISTENERS
@@ -236,13 +236,21 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
             >
               <ThumbBar />
             </ThumbBarWrapper>
-            <div style={{display: 'flex', flexDirection: 'row', backgroundColor: 'pink', alignItems: 'center', justifyContent: 'space-between'}}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                backgroundColor: "pink",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
               <HeaderTitle>
                 {title && <h1 id="BottomSheet-title">{title}</h1>}
                 {/* {subtitle && <h2>{subtitle}</h2>} */}
               </HeaderTitle>
               <div
-                style={{cursor: 'pointer'}}
+                style={{ cursor: "pointer" }}
                 onClick={() => {
                   onClose();
                   handleStatusChange("dismissed");

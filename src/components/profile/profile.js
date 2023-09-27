@@ -32,7 +32,6 @@ export default function BasicMenu() {
     try {
       await logOut();
       console.log("logged out");
-      // navigate("/");
     } catch (error) {
       console.log(error.message);
     }

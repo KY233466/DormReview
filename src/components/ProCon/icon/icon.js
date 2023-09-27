@@ -4,7 +4,7 @@ function icon({ title, index, pic }) {
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
     <div className={styles.icons}>
-      <img alt={title} src={pic}/>
+      <img alt={title} src={pic} />
       <div> {title} </div>
     </div>
   );

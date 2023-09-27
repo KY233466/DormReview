@@ -3,7 +3,7 @@ import React from "react";
 export const syncHeight = () => {
   document.documentElement.style.setProperty(
     "--window-inner-height",
-    `${window.innerHeight}px`
+    `${window.innerHeight}px`,
   );
 };
 
@@ -27,7 +27,7 @@ export const bottomSheetEvents: TBottomSheetEvents = {
 // Note: library had type issues, didn't have time to fix those
 export const useReduceMotion = () => {
   const [matches, setMatch] = React.useState(
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   React.useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");

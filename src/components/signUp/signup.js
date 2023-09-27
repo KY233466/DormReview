@@ -31,8 +31,6 @@ const Signup = () => {
   // }
 
   function Error(err) {
-    console.log("err");
-    console.log(err);
     if (err.toString().includes("auth/missing-email")) {
       // return alert("Please enter a valid email address");
       setError("Please enter a valid email address");

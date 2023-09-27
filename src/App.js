@@ -16,7 +16,7 @@ import Uni19 from "./views/CoHo/19-uni/Uni19";
 import Profile from "./views/Profile/Profile";
 import { UserAuthContextProvider } from "./context/userAuthContext";
 import Verify from "./views/Verification/verification";
-import MobileMap from "./views/MobileMap/MobileMap";
+import MobileMap from "./views/MobileMap";
 
 import "./App.css";
 
