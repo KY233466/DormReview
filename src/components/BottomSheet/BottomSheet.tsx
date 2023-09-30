@@ -120,9 +120,8 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
     document.documentElement.classList.add("is-locked");
     const newDraggingPosition =
       (e.currentTarget.parentElement?.getBoundingClientRect().bottom ?? 0) -
-      // event.clientY;
       event.clientY -
-      208;
+      158;
     setMoveUp(bottom !== 9);
     setDraggingPosition(newDraggingPosition);
   };
@@ -185,11 +184,11 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
         setShowImg(true);
         handleStatusChange("snapToTop");
         setBottom(-initialDrawerDistanceTop);
-      } else if (bottom - 208 < -DRAWER_HEIGHT + COLLAPSED_HEIGHT) {
+      } else if (bottom - 158 < -DRAWER_HEIGHT + COLLAPSED_HEIGHT) {
         setShowImg(false);
         handleStatusChange("dismissed");
         onClose();
-        setBottom(-DRAWER_HEIGHT + 208);
+        setBottom(-DRAWER_HEIGHT + 158);
       } else {
         if (moveUp) {
           setShowImg(true);
@@ -247,7 +246,8 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
             style={{
               transform: "translate(0, 8px)",
               width: "100%",
-              height: "200px",
+              height: "150px",
+              objectFit: "cover",
               backgroundColor: "pink",
             }}
           />

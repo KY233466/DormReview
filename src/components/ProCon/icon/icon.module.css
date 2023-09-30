@@ -6,6 +6,13 @@
   margin-right: 10px;
 }
 
+.iconsMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+}
+
 .icons div {
   flex-wrap: wrap;
   text-align: center;

@@ -16,18 +16,21 @@ body a {
   color: inherit;
   text-decoration: none;
 }
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-family: Poppins;
+  font-family: sans-serif;
+}
 body html,
 body body,
 body div,
 body span,
 body object,
 body iframe,
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6,
 body p,
 body blockquote,
 body pre,
@@ -92,12 +95,22 @@ body video {
 
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 .container img {
   height: 40px;
+  margin-top: 3px;
+}
+
+.containerMobile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.containerMobile img {
+  height: 25px;
   margin-top: 3px;
 }
 
@@ -110,6 +123,11 @@ body video {
   color: #303030;
 }
 
+.sectionMobile {
+  margin-right: 20px;
+  margin-bottom: 15px;
+}
+
 .section {
   margin-right: 20px;
 }
@@ -117,13 +135,27 @@ body video {
 .subSections {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.iconsMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  margin-right: 10px;
+}
+.iconsMobile div {
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .icons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100px;
+  width: auto;
   margin-right: 10px;
 }
 .icons div {

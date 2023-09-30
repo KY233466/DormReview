@@ -1,99 +1,105 @@
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
+import Skeleton from "@mui/material/Skeleton";
 import ReviewBlock from "../review_block/review_block";
 import RoomReviewBlock from "../RoomReview_block/roomReview_block";
 import { db } from "../../../firebase";
 import styles from "./reviewTab.module.css";
 
 const ReviewTabs = ({ path, path2 }) => {
-  const [value, setValue] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [showDormReview, setShowDormReview] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [reviewsRoom, setReviewsRoom] = useState([]);
 
   const handleChange = (props) => {
     if (props === 0) {
-      setValue(true);
+      setShowDormReview(true);
       return;
     }
-    setValue(false);
+    setShowDormReview(false);
   };
 
   useEffect(() => {
     const getReviews = async () => {
       const data = await getDocs(collection(db, path));
       setReviews(data.docs.map((doc) => ({ ...doc.data() })));
+      setLoading(true);
     };
 
     getReviews();
-  }, []);
+  }, [path]);
 
   useEffect(() => {
     const getReviewsRoom = async () => {
       const data = await getDocs(collection(db, path2));
       setReviewsRoom(data.docs.map((doc) => ({ ...doc.data() })));
+      setLoading(true);
     };
 
     getReviewsRoom();
-  }, []);
+  }, [path2]);
+
+  const Content = () => {
+    if (showDormReview) {
+      return reviews.length === 0 ? (
+        <div className={styles.nothing}>
+          Be the first to leave a dorm review!
+        </div>
+      ) : (
+        reviews?.map((element, index) => {
+          return (
+            <ReviewBlock
+              key={element.message}
+              index={index}
+              year={element.year}
+              rate={element.rate}
+              message={element.message}
+              divider={true}
+            />
+          );
+        })
+      );
+    }
+
+    return reviewsRoom.length === 0 ? (
+      <div className={styles.nothing}>Be the first to leave a room review!</div>
+    ) : (
+      reviewsRoom?.map((element, index) => {
+        return (
+          <RoomReviewBlock
+            key={element.message}
+            index={index}
+            room={element.room}
+            rate={element.rate}
+            year={element.year}
+            lottery={element.lottery}
+            schoolYear={element.schoolYear}
+            message={element.message}
+            divider={true}
+          />
+        );
+      })
+    );
+  };
 
   return (
     <div>
       <div className={styles.header}>
         <div
-          className={value === true ? styles.bold : null}
+          className={showDormReview && styles.bold}
           onClick={() => handleChange(0)}
         >
           Dorm Review
         </div>
         <div
-          className={value === false ? styles.bold : null}
+          className={!showDormReview && styles.bold}
           onClick={() => handleChange(1)}
         >
           Room Review
         </div>
       </div>
-      <div>
-        {value ? (
-          reviews.length === 0 ? (
-            <div className={styles.nothing}>
-              Be the first to leave a dorm review!
-            </div>
-          ) : (
-            reviews?.map((element, index) => {
-              return (
-                <ReviewBlock
-                  key={element.message}
-                  index={element.index}
-                  year={element.year}
-                  rate={element.rate}
-                  message={element.message}
-                  divider={true}
-                />
-              );
-            })
-          )
-        ) : reviewsRoom.length === 0 ? (
-          <div className={styles.nothing}>
-            Be the first to leave a room review!
-          </div>
-        ) : (
-          reviewsRoom?.map((element, index) => {
-            return (
-              <RoomReviewBlock
-                key={element.message}
-                index={element.index}
-                room={element.room}
-                rate={element.rate}
-                year={element.year}
-                lottery={element.lottery}
-                schoolYear={element.schoolYear}
-                message={element.message}
-                divider={true}
-              />
-            );
-          })
-        )}
-      </div>
+      {loading ? <Skeleton width={"100%"} height={"150px"} /> : Content()}
     </div>
   );
 };

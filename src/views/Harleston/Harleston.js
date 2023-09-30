@@ -5,15 +5,12 @@ import Details from "../../components/details/details";
 import FloorPlan from "../../components/FloorPlan/FloorPlan";
 import { BottomSheet } from "../../components/BottomSheet";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-// import ArrowIosIcon from "@mui/icons-material/ArrowForwardIos";
-
-import MobileDormHeader from "../../components/MobileDormHeader";
+import MobileDetailBottomSheet from "../../components/MobileDetailBottomSheet";
 
 import pic from "../../assets/hhall.jpeg";
 import bathroom from "../../assets/bathroom.png";
 import elevator from "../../assets/elevator.png";
 import Location from "../../assets/location.png";
-
 import GFloor from "../../assets/floor/Harleston/HarlestionG.png";
 import OneFloor from "../../assets/floor/Harleston/1Harleston.png";
 import TwoFloor from "../../assets/floor/Harleston/2Harleston.png";
@@ -83,8 +80,6 @@ const Con = [
 
 function Harleston() {
   const [displayDetail, setDisplayDetail] = useState(true);
-  const [isOpen, setIsOpen] = useState(true);
-  const [isDebugMode, setIsDebugMode] = useState(false);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -109,33 +104,7 @@ function Harleston() {
           <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
         </a>
         <FloorPlan displayDetail={displayDetail} floor={floor} />
-        <BottomSheet
-          title="Harleston Hall · Downhill"
-          imgSrc={pic}
-          subtitle="Sophomores ✅"
-          isDebugMode={isDebugMode}
-          isOpen={isOpen}
-          onClose={() => {
-            setIsOpen(false);
-          }}
-        >
-          <div
-            style={{
-              padding: "0 12px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div style={{ textAlign: "left" }}>
-              <div style={{ marginBottom: "5px" }}>
-                Extra-long twin bed · 13 washers · 14 dryers
-              </div>
-              <div>167 doubles · 51 singles · 1 triple</div>
-            </div>
-          </div>
-        </BottomSheet>
+        <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
       </MediaQuery>
 
       <MediaQuery minWidth={900}>

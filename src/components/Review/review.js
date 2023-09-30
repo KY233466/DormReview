@@ -5,8 +5,10 @@ import CreateIcon from "@mui/icons-material/Create";
 import DormReview from "./dormReview/dormReview";
 import RoomReview from "./roomReview/roomReview";
 import Tabs from "./reviewTab/reviewTab";
+import HomeIcon from "@mui/icons-material/Home";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
-function Review({ path, path2, path3 }) {
+function Review({ path, path2, path3, isMobile }) {
   const [open, setOpen] = useState(false);
   const [openR, setOpenR] = useState(false);
 
@@ -15,23 +17,43 @@ function Review({ path, path2, path3 }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.btn} onClick={handleOpen}>
-        <CreateIcon
-          sx={{
-            marginRight: "7px",
-            color: "#2C5A7B",
-          }}
-        />
-        Write review for dorm
-      </div>
-      <div className={styles.btn} onClick={handleOpenR}>
-        <CreateIcon
-          sx={{
-            marginRight: "7px",
-            color: "#2C5A7B",
-          }}
-        />
-        Write review for room
+      <div style={{ display: "flex", flexDirection: "row", gap: "8px" }}>
+        <div
+          className={isMobile ? styles.btnMobile : styles.btn}
+          onClick={handleOpen}
+        >
+          {/* <CreateIcon
+            sx={{
+              marginRight: "7px",
+              color: "#2C5A7B",
+            }}
+          /> */}
+          <HomeIcon
+            sx={{
+              marginRight: "7px",
+              color: "#fad1bf",
+            }}
+          />
+          Write review for dorm
+        </div>
+        <div
+          className={isMobile ? styles.btnMobile : styles.btn}
+          onClick={handleOpenR}
+        >
+          {/* <CreateIcon
+            sx={{
+              marginRight: "7px",
+              color: "#2C5A7B",
+            }}
+          /> */}
+          <MeetingRoomIcon
+            sx={{
+              marginRight: "7px",
+              color: "#fad1bf",
+            }}
+          />
+          Write review for room
+        </div>
       </div>
       <DormReview
         name={path}

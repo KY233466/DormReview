@@ -24,13 +24,27 @@ body {
 }
 
 .btn {
-  border: 1.5px solid #7d98ab;
+  border: 1.5px solid #e96a34;
   padding: 10px 20px;
   border-radius: 25px;
-  margin: 15px;
-  margin-bottom: 5px;
+  margin: 15px 0 5px 0;
+  font-weight: 800;
+  color: white;
   cursor: pointer;
-  background-color: #f6f7f9;
+  background-color: #e96a34;
+  align-items: center;
+  display: flex;
+}
+
+.btnMobile {
+  border: 1.5px solid #e96a34;
+  padding: 5px;
+  border-radius: 25px;
+  margin: 15px 0 5px 0;
+  font-weight: 800;
+  color: white;
+  cursor: pointer;
+  background-color: #e96a34;
   align-items: center;
   display: flex;
 }

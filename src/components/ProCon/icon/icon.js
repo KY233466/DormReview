@@ -1,9 +1,8 @@
 import styles from "./icon.module.css";
 
-function icon({ title, index, pic }) {
-  // const instructorCourses = useAppSelector(selectInstructorCourses);
+function icon({ title, index, pic, isMobile }) {
   return (
-    <div className={styles.icons}>
+    <div className={isMobile ? styles.iconsMobile : styles.icons}>
       <img alt={title} src={pic} />
       <div> {title} </div>
     </div>

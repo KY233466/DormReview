@@ -1,11 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "going to lint-staged"
-
 npx lint-staged
-
-echo "lint-staged finished"
 
 if ! npm run prettierCheck || ! npm run lintCheck
 then
