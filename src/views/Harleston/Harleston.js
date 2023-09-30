@@ -3,6 +3,11 @@ import MediaQuery from "react-responsive";
 
 import Details from "../../components/details/details";
 import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import { BottomSheet } from "../../components/BottomSheet";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+// import ArrowIosIcon from "@mui/icons-material/ArrowForwardIos";
+
+import MobileDormHeader from "../../components/MobileDormHeader";
 
 import pic from "../../assets/hhall.jpeg";
 import bathroom from "../../assets/bathroom.png";
@@ -78,6 +83,8 @@ const Con = [
 
 function Harleston() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isDebugMode, setIsDebugMode] = useState(false);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -86,8 +93,49 @@ function Harleston() {
   return (
     <>
       <MediaQuery maxWidth={899}>
-        <div>lol</div>
+        <a
+          href={"/map"}
+          style={{
+            position: "absolute",
+            padding: "5px",
+            paddingLeft: "3px",
+            left: "12px",
+            top: "20px",
+            zIndex: 1,
+            height: "15px",
+            width: "15px",
+          }}
+        >
+          <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
+        </a>
         <FloorPlan displayDetail={displayDetail} floor={floor} />
+        <BottomSheet
+          title="Harleston Hall · Downhill"
+          imgSrc={pic}
+          subtitle="Sophomores ✅"
+          isDebugMode={isDebugMode}
+          isOpen={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        >
+          <div
+            style={{
+              padding: "0 12px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div style={{ textAlign: "left" }}>
+              <div style={{ marginBottom: "5px" }}>
+                Extra-long twin bed · 13 washers · 14 dryers
+              </div>
+              <div>167 doubles · 51 singles · 1 triple</div>
+            </div>
+          </div>
+        </BottomSheet>
       </MediaQuery>
 
       <MediaQuery minWidth={900}>

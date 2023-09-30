@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { animated, useSpring } from "react-spring";
+import { ReactComponent as Close } from "../../icons/close.svg";
 import {
   BottomSheetStyled,
   CloseButton,
@@ -9,21 +10,23 @@ import {
   SheetBody,
   ThumbBar,
   ThumbBarWrapper,
-} from "./BottomSheetStyles";
+  // @ts-ignore
+} from "./BottomSheetStyles.tsx";
 import {
   bottomSheetEvents,
   syncHeight,
   TBottomSheetEventsKey,
   useReduceMotion,
-} from "./utils";
+  // @ts-ignore
+} from "./utils.ts";
 
 //  TODO - account for resizing the window
 const DRAWER_HEIGHT = window.innerHeight;
-const INITIAL_DRAWER_DISTANCE_FROM_TOP = 400;
-const MAX_WIDTH = 480;
-const DRAWER_SNAP_MARGIN = 100;
+const INITIAL_DRAWER_DISTANCE_FROM_TOP = -9;
+const MAX_WIDTH = 580;
+const DRAWER_SNAP_MARGIN = 10;
 const COLLAPSED_HEIGHT = 75;
-const THUMB_HEIGHT = 35;
+const THUMB_HEIGHT = 135;
 
 // resize listener
 window.addEventListener("resize", syncHeight);
@@ -33,7 +36,7 @@ type TBottomSheetProps = {
   /**
    * nested children
    */
-  children: any;
+  children: React.JSX.Element;
   /**
    * optional specific aria label for close button
    */
@@ -45,7 +48,11 @@ type TBottomSheetProps = {
   /**
    * Do you want to see logs instead of children in the BottomSheet?
    */
-  isDebugMode?: boolean;
+  isDebugMode: boolean;
+  /**
+   * img
+   */
+  imgSrc: string;
   /**
    * Is the BottomSheet visible on the scren?
    */
@@ -77,6 +84,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
   closeButtonAriaLabel = "Close",
   initialDrawerDistanceTop = INITIAL_DRAWER_DISTANCE_FROM_TOP,
   isDebugMode,
+  imgSrc,
   isOpen,
   maxWidth = MAX_WIDTH,
   onClose,
@@ -91,6 +99,8 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
     null,
   );
   const [debugLog, setDebugLog] = React.useState<string>("");
+  const [showImg, setShowImg] = React.useState(false);
+  const [moveUp, setMoveUp] = React.useState(true);
 
   // ANIMATION
   const prefersReducedMotion = useReduceMotion();
@@ -110,7 +120,10 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
     document.documentElement.classList.add("is-locked");
     const newDraggingPosition =
       (e.currentTarget.parentElement?.getBoundingClientRect().bottom ?? 0) -
-      event.clientY;
+      // event.clientY;
+      event.clientY -
+      208;
+    setMoveUp(bottom !== 9);
     setDraggingPosition(newDraggingPosition);
   };
 
@@ -137,12 +150,9 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
   const handleStatusChange = React.useCallback(
     (status: TBottomSheetEventsKey) => {
       const newStatus = bottomSheetEvents[status];
-      const newDebugLog =
-        debugLog !== "" ? `${debugLog}, ${newStatus}` : newStatus;
-      setDebugLog(newDebugLog);
       onStatusChange && onStatusChange(newStatus);
     },
-    [debugLog, onStatusChange],
+    [onStatusChange],
   );
 
   // LISTENERS
@@ -150,12 +160,13 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
   // toggling the bottom sheet
   useEffect(() => {
     if (isOpen) {
+      setShowImg(true);
       handleStatusChange("expanded");
       handleScrollRepositioning();
       setBottom(-initialDrawerDistanceTop);
     } else {
-      handleStatusChange("dismissed");
-      setBottom(-DRAWER_HEIGHT);
+      handleStatusChange("collapsed");
+      setBottom(-DRAWER_HEIGHT + COLLAPSED_HEIGHT);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -171,19 +182,26 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
 
       // snap logic
       if (bottom > -DRAWER_SNAP_MARGIN) {
+        setShowImg(true);
         handleStatusChange("snapToTop");
-        setBottom(0);
-      } else if (bottom < -DRAWER_HEIGHT + COLLAPSED_HEIGHT) {
+        setBottom(-initialDrawerDistanceTop);
+      } else if (bottom - 208 < -DRAWER_HEIGHT + COLLAPSED_HEIGHT) {
+        setShowImg(false);
         handleStatusChange("dismissed");
         onClose();
-        setBottom(-DRAWER_HEIGHT);
-      } else if (
-        bottom <
-        COLLAPSED_HEIGHT - DRAWER_HEIGHT + DRAWER_SNAP_MARGIN
-      ) {
-        handleStatusChange("collapsed");
-        setBottom(-DRAWER_HEIGHT + COLLAPSED_HEIGHT);
+        setBottom(-DRAWER_HEIGHT + 208);
+      } else {
+        if (moveUp) {
+          setShowImg(true);
+          handleStatusChange("snapToTop");
+          setBottom(-initialDrawerDistanceTop);
+        } else {
+          setShowImg(false);
+          handleStatusChange("collapsed");
+          setBottom(-DRAWER_HEIGHT + COLLAPSED_HEIGHT);
+        }
       }
+
       setDraggingPosition(null);
     };
 
@@ -198,6 +216,8 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
       document.removeEventListener("mousemove", handlePointerMove);
     };
   }, [
+    initialDrawerDistanceTop,
+    moveUp,
     bottom,
     debugLog,
     draggingPosition,
@@ -216,9 +236,22 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
           width: "100%",
           height: DRAWER_HEIGHT,
           transition: "height 200ms",
+          zIndex: 2,
           ...styles,
         }}
       >
+        {showImg && (
+          <img
+            src={imgSrc}
+            alt="dorm"
+            style={{
+              transform: "translate(0, 8px)",
+              width: "100%",
+              height: "200px",
+              backgroundColor: "pink",
+            }}
+          />
+        )}
         <BottomSheetStyled
           aria-modal="true"
           role="dialog"
@@ -236,34 +269,27 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
             >
               <ThumbBar />
             </ThumbBarWrapper>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                backgroundColor: "pink",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
+            <Header>
               <HeaderTitle>
                 {title && <h1 id="BottomSheet-title">{title}</h1>}
-                {/* {subtitle && <h2>{subtitle}</h2>} */}
+                {subtitle && <h2>{subtitle}</h2>}
               </HeaderTitle>
-              <div
-                style={{ cursor: "pointer" }}
+              {/* <CloseButton
+                role="button"
                 onClick={() => {
                   onClose();
                   handleStatusChange("dismissed");
                 }}
+                aria-label={closeButtonAriaLabel}
               >
-                Go!!
-              </div>
-            </div>
+                <Close />
+              </CloseButton> */}
+            </Header>
           </div>
           <SheetBody
             ref={scrollRef}
             tabIndex={0}
-            bodyHeight={
+            bodyheight={
               DRAWER_HEIGHT +
               bottom -
               (title || subtitle ? COLLAPSED_HEIGHT : THUMB_HEIGHT)

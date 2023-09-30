@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import legend from "../../assets/Legend.png";
 import ZoomPanPinch from "../ZoomPanPinch";
 import Compass from "../../assets/Compass.png";
@@ -7,6 +8,8 @@ import styles from "./FloorPlan.module.css";
 
 function FloorPlan({ floor, displayDetail }) {
   const [floorNum, setFloorNum] = useState(0);
+
+  const isMobile = useMediaQuery("(max-width:899px)");
 
   let floorN =
     floor.at(floor.length - 1).title === "G"
@@ -17,11 +20,17 @@ function FloorPlan({ floor, displayDetail }) {
     return Object.prototype.toString.call(x) === "[object String]";
   }
 
+  const containerStyle = () => {
+    if (isMobile) {
+      return styles.containerExpand;
+    }
+
+    return displayDetail ? styles.container : styles.containerExpand;
+  };
+
   return (
-    <div className={displayDetail ? styles.container : styles.containerExpand}>
-      <div className={styles.rightContainer}>
-        <ZoomPanPinch src={floor.at(floorN[floorNum]).pic} />
-      </div>
+    <div className={containerStyle()}>
+      <ZoomPanPinch src={floor.at(floorN[floorNum]).pic} />
 
       <div className={styles.select}>
         {floor.map((element, index) => {
@@ -41,13 +50,17 @@ function FloorPlan({ floor, displayDetail }) {
         })}
       </div>
 
-      <div className={styles.compass}>
-        <img alt="compass" src={Compass} />
-      </div>
+      {!isMobile && (
+        <div className={styles.compass}>
+          <img alt="compass" src={Compass} />
+        </div>
+      )}
 
-      <div className={styles.legend}>
-        <img src={legend} alt="legend" />
-      </div>
+      {!isMobile && (
+        <div className={styles.legend}>
+          <img src={legend} alt="legend" />
+        </div>
+      )}
     </div>
   );
 }

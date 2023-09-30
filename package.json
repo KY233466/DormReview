@@ -24,8 +24,9 @@
     "react-responsive": "^9.0.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
-    "react-spring-bottom-sheet": "^3.4.1",
+    "react-spring": "^9.7.3",
     "react-zoom-pan-pinch": "^3.1.0",
+    "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

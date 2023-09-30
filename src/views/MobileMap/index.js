@@ -55,7 +55,20 @@ const MobileMap = () => {
     googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
   });
 
-  if (!isLoaded) return <div> Loading... </div>;
+  if (!isLoaded)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Loading Google Maps...
+      </div>
+    );
 
   return (
     <div

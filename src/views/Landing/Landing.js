@@ -7,7 +7,7 @@ import Map from "../../components/Map/map";
 import { useLoadScript } from "@react-google-maps/api";
 import MobileHeader from "./MobileHeader";
 import MapIcon from "@mui/icons-material/Map";
-// import ReactGA from 'react-ga4';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function Landing() {
   const [zoom, setZoom] = useState(17);
@@ -17,13 +17,19 @@ function Landing() {
     lng: -71.12106588226075,
   });
 
+  const isMobile = useMediaQuery("(max-width:899px)");
+
   // ReactGA.pageview(window.location.pathname + window.location.search);
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
-  });
+  const MapSetUp = () => {
+    const { isLoaded } = useLoadScript({
+      googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+    });
 
-  if (!isLoaded) return <div> Loading... </div>;
+    if (!isLoaded) return <div> Loading... </div>;
+  };
+
+  !isMobile && MapSetUp();
 
   return (
     <>

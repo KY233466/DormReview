@@ -11,7 +11,7 @@ const ZoomPanPinch = ({ src }) => {
       }}
     >
       <TransformWrapper
-        initialScale={0.9}
+        initialScale={0.85}
         initialPositionY={10}
         limitToBounds={true}
         centerZoomedOut={true}

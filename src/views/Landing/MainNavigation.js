@@ -112,10 +112,10 @@ export default function MainNavigation() {
       <Container maxWidth="lg" disableGutters>
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700 }}>
-            Dorm Review
+            DormReview
           </Typography>
 
-          <Box
+          {/* <Box
             component="div"
             sx={{
               display: {
@@ -125,7 +125,7 @@ export default function MainNavigation() {
             }}
           >
             {search}
-          </Box>
+          </Box> */}
 
           <IconButton
             id="basic-button"

@@ -4,13 +4,15 @@ export const BottomSheetStyled = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
       "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
-    background: ${theme.surface};
+    background: white;
     box-shadow: 0px 1px 8px rgb(0 0 0 / 30%);
     border-radius: 8px;
     margin: auto;
     width: auto;
     height: 100%;
-    padding: 0px 20px;
+    padding: 0px 12px;
+    z-index: 3;
+    position: relative;
   `}
 `;
 
@@ -65,14 +67,13 @@ export const HeaderTitle = styled.div`
 `;
 
 type TSheetBodyProps = {
-  bodyHeight: number;
+  bodyheight: number;
 };
 
 export const SheetBody = styled.div<TSheetBodyProps>`
-  ${({ bodyHeight }) => css`
-    ${"overflow-Y"}: auto;
-    width: 100%;
-    height: ${bodyHeight}px;
+  ${({ bodyheight }) => css`
+    width: calc(100vw - 24px);
+    height: ${bodyheight}px;
     transition: height 200ms;
   `}
 `;
@@ -98,7 +99,7 @@ export const ThumbBarWrapper = styled.div<{ dragging: boolean }>`
 
 export const ThumbBar = styled.div`
   ${({ theme }) => css`
-    background: ${theme.surfaceThumbBar};
+    background: #ddd;
     width: 64px;
     margin: 8px auto;
     height: 0.25rem;

@@ -17,6 +17,7 @@ import Profile from "./views/Profile/Profile";
 import { UserAuthContextProvider } from "./context/userAuthContext";
 import Verify from "./views/Verification/verification";
 import MobileMap from "./views/MobileMap";
+import Mobile from "./views/Mobile/Mobile";
 import ReactGA from "react-ga4";
 import "./App.css";
 
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/map" element={<MobileMap />} />
+        <Route path="/test" element={<Mobile />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/coho" element={<CoHo />} />
         <Route path="/coho/11-fairmount" element={<CoHo />} />
