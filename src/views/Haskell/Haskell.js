@@ -1,17 +1,17 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/Haskell.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import food from "../../assets/food.png";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/Haskell.jpeg";
+import bathroom from "assets/bathroom.png";
+import food from "assets/food.png";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import GFloor from "../../assets/floor/Haskell/HaskellG.png";
-import OneFloor from "../../assets/floor/Haskell/Haskell1.png";
-import TwoFloor from "../../assets/floor/Haskell/Haskell2.png";
-import ThreeFloor from "../../assets/floor/Haskell/Haskell3.png";
-import FourFloor from "../../assets/floor/Haskell/Haskell4.png";
+import GFloor from "assets/floor/Haskell/HaskellG.png";
+import OneFloor from "assets/floor/Haskell/Haskell1.png";
+import TwoFloor from "assets/floor/Haskell/Haskell2.png";
+import ThreeFloor from "assets/floor/Haskell/Haskell3.png";
+import FourFloor from "assets/floor/Haskell/Haskell4.png";
 
 const floor = [
   {

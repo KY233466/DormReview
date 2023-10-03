@@ -1,17 +1,17 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/west.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import Location from "../../assets/location.png";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/west.jpeg";
+import bathroom from "assets/bathroom.png";
+import Location from "assets/location.png";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import GFloor from "../../assets/floor/West/WestG.png";
-import OneFloor from "../../assets/floor/West/West1.png";
-import TwoFloor from "../../assets/floor/West/West2.png";
-import ThreeFloor from "../../assets/floor/West/West3.png";
-import FourFloor from "../../assets/floor/West/West4.png";
+import GFloor from "assets/floor/West/WestG.png";
+import OneFloor from "assets/floor/West/West1.png";
+import TwoFloor from "assets/floor/West/West2.png";
+import ThreeFloor from "assets/floor/West/West3.png";
+import FourFloor from "assets/floor/West/West4.png";
 
 const floor = [
   {

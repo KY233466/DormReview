@@ -4,9 +4,9 @@ import { getAuth } from "firebase/auth";
 import { db } from "../../firebase";
 import styles from "./profile.module.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ReviewBlock from "../../components/Review/review_block/review_block";
+import ReviewBlock from "components/Review/review_block/review_block";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import RoomReviewBlock from "../../components/Review/RoomReview_block/roomReview_block";
+import RoomReviewBlock from "components/Review/RoomReview_block/roomReview_block";
 
 const ProfilePage = () => {
   const [comments, setComments] = useState([]);

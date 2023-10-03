@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Draggable from "react-draggable-bottom-sheet";
-import ProCon from "../../components/ProCon/ProCon";
-import bathroom from "../../assets/bathroom.png";
-import elevator from "../../assets/elevator.png";
-import Location from "../../assets/location.png";
+import ProCon from "components/ProCon/ProCon";
+import bathroom from "assets/bathroom.png";
+import elevator from "assets/elevator.png";
+import Location from "assets/location.png";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Rating from "@mui/material/Rating";
 import Review from "../Review/review";
@@ -67,19 +67,7 @@ const MobileDetailBottomSheet = ({ content, pro, con }) => {
           <div style={{ marginBottom: "5px" }}>{content.bed_laundry}</div>
           <div style={{ marginBottom: "10px" }}>{content.rooms}</div>
           <hr />
-          {/* <ShowMoreText
-            lines={3}
-            more="Show more"
-            less="Show less"
-            className="content-css"
-            anchorClass="show-more-less-clickable"
-            // onClick={executeOnClick}
-            expanded={false}
-            width={240}
-            truncatedEndingComponent={"..."}
-          >
-            {content.description}
-          </ShowMoreText> */}
+          <div style={{ marginBottom: "5px" }}>{content.description}</div>
           <a
             style={{ textDecoration: "underline", marginTop: "10px" }}
             href={content.moreInfo}

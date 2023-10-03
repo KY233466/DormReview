@@ -24,8 +24,8 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-import LoginModal from "../../components/signUp/signin_modal";
-import SignupModal from "../../components/signUp/signup_modal";
+import LoginModal from "components/signUp/signin_modal";
+import SignupModal from "components/signUp/signup_modal";
 
 const StyledSearch = styled("div")(({ theme }) => ({
   position: "relative",

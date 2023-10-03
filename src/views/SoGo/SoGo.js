@@ -1,19 +1,19 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/sogo.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import elevator from "../../assets/elevator.png";
-import kitchen from "../../assets/Kitchen.png";
-import Hard from "../../assets/Hard.jpg";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/sogo.jpeg";
+import bathroom from "assets/bathroom.png";
+import elevator from "assets/elevator.png";
+import kitchen from "assets/Kitchen.png";
+import Hard from "assets/Hard.jpg";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import OneFloor from "../../assets/floor/SoGo/SoGo1.png";
-import TwoFloor from "../../assets/floor/SoGo/SoGo2.png";
-import ThreeFloor from "../../assets/floor/SoGo/SoGo3.png";
-import FourFloor from "../../assets/floor/SoGo/SoGo4.png";
-import FiveFloor from "../../assets/floor/SoGo/SoGo5.png";
+import OneFloor from "assets/floor/SoGo/SoGo1.png";
+import TwoFloor from "assets/floor/SoGo/SoGo2.png";
+import ThreeFloor from "assets/floor/SoGo/SoGo3.png";
+import FourFloor from "assets/floor/SoGo/SoGo4.png";
+import FiveFloor from "assets/floor/SoGo/SoGo5.png";
 
 const floor = [
   {

@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/coho.jpeg";
-import kitchen from "../../assets/Kitchen.png";
-import Bed from "../../assets/Bed.jpg";
-import Washer from "../../assets/Washer.png";
-import CoHoMap from "../../components/Map/cohoMap";
+import Details from "components/details/details";
+import pic from "assets/coho.jpeg";
+import kitchen from "assets/Kitchen.png";
+import Bed from "assets/Bed.jpg";
+import Washer from "assets/Washer.png";
+import CoHoMap from "components/Map/cohoMap";
 import { useLoadScript } from "@react-google-maps/api";
 
 const Content = [

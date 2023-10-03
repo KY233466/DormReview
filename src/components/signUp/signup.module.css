@@ -11,6 +11,8 @@
   margin: 5px 15px;
   text-decoration: underline;
   color: white;
+  background-color: transparent;
+  border: none;
 }
 
 .mobileClick {
@@ -19,7 +21,8 @@
   color: black;
   font-weight: 500;
   width: "100%";
-  background-color: pink;
+  background-color: transparent;
+  border: none;
 }
 
 .signinsignup {

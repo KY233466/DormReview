@@ -1,21 +1,21 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
 
-import Details from "../../components/details/details";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
-import { BottomSheet } from "../../components/BottomSheet";
+import Details from "components/details/details";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import MobileDetailBottomSheet from "../../components/MobileDetailBottomSheet";
+import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
-import pic from "../../assets/hhall.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import elevator from "../../assets/elevator.png";
-import Location from "../../assets/location.png";
-import GFloor from "../../assets/floor/Harleston/HarlestionG.png";
-import OneFloor from "../../assets/floor/Harleston/1Harleston.png";
-import TwoFloor from "../../assets/floor/Harleston/2Harleston.png";
-import ThreeFloor from "../../assets/floor/Harleston/3Harleston.png";
-import FourFloor from "../../assets/floor/Harleston/4Harleston.png";
+import pic from "assets/hhall.jpeg";
+import bathroom from "assets/bathroom.png";
+import elevator from "assets/elevator.png";
+import Location from "assets/location.png";
+
+import GFloor from "assets/floor/Harleston/HarlestionG.png";
+import OneFloor from "assets/floor/Harleston/1Harleston.png";
+import TwoFloor from "assets/floor/Harleston/2Harleston.png";
+import ThreeFloor from "assets/floor/Harleston/3Harleston.png";
+import FourFloor from "assets/floor/Harleston/4Harleston.png";
 
 import styles from "./harleston.module.css";
 

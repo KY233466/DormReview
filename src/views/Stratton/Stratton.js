@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/Stratton.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import Location from "../../assets/location.png";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/Stratton.jpeg";
+import bathroom from "assets/bathroom.png";
+import Location from "assets/location.png";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import GFloor from "../../assets/floor/Stratton/StrattonG.png";
-import OneFloor from "../../assets/floor/Stratton/Stratton1.png";
-import TwoFloor from "../../assets/floor/Stratton/Stratton2.png";
-import ThreeFloor from "../../assets/floor/Stratton/Stratton3.png";
+import GFloor from "assets/floor/Stratton/StrattonG.png";
+import OneFloor from "assets/floor/Stratton/Stratton1.png";
+import TwoFloor from "assets/floor/Stratton/Stratton2.png";
+import ThreeFloor from "assets/floor/Stratton/Stratton3.png";
 
 const floor = [
   {

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import legend from "../../assets/Legend.png";
+import legend from "assets/Legend.png";
 import ZoomPanPinch from "../ZoomPanPinch";
-import Compass from "../../assets/Compass.png";
+import Compass from "assets/Compass.png";
 
 import styles from "./FloorPlan.module.css";
 

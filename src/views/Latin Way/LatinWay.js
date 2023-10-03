@@ -1,16 +1,16 @@
 import { useState } from "react";
 import styles from "./latinway.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/latin-way1.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import food from "../../assets/food.png";
-import kitchen from "../../assets/Kitchen.png";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/latin-way1.jpeg";
+import bathroom from "assets/bathroom.png";
+import food from "assets/food.png";
+import kitchen from "assets/Kitchen.png";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import OneFloor from "../../assets/floor/Latinway/Latinway1.png";
-import TwoFloor from "../../assets/floor/Latinway/Latinway2.png";
-import ThreeFloor from "../../assets/floor/Latinway/Latinway3.png";
-import FourFloor from "../../assets/floor/Latinway/Latinway4.png";
+import OneFloor from "assets/floor/Latinway/Latinway1.png";
+import TwoFloor from "assets/floor/Latinway/Latinway2.png";
+import ThreeFloor from "assets/floor/Latinway/Latinway3.png";
+import FourFloor from "assets/floor/Latinway/Latinway4.png";
 
 const floor = [
   {

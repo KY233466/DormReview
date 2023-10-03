@@ -1,17 +1,17 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/hillside.jpeg";
-import kitchen from "../../assets/Kitchen.png";
-import Location from "../../assets/location.png";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/hillside.jpeg";
+import kitchen from "assets/Kitchen.png";
+import Location from "assets/location.png";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import GFloor from "../../assets/floor/Hillside/HillsideG.png";
-import OneFloor from "../../assets/floor/Hillside/Hillside1.png";
-import TwoFloor from "../../assets/floor/Hillside/Hillside2.png";
-import ThreeFloor from "../../assets/floor/Hillside/Hillside3.png";
-import FourFloor from "../../assets/floor/Hillside/Hillside4.png";
+import GFloor from "assets/floor/Hillside/HillsideG.png";
+import OneFloor from "assets/floor/Hillside/Hillside1.png";
+import TwoFloor from "assets/floor/Hillside/Hillside2.png";
+import ThreeFloor from "assets/floor/Hillside/Hillside3.png";
+import FourFloor from "assets/floor/Hillside/Hillside4.png";
 
 const floor = [
   {

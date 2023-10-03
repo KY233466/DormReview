@@ -6,8 +6,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import Signin from "../../components/signUp/signin";
-import Signup from "../../components/signUp/signup";
+import Signin from "components/signUp/signin";
+import Signup from "components/signUp/signup";
 
 const mobileStyle = {
   position: "absolute",

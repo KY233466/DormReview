@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/Sunset.png";
-import bathroom from "../../assets/bathroom.png";
-import kitchen from "../../assets/Kitchen.png";
-import Location from "../../assets/location.png";
+import Details from "components/details/details";
+import pic from "assets/Sunset.png";
+import bathroom from "assets/bathroom.png";
+import kitchen from "assets/Kitchen.png";
+import Location from "assets/location.png";
 
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import TwoFloor from "../../assets/floor/Sunset/Sunset2.png";
-import OneFloor from "../../assets/floor/Sunset/Sunset1.png";
+import TwoFloor from "assets/floor/Sunset/Sunset2.png";
+import OneFloor from "assets/floor/Sunset/Sunset1.png";
 
 const Content = [
   {

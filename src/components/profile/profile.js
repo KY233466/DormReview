@@ -3,7 +3,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
-import profile from "../../assets/profile.png";
+import profile from "assets/profile.png";
 import Divider from "@mui/material/Divider";
 import { useUserAuth } from "../../context/userAuthContext";
 import { useNavigate } from "react-router-dom";

@@ -1,18 +1,18 @@
 import { useState } from "react";
 
 import styles from "./sogo.module.css";
-import Details from "../../components/details/details";
-import pic from "../../assets/Wren.jpeg";
-import bathroom from "../../assets/bathroom.png";
-import food from "../../assets/food.png";
-import FloorPlan from "../../components/FloorPlan/FloorPlan";
+import Details from "components/details/details";
+import pic from "assets/Wren.jpeg";
+import bathroom from "assets/bathroom.png";
+import food from "assets/food.png";
+import FloorPlan from "components/FloorPlan/FloorPlan";
 
-import GFloor from "../../assets/floor/Wren/WrenG.png";
-import OneFloor from "../../assets/floor/Wren/Wren1.png";
-import TwoFloor from "../../assets/floor/Wren/Wren2.png";
-import ThreeFloor from "../../assets/floor/Wren/Wren3.png";
-import FourFloor from "../../assets/floor/Wren/Wren4.png";
-import FiveFloor from "../../assets/floor/Wren/Wren5.png";
+import GFloor from "assets/floor/Wren/WrenG.png";
+import OneFloor from "assets/floor/Wren/Wren1.png";
+import TwoFloor from "assets/floor/Wren/Wren2.png";
+import ThreeFloor from "assets/floor/Wren/Wren3.png";
+import FourFloor from "assets/floor/Wren/Wren4.png";
+import FiveFloor from "assets/floor/Wren/Wren5.png";
 
 const floor = [
   {

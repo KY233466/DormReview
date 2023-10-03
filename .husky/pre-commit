@@ -1,8 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged
-
 if ! npm run prettierCheck || ! npm run lintCheck
 then
     npm run lintPrettier && npm run lintFix && echo "Please check the auto fix and commit again" && exit 1

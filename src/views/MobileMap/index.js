@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ComboBox from "../../components/search/search";
+import ComboBox from "components/search/search";
 import Draggable from "react-draggable-bottom-sheet";
-import Map from "../../components/Map/map";
+import Map from "components/Map/map";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import styles from "./mobileMap.module.css";

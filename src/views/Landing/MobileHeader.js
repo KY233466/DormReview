@@ -6,8 +6,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
-import Profile from "../../components/profile/profile";
-import { useUserAuth } from "../../context/userAuthContext";
+import Profile from "components/profile/profile";
+import { useUserAuth } from "context/userAuthContext";
 
 export default function MobileHeader() {
   const [open, setOpen] = useState(false);

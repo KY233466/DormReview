@@ -187,9 +187,6 @@ const Signup = () => {
           </Button>
         </Form>
       </div>
-      {/* <div className={styles.click}>
-                    Already have an account? Log In
-                  </div> */}
     </>
   );
 };

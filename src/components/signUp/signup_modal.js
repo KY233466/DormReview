@@ -44,12 +44,12 @@ const SigninSignup = () => {
 
   return (
     <div>
-      <div
+      <button
         className={matches ? styles.mobileClick : styles.click}
         onClick={handleOpen}
       >
         Sign up
-      </div>
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
