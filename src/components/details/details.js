@@ -32,9 +32,13 @@ function Details({
 
   useEffect(() => {
     const getReviews = async () => {
-      const data = await getDocs(collection(db, path3));
-      setReviews(data.docs.map((doc) => ({ ...doc.data() })));
-      setLoading(false);
+      try {
+        const data = await getDocs(collection(db, path3));
+        setReviews(data.docs.map((doc) => ({ ...doc.data() })));
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      }
     };
 
     getReviews();
@@ -113,7 +117,6 @@ function Details({
             <hr />
             <div className={styles.text}>
               <div> {description} </div>
-              {/* <div> This hall houses mostly Second-Year students.</div> */}
             </div>
             <hr />
             <Review path={path} path2={path2} path3={path3} />

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import legend from "assets/Legend.png";
 import ZoomPanPinch from "../ZoomPanPinch";
-import Compass from "assets/Compass.png";
+
+import legend from "assets/Legend.png";
+import legendMobile from "assets/LegendMobile.png";
 
 import styles from "./FloorPlan.module.css";
 
@@ -28,11 +29,19 @@ function FloorPlan({ floor, displayDetail }) {
     return displayDetail ? styles.container : styles.containerExpand;
   };
 
+  const btnStyle = (index) => {
+    if (index === floorN[floorNum]) {
+      return isMobile ? styles.btnClickedMobile : styles.btnClicked;
+    }
+
+    return isMobile ? styles.btnMobile : styles.btn;
+  };
+
   return (
     <div className={containerStyle()}>
       <ZoomPanPinch src={floor.at(floorN[floorNum]).pic} />
 
-      <div className={styles.select}>
+      <div className={isMobile ? styles.selectMobile : styles.select}>
         {floor.map((element, index) => {
           return (
             <div
@@ -40,9 +49,7 @@ function FloorPlan({ floor, displayDetail }) {
               onClick={() =>
                 setFloorNum(isString(element.title) ? 0 : element.title)
               }
-              className={
-                index === floorN[floorNum] ? styles.btnClicked : styles.btn
-              }
+              className={btnStyle(index)}
             >
               {isString(element.title) ? element.title : "L" + element.title}
             </div>
@@ -50,17 +57,9 @@ function FloorPlan({ floor, displayDetail }) {
         })}
       </div>
 
-      {!isMobile && (
-        <div className={styles.compass}>
-          <img alt="compass" src={Compass} />
-        </div>
-      )}
-
-      {!isMobile && (
-        <div className={styles.legend}>
-          <img src={legend} alt="legend" />
-        </div>
-      )}
+      <div className={styles.legend}>
+        <img src={isMobile ? legendMobile : legend} alt="legend" />
+      </div>
     </div>
   );
 }

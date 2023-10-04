@@ -22,9 +22,13 @@ const ReviewTabs = ({ path, path2 }) => {
 
   useEffect(() => {
     const getReviews = async () => {
-      const data = await getDocs(collection(db, path));
-      setReviews(data.docs.map((doc) => ({ ...doc.data() })));
-      setLoading(true);
+      try {
+        const data = await getDocs(collection(db, path));
+        setReviews(data.docs.map((doc) => ({ ...doc.data() })));
+        setLoading(true);
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      }
     };
 
     getReviews();
@@ -32,9 +36,13 @@ const ReviewTabs = ({ path, path2 }) => {
 
   useEffect(() => {
     const getReviewsRoom = async () => {
-      const data = await getDocs(collection(db, path2));
-      setReviewsRoom(data.docs.map((doc) => ({ ...doc.data() })));
-      setLoading(true);
+      try {
+        const data = await getDocs(collection(db, path2));
+        setReviewsRoom(data.docs.map((doc) => ({ ...doc.data() })));
+        setLoading(true);
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      }
     };
 
     getReviewsRoom();

@@ -50,16 +50,20 @@ function DormReview({ name, path, path2, open, setOpen }) {
 
   useEffect(() => {
     const getReviews = async () => {
-      const data = await getDoc(doc(db, path2, "rate"));
-      if (data.exists()) {
-        setHistReview(data.data());
-      } else {
-        setHistReview(null);
+      try {
+        const data = await getDoc(doc(db, path2, "rate"));
+        if (data.exists()) {
+          setHistReview(data.data());
+        } else {
+          setHistReview(null);
+        }
+      } catch (error) {
+        console.error("Error fetching documents:", error);
       }
     };
 
     getReviews();
-  }, []);
+  }, [path2]);
 
   useEffect(() => {
     getAuth()
@@ -169,6 +173,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
               onChange={(e) => setYear(e.target.value)}
             >
               <option value=""> --select an option-- </option>
+              <option value="2022-2023"> 2023 - 2024 </option>
               <option value="2022-2023"> 2022 - 2023 </option>
               <option value="2021-2022"> 2021 - 2022 </option>
               <option value="2020-2021"> 2020 - 2021 </option>
