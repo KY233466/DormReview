@@ -146,7 +146,7 @@ hr {
 }
 
 .dormPic {
-  width: 480px;
+  width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   height: 200px;

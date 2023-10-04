@@ -25,7 +25,7 @@ const ReviewTabs = ({ path, path2 }) => {
       try {
         const data = await getDocs(collection(db, path));
         setReviews(data.docs.map((doc) => ({ ...doc.data() })));
-        setLoading(true);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching documents:", error);
       }
@@ -39,7 +39,7 @@ const ReviewTabs = ({ path, path2 }) => {
       try {
         const data = await getDocs(collection(db, path2));
         setReviewsRoom(data.docs.map((doc) => ({ ...doc.data() })));
-        setLoading(true);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching documents:", error);
       }
@@ -95,13 +95,13 @@ const ReviewTabs = ({ path, path2 }) => {
     <div>
       <div className={styles.header}>
         <div
-          className={showDormReview && styles.bold}
+          className={showDormReview ? styles.bold : null}
           onClick={() => handleChange(0)}
         >
           Dorm Review
         </div>
         <div
-          className={!showDormReview && styles.bold}
+          className={!showDormReview ? styles.bold : null}
           onClick={() => handleChange(1)}
         >
           Room Review

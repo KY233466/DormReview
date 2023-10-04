@@ -1,13 +1,17 @@
 import { useState } from "react";
-import ComboBox from "components/search/search";
-import styles from "./landing.module.css";
-import MediaQuery from "react-responsive";
-import LandingHeader from "components/landingHeader/landingHeader";
-import Map from "components/Map/map";
-import { useLoadScript } from "@react-google-maps/api";
-import MobileHeader from "./MobileHeader";
+
 import MapIcon from "@mui/icons-material/Map";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+import { useLoadScript } from "@react-google-maps/api";
+import MediaQuery from "react-responsive";
+
+import ComboBox from "components/search/search";
+import LandingHeader from "components/landingHeader/landingHeader";
+import Map from "components/Map/map";
+import MobileHeader from "./MobileHeader";
+
+import styles from "./landing.module.css";
 
 function Landing() {
   const [zoom, setZoom] = useState(17);
@@ -19,15 +23,24 @@ function Landing() {
 
   const isMobile = useMediaQuery("(max-width:899px)");
 
-  const MapSetUp = () => {
-    const { isLoaded } = useLoadScript({
-      googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
-    });
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+  });
 
-    if (!isLoaded) return <div> Loading... </div>;
-  };
-
-  !isMobile && MapSetUp();
+  if (!isLoaded && !isMobile)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Loading Google Maps...
+      </div>
+    );
 
   return (
     <>

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 import Details from "components/details/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
 import pic from "assets/hhall.jpeg";
@@ -75,8 +75,6 @@ const Con = [
     pic: Location,
   },
 ];
-
-// console.log(Harleston-rate)
 
 function Harleston() {
   const [displayDetail, setDisplayDetail] = useState(true);

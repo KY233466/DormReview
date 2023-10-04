@@ -6,13 +6,6 @@
   margin-bottom: 10px;
 }
 
-.draggableTitle {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
 div {
   font-family: Avenir;
   font-family: sans-serif;

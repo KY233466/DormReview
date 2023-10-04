@@ -42,7 +42,7 @@ function Details({
     };
 
     getReviews();
-  });
+  }, [path3]);
 
   function changeLeft() {
     changeDetail();
@@ -107,7 +107,7 @@ function Details({
             <hr />
             <ProCon key={pro} pro={pro} con={con} />
             <a
-              className={styles.link}
+              style={{ width: "fit-content" }}
               href={moreInfo}
               target={"_blank"}
               rel="noreferrer"

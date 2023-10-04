@@ -1,6 +1,8 @@
 import { useState } from "react";
+import MediaQuery from "react-responsive";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-import styles from "./sogo.module.css";
+import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 import Details from "components/details/details";
 import pic from "assets/Haskell.jpeg";
 import bathroom from "assets/bathroom.png";
@@ -12,6 +14,8 @@ import OneFloor from "assets/floor/Haskell/Haskell1.png";
 import TwoFloor from "assets/floor/Haskell/Haskell2.png";
 import ThreeFloor from "assets/floor/Haskell/Haskell3.png";
 import FourFloor from "assets/floor/Haskell/Haskell4.png";
+
+import styles from "./sogo.module.css";
 
 const floor = [
   {
@@ -36,23 +40,21 @@ const floor = [
   },
 ];
 
-const Content = [
-  {
-    title: "Haskell Hall",
-    path: "Haskell",
-    path2: "Haskell-room",
-    path3: "Haskell-rate",
-    available: "Sophomore ✅",
-    bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
-    rooms: "Eleven 10-person suites of 4 doubles and 2 singles · 2 triples",
-    moreInfo:
-      "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/haskell-hall",
-    description:
-      "Haskell Hall is located downhill, opposite Tilton Hall. It is next to the Dewick-MacPhie Dining Hall, and also near Hodgdon Take-Out.",
-    location: "Downhill",
-    pic: pic,
-  },
-];
+const Content = {
+  title: "Haskell Hall",
+  path: "Haskell",
+  path2: "Haskell-room",
+  path3: "Haskell-rate",
+  available: "Sophomore ✅",
+  bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
+  rooms: "Eleven 10-person suites of 4 doubles and 2 singles · 2 triples",
+  moreInfo:
+    "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/haskell-hall",
+  description:
+    "Haskell Hall is located downhill, opposite Tilton Hall. It is next to the Dewick-MacPhie Dining Hall, and also near Hodgdon Take-Out.",
+  location: "Downhill",
+  pic: pic,
+};
 
 const Pro = [
   {
@@ -76,28 +78,50 @@ function Haskell() {
   }
   // const instructorCourses = useAppSelector(selectInstructorCourses);
   return (
-    <div className={styles.container}>
-      <Details
-        index={Content.index}
-        key={Content.title}
-        title={Content.title}
-        path={Content.path}
-        path2={Content.path2}
-        path3={Content.path3}
-        available={Content.available}
-        bed_laundry={Content.bed_laundry}
-        rooms={Content.rooms}
-        moreInfo={Content.moreInfo}
-        description={Content.description}
-        location={Content.location}
-        pic={Content.pic}
-        pro={Pro}
-        con={Con}
-        changeDetail={() => changeDetail()}
-      />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}
-      <FloorPlan displayDetail={displayDetail} floor={floor} />
-    </div>
+    <>
+      <MediaQuery maxWidth={899}>
+        <a
+          href={"/map"}
+          style={{
+            position: "absolute",
+            padding: "5px",
+            paddingLeft: "3px",
+            left: "12px",
+            top: "20px",
+            zIndex: 1,
+            height: "15px",
+            width: "15px",
+          }}
+        >
+          <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
+        </a>
+        <FloorPlan displayDetail={displayDetail} floor={floor} />
+        <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
+      </MediaQuery>
+
+      <MediaQuery minWidth={900}>
+        <div className={styles.container}>
+          <Details
+            title={Content.title}
+            path={Content.path}
+            path2={Content.path2}
+            path3={Content.path3}
+            available={Content.available}
+            bed_laundry={Content.bed_laundry}
+            rooms={Content.rooms}
+            moreInfo={Content.moreInfo}
+            description={Content.description}
+            location={Content.location}
+            pic={Content.pic}
+            pro={Pro}
+            con={Con}
+            changeDetail={() => changeDetail()}
+          />
+          {displayDetail ? <div className={styles.placeholder}> </div> : null}
+          <FloorPlan displayDetail={displayDetail} floor={floor} />
+        </div>
+      </MediaQuery>
+    </>
   );
 }
 

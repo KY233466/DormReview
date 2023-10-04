@@ -1,4 +1,3 @@
-// import src from "../../assets/floor/Harleston/1Harleston.png";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const ZoomPanPinch = ({ src }) => {

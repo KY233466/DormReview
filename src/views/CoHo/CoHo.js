@@ -10,24 +10,22 @@ import Washer from "assets/Washer.png";
 import CoHoMap from "components/Map/cohoMap";
 import { useLoadScript } from "@react-google-maps/api";
 
-const Content = [
-  {
-    title: "CoHo (Community Housing)",
-    path: "CoHo",
-    path2: "CoHo-room",
-    path3: "CoHo-rate",
-    available: "Junior ✅ Senior ✅",
-    bed_laundry: "Full-size bed · 3 washers · 3 dryers",
-    rooms:
-      "2 ten-person units · 2 nine-person units · 2 eight-person units · 3 seven-person units · 1 six-person unit · 3 five-person units · 6 four-person units · 4 three-person units",
-    moreInfo:
-      "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/coho-community-housing",
-    description:
-      "CoHo (Community Housing) is Tufts newest housing option for juniors and seniors. Located just behind Wren Hall (between Capen Street Ext and Boston Avenue), this group of woodframe houses is home to 137 students. These houses were all fully renovated during the between 2018 and 2019.",
-    location: "Uphill",
-    pic: pic,
-  },
-];
+const Content = {
+  title: "CoHo (Community Housing)",
+  path: "CoHo",
+  path2: "CoHo-room",
+  path3: "CoHo-rate",
+  available: "Junior ✅ Senior ✅",
+  bed_laundry: "Full-size bed · 3 washers · 3 dryers",
+  rooms:
+    "2 ten-person units · 2 nine-person units · 2 eight-person units · 3 seven-person units · 1 six-person unit · 3 five-person units · 6 four-person units · 4 three-person units",
+  moreInfo:
+    "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/coho-community-housing",
+  description:
+    "CoHo (Community Housing) is Tufts newest housing option for juniors and seniors. Located just behind Wren Hall (between Capen Street Ext and Boston Avenue), this group of woodframe houses is home to 137 students. These houses were all fully renovated during the between 2018 and 2019.",
+  location: "Uphill",
+  pic: pic,
+};
 
 const Pro = [
   {

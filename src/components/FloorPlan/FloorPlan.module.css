@@ -1,8 +1,6 @@
 .container {
   width: calc(100% - 360pt);
   height: 100vh;
-  overflow-x: auto;
-  overflow-y: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +10,7 @@
 .containerExpand {
   width: 100%;
   height: calc(100vh - 75px);
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,14 +120,14 @@
   height: 90vh;
 }
 
-/* .legend {
+.legend {
   position: absolute;
   right: 30px;
   bottom: 90px;
   width: 150px;
-} */
+}
 
-.legend {
+.legendMobile {
   position: absolute;
   right: 12px;
   bottom: 15px;

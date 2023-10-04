@@ -6,7 +6,7 @@ import FloorPlan from "components/FloorPlan/FloorPlan";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
-import pic from "assets/lewis.png";
+import pic from "../../assets/lewis.png";
 import bathroom from "assets/bathroom.png";
 import food from "assets/food.png";
 
@@ -41,23 +41,21 @@ const floor = [
   },
 ];
 
-const Content = [
-  {
-    title: "Lewis Hall",
-    path: "Lewis",
-    path2: "Lewis-room",
-    path3: "Lewis-rate",
-    available: "Sophomore ✅",
-    bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
-    rooms: "57 doubles · 74 singles · 3 triple",
-    moreInfo:
-      "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/lewis-hall",
-    description:
-      "Lewis Hall is located downhill between Tilton Hall and Hodgdon Hall. The Crafts Center is located in the basement of Lewis Hall.",
-    location: "Downhill",
-    pic: pic,
-  },
-];
+const Content = {
+  title: "Lewis Hall",
+  path: "Lewis",
+  path2: "Lewis-room",
+  path3: "Lewis-rate",
+  available: "Sophomore ✅",
+  bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
+  rooms: "57 doubles · 74 singles · 3 triple",
+  moreInfo:
+    "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/lewis-hall",
+  description:
+    "Lewis Hall is located downhill between Tilton Hall and Hodgdon Hall. The Crafts Center is located in the basement of Lewis Hall.",
+  location: "Downhill",
+  pic: pic,
+};
 
 const Pro = [
   {

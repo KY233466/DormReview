@@ -57,7 +57,7 @@ function FloorPlan({ floor, displayDetail }) {
         })}
       </div>
 
-      <div className={styles.legend}>
+      <div className={isMobile ? styles.legendMobile : styles.legend}>
         <img src={isMobile ? legendMobile : legend} alt="legend" />
       </div>
     </div>
