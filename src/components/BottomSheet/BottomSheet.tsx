@@ -274,16 +274,6 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
                 {title && <h1 id="BottomSheet-title">{title}</h1>}
                 {subtitle && <h2>{subtitle}</h2>}
               </HeaderTitle>
-              {/* <CloseButton
-                role="button"
-                onClick={() => {
-                  onClose();
-                  handleStatusChange("dismissed");
-                }}
-                aria-label={closeButtonAriaLabel}
-              >
-                <Close />
-              </CloseButton> */}
             </Header>
           </div>
           <SheetBody

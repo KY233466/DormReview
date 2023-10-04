@@ -81,8 +81,8 @@ function ComboBox({
   const location = {
     "CoHo (Community Housing)": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.410375193093955,
+        lng: -71.12100260908859,
       },
       pc: {
         lat: 42.410239549677414,
@@ -99,16 +99,6 @@ function ComboBox({
         lng: -71.12040219459307,
       },
     },
-    "Fairmount House": {
-      mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
-      },
-      pc: {
-        lat: 42.409912676660966,
-        lng: -71.12124490144829,
-      },
-    },
     "Haskell Hall": {
       mobile: {
         lat: 42.40422369976813,
@@ -121,8 +111,8 @@ function ComboBox({
     },
     "Hillside Apartments": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40874549854822,
+        lng: -71.11926016533442,
       },
       pc: {
         lat: 42.40894509417623,
@@ -131,8 +121,8 @@ function ComboBox({
     },
     "Latin Way": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40382180736755,
+        lng: -71.12117580391173,
       },
       pc: {
         lat: 42.40394891986206,
@@ -141,8 +131,8 @@ function ComboBox({
     },
     "Lewis Hall": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40467970327077,
+        lng: -71.12272608853274,
       },
       pc: {
         lat: 42.40486195456316,
@@ -151,8 +141,8 @@ function ComboBox({
     },
     "Sophia Gordon Hall": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40491730834321,
+        lng: -71.11860337202084,
       },
       pc: {
         lat: 42.40509748849349,
@@ -161,8 +151,8 @@ function ComboBox({
     },
     "Stratton Hall": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40497519571491,
+        lng: -71.1192545470877,
       },
       pc: {
         lat: 42.405121254856375,
@@ -171,8 +161,8 @@ function ComboBox({
     },
     "West Hall": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.408112383261496,
+        lng: -71.1203523188556,
       },
       pc: {
         lat: 42.408253977552356,
@@ -181,8 +171,8 @@ function ComboBox({
     },
     "Wren Hall": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40966898842749,
+        lng: -71.1219157982569,
       },
       pc: {
         lat: 42.40982536583952,
@@ -191,8 +181,8 @@ function ComboBox({
     },
     "10 Winthrop Street": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40952978700597,
+        lng: -71.1234434444138,
       },
       pc: {
         lat: 42.409562415825704,
@@ -201,8 +191,8 @@ function ComboBox({
     },
     "9-11 Sunset Road": {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40873503042124,
+        lng: -71.12420323658068,
       },
       pc: {
         lat: 42.40871799441268,
@@ -211,8 +201,8 @@ function ComboBox({
     },
     default: {
       mobile: {
-        // lat: 42.410239549677414,
-        // lng: -71.12123496015069,
+        lat: 42.40735001860593,
+        lng: -71.12106588226075,
       },
       pc: {
         lat: 42.40735001860593,
@@ -235,94 +225,21 @@ function ComboBox({
     setSelectedDormName?.(value.label);
     setZoom(19);
 
-    switch (value.label) {
-      case "CoHo (Community Housing)":
-        setCenter({
-          lat: 42.410239549677414,
-          lng: -71.12123496015069,
-        });
-        return;
-      case "Fairmount House":
-        setCenter({
-          lat: 42.409912676660966,
-          lng: -71.12124490144829,
-        });
-        return;
-      case "Harleston Hall": {
-        const dormLocation = isMobile
-          ? location[value.label].mobile
-          : location[value.label].pc;
-        setCenter(dormLocation);
-        break;
-      }
-      case "Haskell Hall": {
-        const dormLocation = isMobile
-          ? location[value.label].mobile
-          : location[value.label].pc;
-        setCenter(dormLocation);
-        break;
-      }
-      case "Hillside Apartments":
-        setCenter({
-          lat: 42.40894509417623,
-          lng: -71.11935062690905,
-        });
-        return;
-      case "Latin Way":
-        setCenter({
-          lat: 42.40394891986206,
-          lng: -71.12119008700702,
-        });
-        return;
-      case "Lewis Hall":
-        setCenter({
-          lat: 42.40486195456316,
-          lng: -71.12269480624146,
-        });
-        return;
-      case "Sophia Gordon Hall":
-        setCenter({
-          lat: 42.40509748849349,
-          lng: -71.11842243463789,
-        });
-        return;
-      case "Stratton Hall":
-        setCenter({
-          lat: 42.405121254856375,
-          lng: -71.11925928377993,
-        });
-        return;
-      case "West Hall":
-        setCenter({
-          lat: 42.408253977552356,
-          lng: -71.12031835750494,
-        });
-        return;
-      case "Wren Hall":
-        setCenter({
-          lat: 42.40982536583952,
-          lng: -71.12189014665391,
-        });
-        return;
-      case "10 Winthrop Street":
-        setCenter({
-          lat: 42.409562415825704,
-          lng: -71.12346426525042,
-        });
-        return;
-      case "9-11 Sunset Road":
-        setCenter({
-          lat: 42.40871799441268,
-          lng: -71.12420763414914,
-        });
-        return;
-      default:
-        setCenter({
-          lat: 42.40735001860593,
-          lng: -71.12106588226075,
-        });
-        setZoom(17);
-        return;
+    if (
+      value.label === "" ||
+      value.label === null ||
+      value.label === undefined
+    ) {
+      setCenter({
+        lat: 42.40735001860593,
+        lng: -71.12106588226075,
+      });
+      setZoom(17);
+    } else {
+      const dormLocation = isMobile
+        ? location[value.label].mobile
+        : location[value.label].pc;
+      setCenter(dormLocation);
     }
   }
 
