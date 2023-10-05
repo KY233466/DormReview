@@ -11,3 +11,12 @@ div {
   font-family: sans-serif;
   font-style: normal;
 }
+
+.bottomSheet {
+  position: absolute;
+  background: white;
+  width: 100%;
+  bottom: 0;
+  border-radius: 10px 10px 0 0;
+  z-index: 40;
+}

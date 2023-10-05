@@ -9,7 +9,9 @@ const ProCon = ({ pro, con }) => {
     <div className={isMobile ? styles.containerMobile : styles.container}>
       <div className={isMobile ? styles.sectionMobile : styles.section}>
         <div className={styles.bold}> Pros: </div>
-        <div className={styles.subSections}>
+        <div
+          className={isMobile ? styles.subSectionsMobile : styles.subSections}
+        >
           {pro?.map((value, index) => (
             <Icon
               index={value.index}
@@ -23,7 +25,9 @@ const ProCon = ({ pro, con }) => {
       </div>
       <div>
         <div className={styles.bold}> Cons: </div>
-        <div className={styles.subSections}>
+        <div
+          className={isMobile ? styles.subSectionsMobile : styles.subSections}
+        >
           {con?.map((value, index) => (
             <Icon
               index={value.index}

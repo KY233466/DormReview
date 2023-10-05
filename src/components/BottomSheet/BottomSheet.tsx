@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { animated, useSpring } from "react-spring";
-import { ReactComponent as Close } from "../../icons/close.svg";
 import {
   BottomSheetStyled,
-  CloseButton,
-  DebugLog,
   Header,
   HeaderTitle,
   SheetBody,
@@ -98,7 +95,6 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
   const [draggingPosition, setDraggingPosition] = React.useState<number | null>(
     null,
   );
-  const [debugLog, setDebugLog] = React.useState<string>("");
   const [showImg, setShowImg] = React.useState(false);
   const [moveUp, setMoveUp] = React.useState(true);
 
@@ -218,7 +214,6 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
     initialDrawerDistanceTop,
     moveUp,
     bottom,
-    debugLog,
     draggingPosition,
     handlePointerMove,
     handleStatusChange,
@@ -229,6 +224,8 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
     <>
       <animated.div
         style={{
+          // overscrollBehavior: "contain",
+          overscrollBehaviorBlock: "none",
           left: "50%",
           transform: "translateX(-50%)",
           position: "fixed",

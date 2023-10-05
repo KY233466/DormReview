@@ -11,9 +11,11 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 10px;
   margin-top: 20px;
+  max-width: 100%;
+  flex-wrap: wrap;
 
   img {
     height: 40px;
@@ -42,9 +44,15 @@ body {
 
 .section {
   margin-right: 20px;
+  margin-bottom: 10px;
 }
 
 .subSections {
+  display: flex;
+  flex-direction: row;
+}
+
+.subSectionsMobile {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -56,7 +64,7 @@ body {
   align-items: center;
   width: 100px;
   margin-right: 10px;
-
+  text-align: center;
   div {
     flex-wrap: wrap;
     text-align: center;

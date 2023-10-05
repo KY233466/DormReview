@@ -108,9 +108,7 @@ hr {
   background-color: white;
   height: 100%;
   width: 360pt;
-  box-shadow:
-    0 1px 2px rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -121,9 +119,7 @@ hr {
 .btn {
   z-index: 1;
   border: 0;
-  box-shadow:
-    0 1px 2px rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   width: 23px;
   height: 48px;
   cursor: pointer;
@@ -148,7 +144,7 @@ hr {
 .dormPic {
   width: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   height: 200px;
 }
 
@@ -185,4 +181,4 @@ hr {
 }
 .text a {
   text-decoration: underline;
-} /*# sourceMappingURL=details.module.css.map */
+}/*# sourceMappingURL=details.module.css.map */

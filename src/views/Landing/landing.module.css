@@ -118,9 +118,7 @@ body video {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow:
-    0 1px 2px rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   z-index: 1;
 }
 
@@ -183,4 +181,4 @@ body video {
     justify-content: center;
     background-color: #f6f7f9;
   }
-} /*# sourceMappingURL=landing.module.css.map */
+}/*# sourceMappingURL=landing.module.css.map */

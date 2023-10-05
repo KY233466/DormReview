@@ -7,36 +7,13 @@ import { db } from "../../firebase";
 import { useLoadScript } from "@react-google-maps/api";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ComboBox from "components/search/search";
-import Draggable from "react-draggable-bottom-sheet";
 import Map from "components/Map/map";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import styles from "./mobileMap.module.css";
 
-const draggableStyles = {
-  backdrop: {
-    opacity: 0,
-  },
-  window: {
-    wrap: {
-      borderRadius: "10px 10px 0 0",
-    },
-  },
-  dragIndicator: {
-    wrap: {
-      opacity: 0,
-      paddingTop: 0,
-      paddingBottom: 0,
-    },
-    indicator: {
-      opacity: 0,
-    },
-  },
-};
-
 const MobileMap = () => {
   const [selectedDormName, setSelectedDormName] = useState("");
-  const [isOpen, setIsOpen] = useState(true);
   const [loading, setLoading] = useState(true);
   const [zoom, setZoom] = useState(16);
   const [center, setCenter] = useState({
@@ -44,13 +21,17 @@ const MobileMap = () => {
     lng: -71.12054149579414,
   });
 
-  const openBottomSheet = () => setIsOpen(true);
-  const closeBottomSheet = () => setIsOpen(false);
   const [reviews, setReviews] = useState(null);
+
+  const matches = useMediaQuery("(max-width:899px)");
+
+  if (!matches) {
+    window.location.href = "/";
+  }
 
   const dormBasicInfo = useMemo(() => {
     return {
-      CoHo: {
+      "CoHo (Community Housing)": {
         location: "Uphill",
         path3: "CoHo-rate",
         available: "Junior ✅ Senior ✅",
@@ -155,16 +136,6 @@ const MobileMap = () => {
     getReviews();
   }, [selectedDormName, dormBasicInfo]);
 
-  useEffect(() => {
-    openBottomSheet();
-  }, [selectedDormName]);
-
-  const matches = useMediaQuery("(max-width:899px)");
-
-  if (!matches) {
-    window.location.href = "/";
-  }
-
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
   });
@@ -190,7 +161,8 @@ const MobileMap = () => {
         background: "grey",
         height: "100vh",
         width: "100vw",
-        overscrollBehavior: "none",
+        // overscrollBehavior: "contain",
+        overscrollBehaviorBlock: "none",
       }}
     >
       <Map center={center} zoom={zoom} />
@@ -201,13 +173,9 @@ const MobileMap = () => {
         showGoBtn={false}
       />
 
-      <Draggable
-        isOpen={isOpen}
-        close={closeBottomSheet}
-        styles={draggableStyles}
-      >
-        {selectedDormName !== "" && (
-          <div style={{ padding: "10px 16px 40px 16px" }}>
+      {selectedDormName !== "" && (
+        <div className={styles.bottomSheet}>
+          <div style={{ padding: "10px 16px" }}>
             <div className={styles.draggableHeader}>
               <h2>
                 {selectedDormName} · {dormBasicInfo[selectedDormName].location}
@@ -239,8 +207,8 @@ const MobileMap = () => {
             </div>
             <div>{dormBasicInfo[selectedDormName].rooms}</div>
           </div>
-        )}
-      </Draggable>
+        </div>
+      )}
     </div>
   );
 };

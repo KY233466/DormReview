@@ -7,12 +7,12 @@ import styles from "./search.module.css";
 
 const textfieldStyle = {
   "& .MuiInputBase-input.MuiAutocomplete-input": {
-    fontSize: "0.8rem",
+    fontSize: "16px",
   },
 };
 
 const autocompleteStyle = {
-  width: "70%",
+  width: "90%",
   "& .MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
     background: "white",
     borderRadius: "25px",
@@ -38,6 +38,9 @@ function ComboBox({
 
   const isMobile = useMediaQuery("(max-width:899px)");
   const isTablet = useMediaQuery("(min-width:460px)");
+
+  const listboxStyle = { maxHeight: "9.5rem" };
+  const listboxStyleMobile = { maxHeight: "14rem" };
 
   const dorms = [
     {
@@ -213,6 +216,7 @@ function ComboBox({
 
   function newValue(value) {
     if (value === null) {
+      setSelectedDormName("");
       setCenter({
         lat: 42.40735001860593,
         lng: -71.12106588226075,
@@ -291,13 +295,6 @@ function ComboBox({
     }
   }
 
-  const shouldDisableClearable = () => {
-    if (isMobile && isTablet) {
-      return false;
-    }
-    return isMobile;
-  };
-
   return (
     <div className={showGoBtn ? styles.container : styles.floatContainer}>
       <Autocomplete
@@ -306,16 +303,11 @@ function ComboBox({
         size="small"
         options={dorms}
         isOptionEqualToValue={(option, value) => option.label === value.label}
-        disableClearable={shouldDisableClearable()}
         getOptionLabel={(option) => option.label}
         sx={isMobile && isTablet ? autocompleteStyleTablet : autocompleteStyle}
-        ListboxProps={{ style: { maxHeight: "9.5rem" } }}
+        ListboxProps={{ style: isMobile ? listboxStyleMobile : listboxStyle }}
         renderOption={(props, option) => (
-          <Box
-            component="li"
-            {...props}
-            // sx={{ height: "auto !important" }}
-          >
+          <Box component="li" {...props}>
             {option.label}
           </Box>
         )}
