@@ -1,11 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-  // createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  // GoogleAuthProvider,
-  // signInWithPopup,
 } from "firebase/auth";
 
 import { auth } from "../firebase";

@@ -1,0 +1,22 @@
+.container {
+  margin-bottom: 25px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.headerMobile {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-bottom: 25px;
+}

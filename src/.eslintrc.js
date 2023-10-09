@@ -25,7 +25,6 @@ module.exports = {
     "react/jsx-uses-react": "off",
     "react/prop-types": "off",
     "no-unused-vars": "warn",
-    "@typescript-eslint/no-unused-vars": "warn",
   },
   settings: {
     react: "detect",

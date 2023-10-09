@@ -1,0 +1,92 @@
+.container {
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    min-height: 100vh;
+    font-family: Avenir;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #303030;
+    flex-direction: row;
+}
+
+.leftContainer {
+    padding-top: calc(3rem + 40px);
+    width: 780px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    z-index: 1;
+}
+
+.rightContainer {
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+}
+
+.bold {
+    font-family: Avenir;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1rem;
+    color: #303030;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.link {
+    margin-top: 25px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+}
+
+.info a {
+    text-decoration: underline;
+    margin-bottom: 15px;
+    font-family: Avenir;
+    font-family: sans-serif;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-family: Avenir;
+    font-family: sans-serif;
+    background-color: #e96a34;
+    color: white;
+    border-radius: 15px;
+    padding: 11px 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 899px) {
+    .container {
+        justify-content: center;
+        background-color: #f6f7f9;
+    }
+}
+
+/*# sourceMappingURL=landing.module.css.map */

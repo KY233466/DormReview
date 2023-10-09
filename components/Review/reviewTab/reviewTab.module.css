@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.header div {
+  text-align: center;
+  cursor: pointer;
+}
+
+.bold {
+  font-family: Avenir;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #303030;
+  text-decoration: underline;
+}
+
+.nothing {
+  width: 100%;
+  text-align: center;
+  margin: 3rem 0;
+}
