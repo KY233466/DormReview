@@ -5,6 +5,7 @@ body {
   border: 0;
   vertical-align: baseline;
   height: 100%;
+  overscroll-behavior: "contain";
 }
 
 body a {

@@ -161,8 +161,6 @@ const MobileMap = () => {
         background: "grey",
         height: "100vh",
         width: "100vw",
-        // overscrollBehavior: "contain",
-        overscrollBehaviorBlock: "none",
       }}
     >
       <Map center={center} zoom={zoom} />

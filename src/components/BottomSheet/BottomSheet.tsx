@@ -224,8 +224,6 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
     <>
       <animated.div
         style={{
-          // overscrollBehavior: "contain",
-          overscrollBehaviorBlock: "none",
           left: "50%",
           transform: "translateX(-50%)",
           position: "fixed",

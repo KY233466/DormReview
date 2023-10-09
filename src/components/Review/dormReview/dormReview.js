@@ -3,11 +3,28 @@ import Rating from "@mui/material/Rating";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import { addDoc, doc, collection, getDoc, setDoc } from "firebase/firestore";
-import styles from "../review.module.css";
 import { db } from "../../../firebase";
 import { getAuth } from "firebase/auth";
 import "firebase/auth";
+
+import styles from "../review.module.css";
+
+const styleMobile = {
+  position: "absolute",
+  height: "calc(100% - 45px)",
+  width: "calc(100% - 30px)",
+  bgcolor: "background.paper",
+  p: 4,
+  padding: "15px 15px 30px 15px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  overflowY: "auto",
+  overflowX: "hidden",
+};
 
 const style = {
   position: "absolute",
@@ -25,12 +42,14 @@ const style = {
 };
 
 function DormReview({ name, path, path2, open, setOpen }) {
-  const handleClose = () => {
-    setOpen(false);
-    setRate(null);
-    setYear(undefined);
-    setMessage("");
-    setLoader(false);
+  const handleClose = (event, reason) => {
+    if (reason !== "backdropClick") {
+      setOpen(false);
+      setRate(null);
+      setYear(undefined);
+      setMessage("");
+      setLoader(false);
+    }
   };
 
   const userCollectionRef = collection(db, path);
@@ -47,6 +66,9 @@ function DormReview({ name, path, path2, open, setOpen }) {
   const [verified, setVerified] = useState(false);
 
   const [histReview, setHistReview] = useState([]);
+
+  const isMobile = useMediaQuery("(max-width:899px)");
+  const isTablet = useMediaQuery("(max-width:460px)");
 
   useEffect(() => {
     const getReviews = async () => {
@@ -144,9 +166,12 @@ function DormReview({ name, path, path2, open, setOpen }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box sx={isMobile ? styleMobile : style}>
         {verified ? (
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form
+            className={isMobile ? styles.formMobile : styles.form}
+            onSubmit={handleSubmit}
+          >
             {warning ? (
               <Alert
                 onClose={() => {
@@ -164,7 +189,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
             <div className={styles.bold}> Write a review </div>
             <div> All posts are anonymous </div>
             <label className={styles.question}>
-              Rate for which academic year ? *
+              Rate for which academic year? *
             </label>
             <select
               value={year}
@@ -179,7 +204,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
               <option value="2020-2021"> 2020 - 2021 </option>
               <option value="2019-2020"> 2019 - 2020 </option>
             </select>
-            <label className={styles.question}> What is your rating ? * </label>
+            <label className={styles.question}> What is your rating? * </label>
             <Rating
               name="half-rating"
               size="large"
@@ -194,7 +219,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
               }}
             />
             <label className={styles.question}>
-              What comments do you have ?
+              What comments do you have?
             </label>
             <textarea
               maxLength="400"
