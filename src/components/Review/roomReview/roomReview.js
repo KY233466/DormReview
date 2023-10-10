@@ -325,15 +325,36 @@ function RoomReview({ name, path, open, setOpen }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={isTablet ? styleMobile : style}>
+      <Box sx={isMobile ? styleMobile : style}>
         {!verified ? (
           <div
             style={{
               width: "100%",
-              textAlign: "center",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "40px",
             }}
           >
-            Please sign - up and verify with your Tufts email first
+            <div>Please sign - up and verify with your Tufts email first</div>
+            <button
+              onClick={handleClose}
+              type="submit"
+              style={{
+                cursor: "pointer",
+                width: "100px",
+                background: "#2C5A7B",
+                color: "white",
+                fontSize: "0.9rem",
+                border: "none",
+                borderRadius: "10px",
+                padding: "5px",
+              }}
+            >
+              Close
+            </button>
           </div>
         ) : (
           <form
@@ -398,6 +419,8 @@ function RoomReview({ name, path, open, setOpen }) {
                   color: "black",
                   border: "1px solid teal",
                   fontSize: "0.9rem",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 Cancel
@@ -410,6 +433,10 @@ function RoomReview({ name, path, open, setOpen }) {
                   width: "100px",
                   background: loader ? "#ccc" : "#2C5A7B",
                   fontSize: "0.9rem",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 Post

@@ -21,7 +21,12 @@ export default function RoomReviewBlock({
         {lottery !== -1 && <div> Lottery number: {lottery}</div>}
         <div
           className={styles.schoolYear}
-          style={{ marginLeft: 0, marginTop: "10px" }}
+          style={{
+            padding: "5px",
+            marginLeft: 0,
+            marginTop: "3px",
+            fontSize: "12px",
+          }}
         >
           {schoolYear}
         </div>

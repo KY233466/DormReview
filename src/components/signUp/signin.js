@@ -41,6 +41,12 @@ const Login = () => {
     <>
       <div className={styles.container2}>
         <h2>Login</h2>
+        <h2 style={{ fontWeight: "200", fontSize: "13px" }}>
+          Please use format <span> Tufts_Username</span>@tufts.edu.
+        </h2>
+        <h2 style={{ fontWeight: "200", fontSize: "13px" }}>
+          Ex: jsmith03@tufts.edu
+        </h2>
         {error && (
           <Alert
             severity="warning"
