@@ -63,21 +63,8 @@ function Details({
                 <div className={styles.data}>
                   {reviews?.map((element) => {
                     return (
-                      <div
-                        key={element.nReviews}
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: "10px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            marginTop: "2px",
-                          }}
-                        >
-                          {element.Rate.toFixed(1)}
-                        </div>
+                      <div key={element.nReviews} className={styles.reviewData}>
+                        {element.Rate.toFixed(1)}
                         <Rating
                           key="{element}"
                           index={element.index}
@@ -86,13 +73,7 @@ function Details({
                           precision={0.5}
                           readOnly
                         />
-                        <div
-                          style={{
-                            marginTop: "2px",
-                          }}
-                        >
-                          {element.nReviews} reviews
-                        </div>
+                        {element.nReviews} reviews
                       </div>
                     );
                   })}

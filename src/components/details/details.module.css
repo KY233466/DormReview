@@ -181,4 +181,12 @@ hr {
 }
 .text a {
   text-decoration: underline;
+}
+
+.reviewData {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
 }/*# sourceMappingURL=details.module.css.map */

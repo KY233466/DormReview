@@ -99,3 +99,11 @@ hr {
     text-decoration: underline;
   }
 }
+
+.reviewData {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
