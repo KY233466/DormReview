@@ -161,15 +161,7 @@ const MobileMap = () => {
   //   );
 
   return (
-    <div
-      style={{
-        background: "grey",
-        height: "100vh",
-        width: "100vw",
-        fontFamily: "Avenir",
-        fontFamily: "sans-serif",
-      }}
-    >
+    <div className={styles.container}>
       {/* <Map center={center} zoom={zoom} /> */}
       <ComboBox
         setSelectedDormName={setSelectedDormName}
@@ -186,7 +178,7 @@ const MobileMap = () => {
                 {selectedDormName} · {dormBasicInfo[selectedDormName].location}
               </h3>
               <a href="/harleston" className={styles.btn}>
-                <KeyboardArrowRightIcon sx={{color: 'black'}}/>
+                <KeyboardArrowRightIcon sx={{ color: "black" }} />
               </a>
             </div>
 

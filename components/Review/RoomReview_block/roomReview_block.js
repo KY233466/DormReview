@@ -12,19 +12,16 @@ export default function RoomReviewBlock({
   message,
   divider,
 }) {
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   const RoomLotterySchoolYear = () => {
     return isMobile ? (
       <div className={styles.header1Mobile}>
-        <div> Room: {room} </div>
-        {lottery !== -1 && <div> Lottery number: {lottery}</div>}
-        <div
-          className={styles.schoolYear}
-          style={{ marginLeft: 0, marginTop: "10px" }}
-        >
-          {schoolYear}
+        <div style={{ marginTop: "15px" }}>
+          <div> Room: {room} </div>
+          {lottery !== -1 && <div>Lottery number: {lottery}</div>}
         </div>
+        <div className={styles.schoolYearMobile}>{schoolYear}</div>
       </div>
     ) : (
       <div className={styles.header1}>

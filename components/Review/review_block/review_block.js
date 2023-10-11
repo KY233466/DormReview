@@ -3,7 +3,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "./review_block.module.css";
 
 export default function ReviewBlock({ index, divider, year, rate, message }) {
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   return (
     <div className={isMobile ? styles.container : null}>

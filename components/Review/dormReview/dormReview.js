@@ -68,7 +68,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
 
   const [histReview, setHistReview] = useState([]);
 
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
   const isTablet = useMediaQuery("(max-width:460px)");
 
   useEffect(() => {
@@ -241,6 +241,8 @@ function DormReview({ name, path, path2, open, setOpen }) {
                   color: "black",
                   border: "1px solid teal",
                   fontSize: "0.9rem",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 Cancel
@@ -254,6 +256,10 @@ function DormReview({ name, path, path2, open, setOpen }) {
                   width: "100px",
                   background: loader ? "#ccc" : "#2C5A7B",
                   fontSize: "0.9rem",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 Post
@@ -284,7 +290,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
                 fontSize: "0.9rem",
                 border: "none",
                 borderRadius: "10px",
-                padding: '5px',
+                padding: "5px",
               }}
             >
               Close

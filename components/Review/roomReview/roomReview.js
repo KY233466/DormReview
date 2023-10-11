@@ -6,7 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Alert from "@mui/material/Alert";
 
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../firebase/firebase";
+import { db } from "/firebase/firebase";
 import { getAuth } from "firebase/auth";
 import "firebase/auth";
 
@@ -72,7 +72,7 @@ function RoomReview({ name, path, open, setOpen }) {
   const [uid, setUid] = useState(0);
 
   const isTablet = useMediaQuery("(max-width:460px)");
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   useEffect(() => {
     getAuth()
@@ -419,6 +419,8 @@ function RoomReview({ name, path, open, setOpen }) {
                   color: "black",
                   border: "1px solid teal",
                   fontSize: "0.9rem",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 Cancel
@@ -431,6 +433,10 @@ function RoomReview({ name, path, open, setOpen }) {
                   width: "100px",
                   background: loader ? "#ccc" : "#2C5A7B",
                   fontSize: "0.9rem",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "10px",
+                  padding: "5px",
                 }}
               >
                 Post

@@ -9,7 +9,7 @@ import styles from "./FloorPlan.module.css";
 function FloorPlan({ floor, displayDetail }) {
   const [floorNum, setFloorNum] = useState(0);
 
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   let floorN =
     floor.at(floor.length - 1).title === "G"

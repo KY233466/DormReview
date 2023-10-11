@@ -37,7 +37,7 @@ function ComboBox({
   const [selectedDorm, setSelectedDorm] = useState("");
   const [warning, setWarning] = useState(false);
 
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
   const isTablet = useMediaQuery("(min-width:460px)");
 
   const listboxStyle = { maxHeight: "9.5rem" };

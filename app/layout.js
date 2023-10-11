@@ -1,4 +1,4 @@
-import { UserAuthContextProvider } from "../context/userAuthContext";
+import Hmmm from "./hmm";
 
 import "./globals.css";
 
@@ -9,11 +9,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
-    <html lang="en">
-      <body>
-        <UserAuthContextProvider>{children}</UserAuthContextProvider>
-      </body>
-    </html>
+    <Hmmm >{children}</Hmmm>
   );
 }

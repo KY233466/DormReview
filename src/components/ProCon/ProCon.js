@@ -3,7 +3,7 @@ import styles from "./procon.module.css";
 import Icon from "./icon/icon";
 
 const ProCon = ({ pro, con }) => {
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   return (
     <div className={isMobile ? styles.containerMobile : styles.container}>

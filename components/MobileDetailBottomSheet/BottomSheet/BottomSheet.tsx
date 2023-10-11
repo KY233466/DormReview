@@ -93,7 +93,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [bottom, setBottom] = React.useState(-DRAWER_HEIGHT);
   const [draggingPosition, setDraggingPosition] = React.useState<number | null>(
-    null,
+    null
   );
   const [showImg, setShowImg] = React.useState(false);
   const [moveUp, setMoveUp] = React.useState(true);
@@ -108,7 +108,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
 
   // HANDLERS
   const handlePointerDown = (
-    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
+    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>
   ) => {
     // @ts-ignore
     const event = (e?.touches != null ? e.touches[0] : e) as MouseEvent;
@@ -133,7 +133,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
         }
       }
     },
-    [bottom, draggingPosition],
+    [bottom, draggingPosition]
   );
 
   const handleScrollRepositioning = () => {
@@ -147,7 +147,7 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
       const newStatus = bottomSheetEvents[status];
       onStatusChange && onStatusChange(newStatus);
     },
-    [onStatusChange],
+    [onStatusChange]
   );
 
   // LISTENERS

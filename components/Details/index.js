@@ -66,21 +66,8 @@ function Details({
                 <div className={styles.data}>
                   {reviews?.map((element) => {
                     return (
-                      <div
-                        key={element.nReviews}
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: "10px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            marginTop: "2px",
-                          }}
-                        >
-                          {element.Rate.toFixed(1)}
-                        </div>
+                      <div key={element.nReviews} className={styles.reviewData}>
+                        {element.Rate.toFixed(1)}
                         <Rating
                           key="{element}"
                           index={element.index}
@@ -89,28 +76,21 @@ function Details({
                           precision={0.5}
                           readOnly
                         />
-                        <div
-                          style={{
-                            marginTop: "2px",
-                          }}
-                        >
-                          {element.nReviews} reviews
-                        </div>
+                        {element.nReviews} reviews
                       </div>
                     );
                   })}
                 </div>
               )}
-              <div>
-                <div> {available} </div>
-                <div> {bed_laundry} </div> <div> {rooms} </div>
-              </div>
+              <div> {available} </div>
+              <div> {bed_laundry} </div>
+              <div style={{ fontSize: "14px" }}> {rooms} </div>
             </div>
 
             <hr />
             <ProCon key={pro} pro={pro} con={con} />
             <a
-              style={{ width: "fit-content", fontSize: "13px" }}
+              className={styles.link}
               href={moreInfo}
               target={"_blank"}
               rel="noreferrer"
@@ -119,7 +99,7 @@ function Details({
             </a>
             <hr />
             <div className={styles.text}>
-              <div> {description} </div>
+              <div style={{ fontSize: "14px" }}> {description} </div>
             </div>
             <hr />
             <Review path={path} path2={path2} path3={path3} />

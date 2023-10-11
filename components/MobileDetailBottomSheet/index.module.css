@@ -26,3 +26,17 @@
   gap: 10px;
   margin-bottom: 5px;
 }
+
+.reviewData {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.link {
+  text-decoration: underline;
+  margin-top: 10px;
+  color: rgb(105, 118, 128);
+}

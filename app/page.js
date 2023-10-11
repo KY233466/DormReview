@@ -21,7 +21,7 @@ export default function Home() {
       lng: -71.12106588226075,
     });
 
-    const isMobile = useMediaQuery("(max-width:899px)");
+    const isMobile = useMediaQuery("(max-width:860px)");
 
     // const { isLoaded } = useLoadScript({
     //   googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
@@ -188,7 +188,7 @@ export default function Home() {
           </div>
 
           <div className={styles.rightContainer}>
-            <Map center={center} zoom={zoom} />
+            {/* <Map center={center} zoom={zoom} /> */}
           </div>
         </div>
       )}
