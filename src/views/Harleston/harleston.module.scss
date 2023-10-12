@@ -4,6 +4,10 @@ body {
   @include App.body;
 }
 
+html, body {
+  overscroll-behavior: "none",
+}
+
 .container {
   @include App.container;
   @include App.NormText;

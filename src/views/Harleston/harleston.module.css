@@ -88,6 +88,10 @@ body video {
   background: transparent;
 }
 
+html, body {
+  overscroll-behavior: "none";
+}
+
 .container {
   font-family: inherit;
   display: flex;
