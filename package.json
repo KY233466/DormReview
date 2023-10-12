@@ -37,7 +37,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lintCheck": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lintCheck": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./app ./components",
     "lintPrettier": "prettier -c --write \"app/**/*.{js,ts,tsx}\" --end-of-line lf",
     "lintFix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "prettierCheck": "prettier -c \"app/**/*.{js,ts,tsx}\" --end-of-line lf",

@@ -3,12 +3,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import MobileDetailBottomSheet from "/components/MobileDetailBottomSheet";
 import FloorPlan from "/components/FloorPlan";
 
-function DormDisplayMobile({
-  Content,
-  floor,
-  Pro,
-  Con,
-}) {
+function DormDisplayMobile({ Content, floor, Pro, Con }) {
   return (
     <>
       <a

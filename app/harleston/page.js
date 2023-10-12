@@ -71,22 +71,10 @@ const Con = [
 function Harleston() {
   const isMobile = useMediaQuery("(max-width:860px)");
 
-  return (
-      !isMobile ? (
-        <DormDisplay
-          Content={Content}
-          floor={floor}
-          Pro={Pro}
-          Con={Con}
-        />
-      ) : (
-        <DormDisplayMobile
-          Content={Content}
-          floor={floor}
-          Pro={Pro}
-          Con={Con}
-        />
-      )
+  return !isMobile ? (
+    <DormDisplay Content={Content} floor={floor} Pro={Pro} Con={Con} />
+  ) : (
+    <DormDisplayMobile Content={Content} floor={floor} Pro={Pro} Con={Con} />
   );
 }
 

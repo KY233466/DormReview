@@ -101,17 +101,25 @@ function CoHo() {
       </div>
     </div>
   ) : (
-    <div style={{width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          Harleston{" "}
-        </a>
-        to view what it would look like.
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      Processed floor plan not available.Please go to{" "}
+      <a
+        style={{
+          textDecoration: "underline",
+        }}
+        href="https://dorm-review.com/harleston"
+      >
+        Harleston{" "}
+      </a>
+      to view what it would look like.
     </div>
     // <DormDisplayMobile Content={Content} floor={floor} Pro={Pro} Con={Con} />
   );

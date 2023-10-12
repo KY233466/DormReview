@@ -9,8 +9,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
-  return (
-    <Hmmm >{children}</Hmmm>
-  );
+  return <Hmmm>{children}</Hmmm>;
 }

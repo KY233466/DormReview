@@ -89,7 +89,10 @@ const ProfilePage = () => {
         </a>
       </div>
 
-      <div className={styles.content} style={isMobile ? { width: "95%" } : { width: "70%" }}>
+      <div
+        className={styles.content}
+        style={isMobile ? { width: "95%" } : { width: "70%" }}
+      >
         <h3>My Reviews</h3>
 
         {uid === 0 ? <div>Empty here...</div> : null}
