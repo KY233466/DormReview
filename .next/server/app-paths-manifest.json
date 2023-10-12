@@ -3,15 +3,15 @@
   "/page": "app/page.js",
   "/coho/page": "app/coho/page.js",
   "/harleston/page": "app/harleston/page.js",
+  "/hillside/page": "app/hillside/page.js",
+  "/haskell/page": "app/haskell/page.js",
+  "/latin-way/page": "app/latin-way/page.js",
   "/lewis/page": "app/lewis/page.js",
   "/profile/page": "app/profile/page.js",
-  "/hillside/page": "app/hillside/page.js",
-  "/latin-way/page": "app/latin-way/page.js",
-  "/map/page": "app/map/page.js",
+  "/sogo/page": "app/sogo/page.js",
   "/winthrop/page": "app/winthrop/page.js",
   "/west/page": "app/west/page.js",
   "/wren/page": "app/wren/page.js",
-  "/haskell/page": "app/haskell/page.js",
-  "/sogo/page": "app/sogo/page.js",
-  "/verify-email/page": "app/verify-email/page.js"
+  "/verify-email/page": "app/verify-email/page.js",
+  "/map/page": "app/map/page.js"
 }
