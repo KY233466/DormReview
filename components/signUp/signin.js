@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
+
 import { Form } from "react-bootstrap";
 import Alert from "@mui/material/Alert";
 import { Button } from "react-bootstrap";
@@ -10,6 +12,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { logIn } = useUserAuth();
+
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +38,7 @@ const Login = () => {
       }
       return;
     }
-    window.location.reload();
+    router.reload();
   };
 
   return (

@@ -18,16 +18,12 @@ import {
 } from "./utils.ts";
 
 //  TODO - account for resizing the window
-const DRAWER_HEIGHT = window.innerHeight;
+// const DRAWER_HEIGHT = window.innerHeight;
 const INITIAL_DRAWER_DISTANCE_FROM_TOP = -9;
 const MAX_WIDTH = 580;
 const DRAWER_SNAP_MARGIN = 10;
 const COLLAPSED_HEIGHT = 75;
 const THUMB_HEIGHT = 135;
-
-// resize listener
-window.addEventListener("resize", syncHeight);
-syncHeight();
 
 type TBottomSheetProps = {
   /**
@@ -91,12 +87,24 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
 }) => {
   // STATE
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [bottom, setBottom] = React.useState(-DRAWER_HEIGHT);
+  const [bottom, setBottom] = React.useState(0);
   const [draggingPosition, setDraggingPosition] = React.useState<number | null>(
     null
   );
   const [showImg, setShowImg] = React.useState(false);
   const [moveUp, setMoveUp] = React.useState(true);
+  const [DRAWER_HEIGHT, setDrawerHeight] = React.useState(0);
+
+  useEffect(() => {
+    setDrawerHeight(window.innerHeight);
+    setBottom(-window.innerHeight);
+  }, []);
+
+  useEffect(() => {
+    // resize listener
+    window.addEventListener("resize", syncHeight);
+    syncHeight();
+  }, []);
 
   // ANIMATION
   const prefersReducedMotion = useReduceMotion();
@@ -127,13 +135,13 @@ export const BottomSheet: React.FC<TBottomSheetProps> = ({
       // @ts-ignore
       const event = e?.touches != null ? e?.touches[0] : e;
       if (draggingPosition != null) {
-        const newBottom = window.innerHeight - event.clientY - draggingPosition;
+        const newBottom = DRAWER_HEIGHT - event.clientY - draggingPosition;
         if (newBottom !== bottom) {
           setBottom(newBottom);
         }
       }
     },
-    [bottom, draggingPosition]
+    [bottom, draggingPosition, DRAWER_HEIGHT]
   );
 
   const handleScrollRepositioning = () => {

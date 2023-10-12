@@ -53,14 +53,14 @@ const Content = {
 const Pro = [
   {
     title: "Near dinning",
-    pic: "/food.png",
+    pic: "/Food.png",
   },
 ];
 
 const Con = [
   {
     title: "Communal Bathrooms",
-    pic: "/bathroom.png",
+    pic: "/Bathroom.png",
   },
 ];
 

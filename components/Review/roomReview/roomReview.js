@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import Rating from "@mui/material/Rating";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -74,6 +76,8 @@ function RoomReview({ name, path, open, setOpen }) {
   const isTablet = useMediaQuery("(max-width:460px)");
   const isMobile = useMediaQuery("(max-width:860px)");
 
+  const router = useRouter();
+
   useEffect(() => {
     getAuth()
       .currentUser?.reload()
@@ -136,7 +140,7 @@ function RoomReview({ name, path, open, setOpen }) {
         .then(() => {
           setLoader(false);
           alert("Your message has been submitted👍");
-          window.location.reload();
+          router.reload();
         })
         .catch((error) => {
           alert(error.message);

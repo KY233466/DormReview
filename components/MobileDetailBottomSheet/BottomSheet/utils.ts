@@ -1,10 +1,10 @@
 import React from "react";
 
 export const syncHeight = () => {
-  document.documentElement.style.setProperty(
-    "--window-inner-height",
-    `${window.innerHeight}px`,
-  );
+  // document.documentElement.style.setProperty(
+  //   "--window-inner-height",
+  //   `${window.innerHeight}px`,
+  // );
 };
 
 export type TBottomSheetEvents = {

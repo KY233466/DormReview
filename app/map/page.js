@@ -2,16 +2,18 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useLoadScript } from "@react-google-maps/api";
+
 import { collection, getDocs } from "firebase/firestore";
-import Rating from "@mui/material/Rating";
-import Skeleton from "@mui/material/Skeleton";
 import { db } from "/firebase/firebase";
 
-import { useLoadScript } from "@react-google-maps/api";
+import Rating from "@mui/material/Rating";
+import Skeleton from "@mui/material/Skeleton";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+
 import ComboBox from "/components/Search";
 import Map from "/components/Map";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import styles from "./mobileMap.module.css";
 
@@ -30,9 +32,11 @@ const MobileMap = () => {
 
   const router = useRouter();
 
-  if (!matches) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (!matches) {
+      router.push("/");
+    }
+  }, [matches, router]);
 
   const dormBasicInfo = useMemo(() => {
     return {
@@ -141,28 +145,28 @@ const MobileMap = () => {
     getReviews();
   }, [selectedDormName, dormBasicInfo]);
 
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
-  // });
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+  });
 
-  // if (!isLoaded)
-  //   return (
-  //     <div
-  //       style={{
-  //         width: "100vw",
-  //         height: "100vh",
-  //         display: "flex",
-  //         alignItems: "center",
-  //         justifyContent: "center",
-  //       }}
-  //     >
-  //       Loading Google Maps...
-  //     </div>
-  //   );
+  if (!isLoaded)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Loading Google Maps...
+      </div>
+    );
 
   return (
     <div className={styles.container}>
-      {/* <Map center={center} zoom={zoom} /> */}
+      <Map center={center} zoom={zoom} />
       <ComboBox
         setSelectedDormName={setSelectedDormName}
         setZoom={setZoom}

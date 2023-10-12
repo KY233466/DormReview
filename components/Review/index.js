@@ -2,7 +2,6 @@
 import { useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
-import CreateIcon from "@mui/icons-material/Create";
 
 import DormReview from "./dormReview/dormReview";
 import RoomReview from "./roomReview/roomReview";

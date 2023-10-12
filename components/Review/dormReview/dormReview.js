@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import Rating from "@mui/material/Rating";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -70,6 +72,8 @@ function DormReview({ name, path, path2, open, setOpen }) {
 
   const isMobile = useMediaQuery("(max-width:860px)");
   const isTablet = useMediaQuery("(max-width:460px)");
+
+  const router = useRouter();
 
   useEffect(() => {
     const getReviews = async () => {
@@ -149,7 +153,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
 
           setLoader(false);
           alert("Your message has been submitted👍");
-          window.location.reload();
+          router.reload();
         })
         .catch((error) => {
           alert(error.message);

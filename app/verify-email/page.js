@@ -23,7 +23,7 @@ function VerifyEmail() {
           alert(err.message);
         });
     }, 4000);
-  }, [getAuth().currentUser]);
+  }, [getAuth().currentUser, router]);
 
   return (
     <div className={styles.container}>

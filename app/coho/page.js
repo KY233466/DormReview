@@ -4,15 +4,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "/firebase/firebase";
+
+import Details from "/components/Details";
+
 import styles from "./sogo.module.css";
-import Details from "components/details/details";
-import pic from "assets/coho.jpeg";
-import kitchen from "assets/Kitchen.png";
-import Bed from "assets/Bed.jpg";
-import Washer from "assets/Washer.png";
-import CoHoMap from "components/Map/cohoMap";
-import { useLoadScript } from "@react-google-maps/api";
 
 const Content = {
   title: "CoHo (Community Housing)",
@@ -28,24 +24,24 @@ const Content = {
   description:
     "CoHo (Community Housing) is Tufts newest housing option for juniors and seniors. Located just behind Wren Hall (between Capen Street Ext and Boston Avenue), this group of woodframe houses is home to 137 students. These houses were all fully renovated during the between 2018 and 2019.",
   location: "Uphill",
-  pic: pic,
+  pic: "/coho.jpeg",
 };
 
 const Pro = [
   {
     title: "Full-size Bed",
-    pic: Bed,
+    pic: "/Bed.jpg",
   },
   {
     title: "Private Kitchen",
-    pic: kitchen,
+    pic: "/Kitchen.png",
   },
 ];
 
 const Con = [
   {
     title: "Lack of Laundry Equipment",
-    pic: Washer,
+    pic: "/Washer.png",
   },
 ];
 
@@ -61,20 +57,11 @@ function CoHo() {
 
   const isMobile = useMediaQuery("(max-width:860px)");
 
-  useEffect(() => {
-    const getAPIKey = async () => {
-      const data = await getDocs(collection(db, "APIKeys"));
-      setGoogleMapsApiKey(data.docs[0], data);
-    };
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: googleMapsApiKey,
+  // });
 
-    getAPIKey();
-  }, []);
-
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: googleMapsApiKey,
-  });
-
-  if (!isLoaded) return <div> Loading... </div>;
+  // if (!isLoaded) return <div> Loading... </div>;
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);

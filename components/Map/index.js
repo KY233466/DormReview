@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { useRouter } from "next/navigation";
 import { GoogleMap, OverlayView } from "@react-google-maps/api";
 

@@ -53,11 +53,11 @@ const Content = {
 const Pro = [
   {
     title: "Single Person Bathrooms",
-    pic: "/bathroom.png",
+    pic: "/Bathroom.png",
   },
   {
     title: "Elevator",
-    pic: "/elevator.png",
+    pic: "/Elevator.png",
   },
 ];
 

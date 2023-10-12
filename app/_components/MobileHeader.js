@@ -8,8 +8,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 
 import SimpleDialog from "./MobileLandingPopup";
-// import Profile from "components/profile/profile";
-import { useUserAuth } from "../../context/userAuthContext";
+import ProfileAvatar from "/components/ProfileAvatar";
+import { useUserAuth } from "/context/userAuthContext";
 
 export default function MobileHeader() {
   const [open, setOpen] = useState(false);
@@ -35,8 +35,7 @@ export default function MobileHeader() {
           </Typography>
 
           {user ? (
-            <div>temp</div>
-            // <Profile />
+            <ProfileAvatar />
           ) : (
             <IconButton id="basic-button" onClick={handleClickOpen}>
               <MenuIcon sx={{ color: "white" }} />

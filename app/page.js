@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import MapIcon from "@mui/icons-material/Map";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import LandingHeader from "./_components/LandingHeader";
@@ -14,33 +14,33 @@ import ComboBox from "/components/Search";
 import styles from "/styles/landing.module.css";
 
 export default function Home() {
-    const [zoom, setZoom] = useState(17);
+  const [zoom, setZoom] = useState(17);
 
-    const [center, setCenter] = useState({
-      lat: 42.40735001860593,
-      lng: -71.12106588226075,
-    });
+  const [center, setCenter] = useState({
+    lat: 42.40735001860593,
+    lng: -71.12106588226075,
+  });
 
-    const isMobile = useMediaQuery("(max-width:860px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
-    // const { isLoaded } = useLoadScript({
-    //   googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
-    // });
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+  });
 
-    // if (!isLoaded && !isMobile)
-    //   return (
-    //     <div
-    //       style={{
-    //         width: "100vw",
-    //         height: "100vh",
-    //         display: "flex",
-    //         alignItems: "center",
-    //         justifyContent: "center",
-    //       }}
-    //     >
-    //       Loading Google Maps...
-    //     </div>
-    //   );
+  if (!isLoaded && !isMobile)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Loading Google Maps...
+      </div>
+    );
 
   return (
     <>
@@ -188,7 +188,7 @@ export default function Home() {
           </div>
 
           <div className={styles.rightContainer}>
-            {/* <Map center={center} zoom={zoom} /> */}
+            <Map center={center} zoom={zoom} />
           </div>
         </div>
       )}

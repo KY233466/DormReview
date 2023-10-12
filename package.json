@@ -38,10 +38,10 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lintCheck": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lintPrettier": "prettier -c --write \"src/**/*.{js,ts,tsx}\" --end-of-line lf",
+    "lintPrettier": "prettier -c --write \"app/**/*.{js,ts,tsx}\" --end-of-line lf",
     "lintFix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "prettierCheck": "prettier -c \"src/**/*.{js,ts,tsx}\" --end-of-line lf",
-    "prettier": "prettier -c --write \"src/**/*\""
+    "prettierCheck": "prettier -c \"app/**/*.{js,ts,tsx}\" --end-of-line lf",
+    "prettier": "prettier -c --write \"app/**/*\""
   },
   "eslintConfig": {
     "extends": [

@@ -10,7 +10,6 @@ export default function Lol({ children }) {
 
     useEffect(() => {
       const curr = window.location.pathname;
-      console.log(curr);
       if (
         curr !== "/" &&
         curr !== "/map" &&
