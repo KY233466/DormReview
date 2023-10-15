@@ -70,7 +70,7 @@ const MobileDetailBottomSheet = ({ content, pro, con }) => {
           <div style={{ marginBottom: "5px" }}>{content.bed_laundry}</div>
           <div style={{ marginBottom: "10px" }}>{content.rooms}</div>
           <hr />
-          <div style={{ marginBottom: "5px" }}>{content.description}</div>
+          <div style={{ marginBottom: "5px", fontSize: '14px' }}>{content.description}</div>
           <a
             className={styles.link}
             href={content.moreInfo}

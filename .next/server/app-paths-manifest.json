@@ -1,17 +1,17 @@
 {
   "/_not-found": "app/_not-found.js",
   "/page": "app/page.js",
-  "/coho/page": "app/coho/page.js",
   "/harleston/page": "app/harleston/page.js",
-  "/hillside/page": "app/hillside/page.js",
-  "/haskell/page": "app/haskell/page.js",
+  "/coho/page": "app/coho/page.js",
   "/latin-way/page": "app/latin-way/page.js",
-  "/lewis/page": "app/lewis/page.js",
-  "/profile/page": "app/profile/page.js",
   "/sogo/page": "app/sogo/page.js",
-  "/winthrop/page": "app/winthrop/page.js",
-  "/west/page": "app/west/page.js",
-  "/wren/page": "app/wren/page.js",
+  "/haskell/page": "app/haskell/page.js",
+  "/lewis/page": "app/lewis/page.js",
   "/verify-email/page": "app/verify-email/page.js",
-  "/map/page": "app/map/page.js"
+  "/hillside/page": "app/hillside/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/map/page": "app/map/page.js",
+  "/winthrop/page": "app/winthrop/page.js",
+  "/wren/page": "app/wren/page.js",
+  "/west/page": "app/west/page.js"
 }

@@ -32,12 +32,23 @@
   border-radius: 25px;
   margin: 15px 0 5px 0;
   font-weight: 800;
+  font-size: 12px;
   color: white;
   cursor: pointer;
   background-color: #e96a34;
   align-items: center;
   display: flex;
-  padding-right: 7px;
+  padding-right: 8px;
+}
+
+.btnIcon {
+  margin-right: 7px;
+  color: #fad1bf;
+}
+
+.btnIconMobile {
+  margin-right: 3px;
+  color: #fad1bf;
 }
 
 .section {

@@ -9,7 +9,7 @@ const ProCon = ({ pro, con }) => {
 
   return (
     <div className={isMobile ? styles.containerMobile : styles.container}>
-      <div className={isMobile ? styles.sectionMobile : styles.section}>
+      <div className={isMobile ? styles.proMobile : styles.pro}>
         <div className={styles.bold}> Pros: </div>
         <div
           className={isMobile ? styles.subSectionsMobile : styles.subSections}
@@ -25,6 +25,7 @@ const ProCon = ({ pro, con }) => {
           ))}
         </div>
       </div>
+
       <div>
         <div className={styles.bold}> Cons: </div>
         <div

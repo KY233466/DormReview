@@ -64,7 +64,7 @@ const ReviewTabs = ({ path, path2 }) => {
               year={element.year}
               rate={element.rate}
               message={element.message}
-              divider={true}
+              divider={index !== reviews.length - 1}
             />
           );
         })
@@ -85,7 +85,7 @@ const ReviewTabs = ({ path, path2 }) => {
             lottery={element.lottery}
             schoolYear={element.schoolYear}
             message={element.message}
-            divider={true}
+            divider={index !== reviews.length - 1}
           />
         );
       })

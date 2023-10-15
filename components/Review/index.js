@@ -24,10 +24,7 @@ function Review({ path, path2, path3, isMobile }) {
           onClick={handleOpen}
         >
           <HomeIcon
-            sx={{
-              marginRight: "7px",
-              color: "#fad1bf",
-            }}
+            className={isMobile ? styles.btnIconMobile : styles.btnIcon}
           />
           Write review for dorm
         </div>
@@ -36,10 +33,7 @@ function Review({ path, path2, path3, isMobile }) {
           onClick={handleOpenR}
         >
           <MeetingRoomIcon
-            sx={{
-              marginRight: "7px",
-              color: "#fad1bf",
-            }}
+            className={isMobile ? styles.btnIconMobile : styles.btnIcon}
           />
           Write review for room
         </div>

@@ -6,6 +6,7 @@
   max-width: 100%;
   flex-wrap: wrap;
 }
+
 .container img {
   height: 40px;
   margin-top: 3px;
@@ -13,9 +14,11 @@
 
 .containerMobile {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  overflow: wrap;
   margin-top: 15px;
 }
+
 .containerMobile img {
   height: 25px;
   margin-top: 3px;
@@ -30,12 +33,12 @@
   color: #303030;
 }
 
-.sectionMobile {
+.proMobile {
   margin-right: 20px;
   margin-bottom: 15px;
 }
 
-.section {
+.pro {
   margin-right: 20px;
   margin-bottom: 10px;
 }
@@ -48,7 +51,7 @@
 .subSectionsMobile {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .iconsMobile {
@@ -59,6 +62,7 @@
   margin-right: 10px;
   text-align: center;
 }
+
 .iconsMobile div {
   flex-wrap: wrap;
   text-align: center;
@@ -72,8 +76,9 @@
   width: auto;
   margin-right: 10px;
 }
+
 .icons div {
   flex-wrap: wrap;
   text-align: center;
   margin-top: 5px;
-}/*# sourceMappingURL=procon.module.css.map */
+}
