@@ -5,7 +5,9 @@
 
 .header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
   margin-top: 15px;
   margin-bottom: 10px;
 }
@@ -13,6 +15,7 @@
 .headerMobile {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 20px;
   margin-bottom: 5px;
 }
