@@ -72,7 +72,7 @@ function RoomReview({ name, path, open, setOpen }) {
   const [uid, setUid] = useState(0);
 
   const isTablet = useMediaQuery("(max-width:460px)");
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   useEffect(() => {
     getAuth()
@@ -325,7 +325,7 @@ function RoomReview({ name, path, open, setOpen }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={isMobile ? styleMobile : style}>
+      <Box sx={isTablet ? styleMobile : style}>
         {!verified ? (
           <div
             style={{

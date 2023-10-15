@@ -4,8 +4,8 @@ import Skeleton from "@mui/material/Skeleton";
 import { db } from "../../firebase";
 import Rating from "@mui/material/Rating";
 import Header from "../Header/header";
-import ProCon from "../ProCon/ProCon";
-import Review from "../Review/review";
+import ProCon from "../ProCon";
+import Review from "../Review";
 import styles from "./details.module.css";
 
 function Details({
@@ -77,18 +77,17 @@ function Details({
                       </div>
                     );
                   })}
-                  <div> {available} </div>
                 </div>
               )}
-              <div>
-                <div> {bed_laundry} </div> <div> {rooms} </div>
-              </div>
+              <div> {available} </div>
+              <div> {bed_laundry} </div>
+              <div style={{ fontSize: "14px" }}> {rooms} </div>
             </div>
 
             <hr />
             <ProCon key={pro} pro={pro} con={con} />
             <a
-              style={{ width: "fit-content" }}
+              className={styles.link}
               href={moreInfo}
               target={"_blank"}
               rel="noreferrer"
@@ -97,7 +96,7 @@ function Details({
             </a>
             <hr />
             <div className={styles.text}>
-              <div> {description} </div>
+              <div style={{ fontSize: "14px" }}> {description} </div>
             </div>
             <hr />
             <Review path={path} path2={path2} path3={path3} />
@@ -108,14 +107,12 @@ function Details({
         {displayLeft ? (
           <img
             alt=""
-            // jstcache="10"
             src="//maps.gstatic.com/tactile/pane/arrow_left_2x.png"
             className={styles.img}
           ></img>
         ) : (
           <img
             alt=""
-            // jstcache="10"
             src="//maps.gstatic.com/tactile/pane/arrow_left_2x.png"
             className={styles.imgR}
           ></img>

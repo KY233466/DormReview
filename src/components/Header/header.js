@@ -3,7 +3,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 function Header({ title, location }) {
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   return (
     <div className={styles.header}>

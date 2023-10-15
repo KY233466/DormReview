@@ -23,7 +23,7 @@ const MobileMap = () => {
 
   const [reviews, setReviews] = useState(null);
 
-  const matches = useMediaQuery("(max-width:899px)");
+  const matches = useMediaQuery("(max-width:860px)");
 
   if (!matches) {
     window.location.href = "/";

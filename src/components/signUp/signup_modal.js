@@ -40,7 +40,7 @@ const SigninSignup = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const matches = useMediaQuery("(max-width:899px)");
+  const matches = useMediaQuery("(max-width:860px)");
 
   return (
     <div>

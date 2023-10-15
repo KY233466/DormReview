@@ -176,7 +176,7 @@ body video {
   cursor: pointer;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 860px) {
   .container {
     justify-content: center;
     background-color: #f6f7f9;

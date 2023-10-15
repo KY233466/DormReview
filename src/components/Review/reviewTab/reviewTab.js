@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import Skeleton from "@mui/material/Skeleton";
+
 import ReviewBlock from "../review_block/review_block";
 import RoomReviewBlock from "../RoomReview_block/roomReview_block";
 import { db } from "../../../firebase";
@@ -63,7 +64,7 @@ const ReviewTabs = ({ path, path2 }) => {
               year={element.year}
               rate={element.rate}
               message={element.message}
-              divider={true}
+              divider={index !== reviews.length - 1}
             />
           );
         })
@@ -84,7 +85,7 @@ const ReviewTabs = ({ path, path2 }) => {
             lottery={element.lottery}
             schoolYear={element.schoolYear}
             message={element.message}
-            divider={true}
+            divider={index !== reviews.length - 1}
           />
         );
       })

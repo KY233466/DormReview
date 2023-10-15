@@ -81,7 +81,7 @@ function LatinWay() {
 
   return (
     <>
-      <MediaQuery maxWidth={899}>
+      <MediaQuery maxWidth={860}>
         <a
           href={"/map"}
           style={{
@@ -101,7 +101,7 @@ function LatinWay() {
         <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
       </MediaQuery>
 
-      <MediaQuery minWidth={900}>
+      <MediaQuery minWidth={861}>
         <div className={styles.container}>
           <Details
             title={Content.title}

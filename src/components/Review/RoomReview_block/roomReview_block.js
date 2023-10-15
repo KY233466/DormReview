@@ -3,7 +3,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "./roomReview_block.module.css";
 
 export default function RoomReviewBlock({
-  index,
   room,
   rate,
   year,
@@ -12,24 +11,16 @@ export default function RoomReviewBlock({
   message,
   divider,
 }) {
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   const RoomLotterySchoolYear = () => {
     return isMobile ? (
       <div className={styles.header1Mobile}>
-        <div> Room: {room} </div>
-        {lottery !== -1 && <div> Lottery number: {lottery}</div>}
-        <div
-          className={styles.schoolYear}
-          style={{
-            padding: "5px",
-            marginLeft: 0,
-            marginTop: "3px",
-            fontSize: "12px",
-          }}
-        >
-          {schoolYear}
+        <div>
+          <div> Room: {room} </div>
+          {lottery !== -1 && <div>Lottery number: {lottery}</div>}
         </div>
+        <div className={styles.schoolYearMobile}>{schoolYear}</div>
       </div>
     ) : (
       <div className={styles.header1}>
@@ -42,12 +33,12 @@ export default function RoomReviewBlock({
 
   const RatingYear = () => {
     return isMobile ? (
-      <div className={styles.headerMobile}>
+      <div className={styles.ratingYearMobile}>
         <Rating name="read-only" value={rate} precision={0.5} readOnly />
         <div>{year}</div>
       </div>
     ) : (
-      <div className={styles.header}>
+      <div className={styles.ratingYear}>
         <Rating name="read-only" value={rate} precision={0.5} readOnly />
         <div>{year}</div>
       </div>

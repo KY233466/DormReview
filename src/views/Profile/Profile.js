@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const [uid, setUid] = useState(0);
   const [docs, setDocs] = useState([]);
 
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   useEffect(() => {
     getAuth()

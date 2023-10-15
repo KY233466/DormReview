@@ -6,8 +6,8 @@ import Skeleton from "@mui/material/Skeleton";
 
 import { db } from "../../firebase";
 
-import ProCon from "components/ProCon/ProCon";
-import Review from "../Review/review";
+import ProCon from "../ProCon";
+import Review from "../Review";
 import { BottomSheet } from "../BottomSheet";
 
 import styles from "./index.module.css";
@@ -70,9 +70,11 @@ const MobileDetailBottomSheet = ({ content, pro, con }) => {
           <div style={{ marginBottom: "5px" }}>{content.bed_laundry}</div>
           <div style={{ marginBottom: "10px" }}>{content.rooms}</div>
           <hr />
-          <div style={{ marginBottom: "5px" }}>{content.description}</div>
+          <div style={{ marginBottom: "5px", fontSize: "14px" }}>
+            {content.description}
+          </div>
           <a
-            style={{ textDecoration: "underline", marginTop: "10px" }}
+            className={styles.link}
             href={content.moreInfo}
             target={"_blank"}
             rel="noreferrer"

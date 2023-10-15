@@ -67,7 +67,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
 
   const [histReview, setHistReview] = useState([]);
 
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
   const isTablet = useMediaQuery("(max-width:460px)");
 
   useEffect(() => {

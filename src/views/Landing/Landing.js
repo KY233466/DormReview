@@ -21,7 +21,7 @@ function Landing() {
     lng: -71.12106588226075,
   });
 
-  const isMobile = useMediaQuery("(max-width:899px)");
+  const isMobile = useMediaQuery("(max-width:860px)");
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
@@ -44,7 +44,7 @@ function Landing() {
 
   return (
     <>
-      <MediaQuery maxWidth={899}>
+      <MediaQuery maxWidth={860}>
         <MobileHeader />
         <div
           style={{
@@ -105,7 +105,7 @@ function Landing() {
         </div>
       </MediaQuery>
 
-      <MediaQuery minWidth={900}>
+      <MediaQuery minWidth={861}>
         <div className={styles.container}>
           <LandingHeader />
           <div className={styles.leftContainer}>
@@ -144,7 +144,7 @@ function Landing() {
                     lineHeight: "1.5rem",
                   }}
                 >
-                  Dorm Review is the place to know/share that information one
+                  DormReview is the place to know/share that information one
                   would otherwise not know about!
                 </div>
               </div>
@@ -186,7 +186,7 @@ function Landing() {
                 </div> */}
 
               <div style={{ fontSize: "0.8rem", width: "100%" }}>
-                Have something to say? Want to build DormReview together?{" "}
+                Have something to say or want to build DormReview together?{" "}
                 <a
                   style={{
                     textDecoration: "underline",
