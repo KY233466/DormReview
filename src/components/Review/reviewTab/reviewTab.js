@@ -105,7 +105,7 @@ const ReviewTabs = ({ path, path2 }) => {
           className={!showDormReview ? styles.bold : null}
           onClick={() => handleChange(1)}
         >
-          Room Review ({reviews.length})
+          Room Review
         </div>
       </div>
       {loading ? <Skeleton width={"100%"} height={"150px"} /> : Content()}
