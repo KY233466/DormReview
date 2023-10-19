@@ -85,7 +85,7 @@ const ReviewTabs = ({ path, path2 }) => {
             lottery={element.lottery}
             schoolYear={element.schoolYear}
             message={element.message}
-            divider={index !== reviews.length - 1}
+            divider={index !== reviewsRoom.length - 1}
           />
         );
       })
@@ -105,7 +105,7 @@ const ReviewTabs = ({ path, path2 }) => {
           className={!showDormReview ? styles.bold : null}
           onClick={() => handleChange(1)}
         >
-          Room Review
+          Room Review ({reviews.length})
         </div>
       </div>
       {loading ? <Skeleton width={"100%"} height={"150px"} /> : Content()}

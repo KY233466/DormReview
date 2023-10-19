@@ -3,6 +3,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import styles from "./roomReview_block.module.css";
 
 export default function RoomReviewBlock({
+  index,
   room,
   rate,
   year,
