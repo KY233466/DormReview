@@ -109,7 +109,7 @@ function Landing() {
         <div className={styles.container}>
           <LandingHeader />
           <div className={styles.leftContainer}>
-            <div style={{ width: "80%", paddingTop: "calc(3rem + 40px)" }}>
+            <div style={{ width: "80%", paddingTop: "calc(10vh + 40px)" }}>
               <div
                 style={{
                   textAlign: "center",
