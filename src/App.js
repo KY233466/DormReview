@@ -41,7 +41,8 @@ function App() {
         <Route path="/coho/22-bellevue" element={<CoHo />} />
         <Route path="/coho/19-21-university" element={<Uni19 />} />
         <Route path="/coho/4-6-capen" element={<CoHo />} />
-        <Route path="/coho/43-45-winthrop" element={<CoHo />} />
+        <Route path="/coho/43-45-winthrop/45" element={<Harleston />} />
+        <Route path="/coho/43-45-winthrop/43" element={<Harleston />} />
         <Route path="/coho/44-46-winthrop" element={<CoHo />} />
         <Route path="/coho/47-winthrop" element={<CoHo />} />
         <Route path="/harleston" element={<Harleston />} />

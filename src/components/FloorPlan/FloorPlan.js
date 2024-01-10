@@ -8,8 +8,16 @@ import legendMobile from "assets/LegendMobile.png";
 import styles from "./FloorPlan.module.css";
 
 function FloorPlan({ floor, displayDetail }) {
-  const [floorNum, setFloorNum] = useState(0);
-
+  const pathname = window.location.pathname;
+  const [floorNum, setFloorNum] = useState(
+    pathname.includes("coho")
+      ? floor.find(
+          (f) =>
+            f.unit ===
+            window.location.pathname.slice(pathname.lastIndexOf("/") + 1),
+        ).title
+      : 0,
+  );
   const isMobile = useMediaQuery("(max-width:860px)");
 
   let floorN =
@@ -46,9 +54,16 @@ function FloorPlan({ floor, displayDetail }) {
           return (
             <div
               key={index}
-              onClick={() =>
-                setFloorNum(isString(element.title) ? 0 : element.title)
-              }
+              onClick={() => {
+                setFloorNum(isString(element.title) ? 0 : element.title);
+                if (window.location.pathname.includes("coho")) {
+                  window.location.replace(
+                    window.location.pathname
+                      .slice(0, pathname.lastIndexOf("/") + 1)
+                      .concat(element.unit),
+                  );
+                }
+              }}
               className={btnStyle(index)}
             >
               {isString(element.title) ? element.title : "L" + element.title}
