@@ -10,13 +10,16 @@ import Washer from "assets/Washer.png";
 import CoHoMap from "components/Map/cohoMap";
 import { useLoadScript } from "@react-google-maps/api";
 
+import BuildingRatingList from "./BuildingRatingList";
+
 const Content = {
   title: "CoHo (Community Housing)",
   path: "CoHo",
   path2: "CoHo-room",
   path3: "CoHo-rate",
   available: "Junior ✅ Senior ✅",
-  bed_laundry: "Full-size bed · 3 washers · 3 dryers",
+  bed_laundry:
+    "Full-size bed · laundry rooms located at Green House (12 Bellevue), 21 Bellevue, and 22 Bellevue",
   rooms:
     "2 ten-person units · 2 nine-person units · 2 eight-person units · 3 seven-person units · 1 six-person unit · 3 five-person units · 6 four-person units · 4 three-person units",
   moreInfo:
@@ -40,7 +43,7 @@ const Pro = [
 
 const Con = [
   {
-    title: "Lack of Laundry Equipment",
+    title: "Laundry Equipment In Another Building",
     pic: Washer,
   },
 ];
@@ -49,31 +52,44 @@ function CoHo() {
   const [displayDetail, setDisplayDetail] = useState(true);
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
   const [zoom] = useState(18.7);
-
+  const [toggleList, setToggleList] = useState([]);
   const [center] = useState({
     lat: 42.41024428222851,
     lng: -71.12156863095187,
   });
 
-  useEffect(() => {
-    const getAPIKey = async () => {
-      const data = await getDocs(collection(db, "APIKeys"));
-      setGoogleMapsApiKey(data.docs[0], data);
-    };
+  // useEffect(() => {
+  //   const getAPIKey = async () => {
+  //     const data = await getDocs(collection(db, "APIKeys"));
+  //     setGoogleMapsApiKey(data.docs[0], data);
+  //   };
 
-    getAPIKey();
-  }, []);
+  //   getAPIKey();
+  // }, []);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: googleMapsApiKey,
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
   });
 
-  if (!isLoaded) return <div> Loading... </div>;
+  if (!isLoaded)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Loading Google Maps...
+      </div>
+    );
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
   }
-  // const instructorCourses = useAppSelector(selectInstructorCourses);
+
   return (
     <div className={styles.container}>
       <Details
@@ -91,6 +107,13 @@ function CoHo() {
         pro={Pro}
         con={Con}
         changeDetail={() => changeDetail()}
+        fetchReviews={false}
+        alternativeBlock={
+          <BuildingRatingList
+            toggleList={toggleList}
+            setToggleList={setToggleList}
+          />
+        }
       />
       {displayDetail ? <div className={styles.placeholder}> </div> : null}
       <div className={styles.rightContainer}>

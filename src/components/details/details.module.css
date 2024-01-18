@@ -74,16 +74,20 @@
 .sum {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
-.sum div {
+
+/* .sum div {
   margin-bottom: 5px;
-}
+} */
 
 .data {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
 }
 
 .text {

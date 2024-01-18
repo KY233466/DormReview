@@ -18,6 +18,11 @@ import { UserAuthContextProvider } from "./context/userAuthContext";
 import Verify from "./views/Verification/verification";
 import MobileMap from "./views/MobileMap";
 import ReactGA from "react-ga4";
+import Fairmount11 from "views/CoHo/11Fairmount";
+import Fairmount21 from "views/CoHo/21Fairmount";
+import Winthrop4345 from "./views/CoHo/43-45Winthrop";
+import Bellevue11 from "./views/CoHo/11Bellevue";
+import Bellevue12 from "./views/CoHo/12Bellevue";
 import "./App.css";
 
 function App() {
@@ -30,21 +35,30 @@ function App() {
         <Route path="/map" element={<MobileMap />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/coho" element={<CoHo />} />
-        <Route path="/coho/11-fairmount" element={<CoHo />} />
-        <Route path="/coho/21-fairmount" element={<CoHo />} />
-        <Route path="/coho/11-bellevue" element={<CoHo />} />
-        <Route path="/coho/green-house" element={<CoHo />} />
-        <Route path="/coho/14-16-bellevue" element={<CoHo />} />
-        <Route path="/coho/15-bellevue" element={<CoHo />} />
-        <Route path="/coho/19-bellevue" element={<CoHo />} />
-        <Route path="/coho/21-23-bellevue" element={<CoHo />} />
-        <Route path="/coho/22-bellevue" element={<CoHo />} />
-        <Route path="/coho/19-21-university" element={<Uni19 />} />
-        <Route path="/coho/4-6-capen" element={<CoHo />} />
-        <Route path="/coho/43-45-winthrop/45" element={<Harleston />} />
-        <Route path="/coho/43-45-winthrop/43" element={<Harleston />} />
-        <Route path="/coho/44-46-winthrop" element={<CoHo />} />
-        <Route path="/coho/47-winthrop" element={<CoHo />} />
+        <Route path="/coho">
+          <Route path="11Fairmount" element={<Fairmount11 />} />
+          <Route path="21Fairmount" element={<Fairmount21 />} />
+          <Route path="11Bellevue" element={<Bellevue11 />} />
+          <Route path="12Bellevue">
+            <Route path="3" element={<Bellevue12 />} />
+            <Route path="2" element={<Bellevue12 />} />
+            <Route path="1" element={<Bellevue12 />} />
+          </Route>
+          <Route path="43-45Winthrop">
+            <Route path="3" element={<Winthrop4345 />} />
+            <Route path="2" element={<Winthrop4345 />} />
+            <Route path="1" element={<Winthrop4345 />} />
+          </Route>
+          <Route path="14-16Bellevue" element={<CoHo />} />
+          <Route path="15Bellevue" element={<CoHo />} />
+          <Route path="19Bellevue" element={<CoHo />} />
+          <Route path="21-23Bellevue" element={<CoHo />} />
+          <Route path="22Bellevue" element={<CoHo />} />
+          <Route path="19-21University" element={<Uni19 />} />
+          <Route path="4-6Capen" element={<CoHo />} />
+          <Route path="44-46-winthrop" element={<CoHo />} />
+          <Route path="47-winthrop" element={<CoHo />} />
+        </Route>
         <Route path="/harleston" element={<Harleston />} />
         <Route path="/haskell" element={<Haskell />} />
         <Route path="/hillside" element={<Hillside />} />

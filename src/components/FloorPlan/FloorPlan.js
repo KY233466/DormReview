@@ -10,7 +10,7 @@ import styles from "./FloorPlan.module.css";
 function FloorPlan({ floor, displayDetail }) {
   const pathname = window.location.pathname;
   const [floorNum, setFloorNum] = useState(
-    pathname.includes("coho")
+    pathname.includes("coho") && pathname.split("/").length > 3
       ? floor.find(
           (f) =>
             f.unit ===
@@ -45,6 +45,20 @@ function FloorPlan({ floor, displayDetail }) {
     return isMobile ? styles.btnMobile : styles.btn;
   };
 
+  const handleClickNewFloor = (element) => {
+    setFloorNum(isString(element.title) ? 0 : element.title);
+
+    if (!isString(element.title)) {
+      if (pathname.includes("coho") && pathname.split("/").length > 3) {
+        window.location.replace(
+          window.location.pathname
+            .slice(0, pathname.lastIndexOf("/") + 1)
+            .concat(element.unit),
+        );
+      }
+    }
+  };
+
   return (
     <div className={containerStyle()}>
       <ZoomPanPinch src={floor.at(floorN[floorNum]).pic} />
@@ -55,14 +69,7 @@ function FloorPlan({ floor, displayDetail }) {
             <div
               key={index}
               onClick={() => {
-                setFloorNum(isString(element.title) ? 0 : element.title);
-                if (window.location.pathname.includes("coho")) {
-                  window.location.replace(
-                    window.location.pathname
-                      .slice(0, pathname.lastIndexOf("/") + 1)
-                      .concat(element.unit),
-                  );
-                }
+                handleClickNewFloor(element);
               }}
               className={btnStyle(index)}
             >

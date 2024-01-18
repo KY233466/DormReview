@@ -6,10 +6,12 @@ import Rating from "@mui/material/Rating";
 import Header from "../Header/header";
 import ProCon from "../ProCon";
 import Review from "../Review";
+import RatingDisplay from "../RatingDisplay/RatingDisplay";
 import styles from "./details.module.css";
 
 function Details({
   title,
+  fetchReviews = true,
   path,
   path2,
   path3,
@@ -23,6 +25,7 @@ function Details({
   pro,
   con,
   changeDetail,
+  alternativeBlock,
 }) {
   const dormName = title;
 
@@ -57,28 +60,7 @@ function Details({
           <img alt="dorm" src={pic} className={styles.dormPic} />
           <div className={styles.info}>
             <div className={styles.sum}>
-              {loading ? (
-                <Skeleton width={"100%"} height={"35px"} />
-              ) : (
-                <div className={styles.data}>
-                  {reviews?.map((element) => {
-                    return (
-                      <div key={element.nReviews} className={styles.reviewData}>
-                        {element.Rate.toFixed(1)}
-                        <Rating
-                          key="{element}"
-                          index={element.index}
-                          name="read-only"
-                          value={element.Rate}
-                          precision={0.5}
-                          readOnly
-                        />
-                        {element.nReviews} reviews
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+              {alternativeBlock ? alternativeBlock : <RatingDisplay />}
               <div> {available} </div>
               <div> {bed_laundry} </div>
               <div style={{ fontSize: "14px" }}> {rooms} </div>
@@ -98,8 +80,13 @@ function Details({
             <div className={styles.text}>
               <div style={{ fontSize: "14px" }}> {description} </div>
             </div>
-            <hr />
-            <Review path={path} path2={path2} path3={path3} />
+            {fetchReviews ? (
+              <>
+                <hr /> <Review path={path} path2={path2} path3={path3} />
+              </>
+            ) : (
+              <div style={{ paddingBottom: "20px" }}></div>
+            )}
           </div>
         </div>
       )}

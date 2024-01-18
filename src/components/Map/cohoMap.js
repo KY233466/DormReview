@@ -91,8 +91,8 @@ const Dorms = [
     title: "19-21 University Avenue",
     path: "/coho/19-21-university",
     location: {
-      lat: 42.40956446905501,
-      lng: -71.12046559172917,
+      lat: 42.409580092956745,
+      lng: -71.12046274576345,
     },
   },
   {

@@ -6,7 +6,7 @@ import Details from "components/details/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
-import pic from "assets/hhall.jpeg";
+import pic from "../../assets/43-45Winthrop.png";
 import bathroom from "assets/bathroom.png";
 import elevator from "assets/elevator.png";
 import Location from "assets/location.png";
@@ -15,42 +15,42 @@ import OneFloor from "assets/floor/Harleston/1Harleston.png";
 import TwoFloor from "assets/floor/Harleston/2Harleston.png";
 import ThreeFloor from "assets/floor/Harleston/3Harleston.png";
 
-import styles from "./harleston.module.css";
+import styles from "././coho.module.css";
 
 const floor = [
   {
     title: 3,
     pic: ThreeFloor,
-    unit: "45",
-    name: "45 Winthrop Street",
+    unit: "3",
+    name: "43-45 Winthrop Street - Unit 3",
   },
   {
     title: 2,
     pic: TwoFloor,
-    unit: "44",
-    name: "44 Winthrop Street",
+    unit: "2",
+    name: "43-45 Winthrop Street - Unit 2",
   },
   {
     title: 1,
     pic: OneFloor,
-    unit: "43",
-    name: "43 Winthrop Street",
+    unit: "1",
+    name: "43-45 Winthrop Street - Unit 1",
   },
 ];
 
 const Content = {
-  title: "Harleston Hall",
-  path: "Harleston",
-  path2: "Harleston-room",
-  path3: "Harleston-rate",
-  available: "Sophomore ✅",
-  bed_laundry: "Extra-long twin bed · 13 washers · 14 dryers",
-  rooms: "167 doubles · 51 singles · 1 triple",
+  title: "43-45 Winthrop Street",
+  path: "43-45Winthrop",
+  path2: "43-45Winthrop-room",
+  path3: "43-45Winthrop-rate",
+  available: "Junior ✅ Senior ✅",
+  bed_laundry: "Full-size bed",
+  rooms: "5 single rooms ",
   moreInfo:
-    "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/harleston-hall",
+    "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/coho-community-housing",
   description:
-    "Once known as South Hall, it is located downhill next to basketball courts, tennis courts, and the Ellis Oval with an adjacent student parking lot. This hall houses mostly Second-Year students.",
-  location: "Downhill",
+    "Close to Breed Memorial Hall, the Interfaith Center, and an array of stores, including the Campus Mini Mart and Dunkin' Donuts",
+  location: "Uphill",
   pic: pic,
 };
 
@@ -72,13 +72,24 @@ const Con = [
   },
 ];
 
-function Harleston() {
+function Winthrop4345() {
   const [displayDetail, setDisplayDetail] = useState(true);
   const pathname = window.location.pathname;
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
   }
+
+  const getDormName = () => {
+    if (pathname.includes("coho")) {
+      let pathArray = pathname.split("/");
+      const dormPath = pathArray[pathArray.length - 1];
+
+      return floor.find((f) => f.unit === dormPath).name;
+    }
+
+    return Content.title;
+  };
 
   return (
     <>
@@ -105,17 +116,7 @@ function Harleston() {
       <MediaQuery minWidth={861}>
         <div className={styles.container}>
           <Details
-            title={
-              pathname.includes("coho")
-                ? floor.find(
-                    (f) =>
-                      f.unit ===
-                      window.location.pathname.slice(
-                        pathname.lastIndexOf("/") + 1,
-                      ),
-                  ).name
-                : "Harleston Hall"
-            }
+            title={getDormName()}
             path={Content.path}
             path2={Content.path2}
             path3={Content.path3}
@@ -138,4 +139,4 @@ function Harleston() {
   );
 }
 
-export default Harleston;
+export default Winthrop4345;
