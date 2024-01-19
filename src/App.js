@@ -23,6 +23,7 @@ import Fairmount21 from "views/CoHo/21Fairmount";
 import Winthrop4345 from "./views/CoHo/43-45Winthrop";
 import Bellevue11 from "./views/CoHo/11Bellevue";
 import Bellevue12 from "./views/CoHo/12Bellevue";
+import Bellevue1416 from "./views/CoHo/14-16Bellevue";
 import "./App.css";
 
 function App() {
@@ -44,12 +45,16 @@ function App() {
             <Route path="2" element={<Bellevue12 />} />
             <Route path="1" element={<Bellevue12 />} />
           </Route>
+          <Route path="14-16Bellevue">
+            <Route path="3" element={<Bellevue1416 />} />
+            <Route path="2" element={<Bellevue1416 />} />
+            <Route path="1" element={<Bellevue1416 />} />
+          </Route>
           <Route path="43-45Winthrop">
             <Route path="3" element={<Winthrop4345 />} />
             <Route path="2" element={<Winthrop4345 />} />
             <Route path="1" element={<Winthrop4345 />} />
           </Route>
-          <Route path="14-16Bellevue" element={<CoHo />} />
           <Route path="15Bellevue" element={<CoHo />} />
           <Route path="19Bellevue" element={<CoHo />} />
           <Route path="21-23Bellevue" element={<CoHo />} />

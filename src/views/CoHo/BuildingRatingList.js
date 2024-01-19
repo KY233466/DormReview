@@ -24,8 +24,8 @@ const CoHoDorms = [
     label: "14-16 Bellevue Street",
     path: "14-16Bellevue",
     unit: [
-      { label: "16 Bellevue", path: "/" },
       { label: "14 Bellevue", path: "/" },
+      { label: "16 Bellevue", path: "/" },
     ],
   },
   {
