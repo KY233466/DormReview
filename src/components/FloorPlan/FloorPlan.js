@@ -31,7 +31,7 @@ function FloorPlan({ floor, displayDetail }) {
 
   const containerStyle = () => {
     if (isMobile) {
-      return styles.containerExpand;
+      return styles.containerExpandMobile;
     }
 
     return displayDetail ? styles.container : styles.containerExpand;

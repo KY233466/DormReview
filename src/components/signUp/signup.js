@@ -145,7 +145,10 @@ const Signup = () => {
   return (
     <>
       <div className={styles.container2}>
-        <h2 style={{ marginBottom: "10px" }}> Signup with your Tufts email </h2>
+        <h2 style={{ marginBottom: "10px" }}>
+          To make sure all reviews are left by Tufts students, please signup
+          with your Tufts email
+        </h2>
         <h2 style={{ fontWeight: "200", fontSize: "13px" }}>
           Please use format <span> Tufts_Username</span>@tufts.edu.
         </h2>

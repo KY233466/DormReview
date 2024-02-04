@@ -16,7 +16,6 @@ export default function BasicMenu() {
   };
 
   const { logOut, user } = useUserAuth();
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -69,8 +68,6 @@ export default function BasicMenu() {
             "aria-labelledby": "basic-button",
           }}
         >
-          {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
-          {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
           {user && (
             <div>
               <MenuItem onClick={routeChange}>Profile</MenuItem>

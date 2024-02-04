@@ -10,13 +10,14 @@
 .container img {
   height: 40px;
   margin-top: 3px;
+  flex-wrap: wrap;
 }
 
 .containerMobile {
   display: flex;
   flex-direction: row;
-  overflow: wrap;
   margin-top: 15px;
+  flex-wrap: wrap;
 }
 
 .containerMobile img {
@@ -46,12 +47,14 @@
 .subSections {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .subSectionsMobile {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .iconsMobile {

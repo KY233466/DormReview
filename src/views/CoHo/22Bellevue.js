@@ -1,21 +1,25 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
-import Details from "components/details/details";
+import BackArrow from "components/BackArrow";
+import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
+import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
-import pic from "assets/sogo.jpeg";
+import getDormName from "common/string";
+
+import pic from "assets/22-bellevue.png";
+import bathroom from "assets/bathroom.png";
+import washer from "assets/Washer.png";
+import Location from "assets/location.png";
 import kitchen from "assets/Kitchen.png";
 import Bed from "assets/Bed.jpg";
-import Washer from "assets/Washer.png";
 
-import OneFloor from "assets/floor/19Uni/19-uni1.png";
-import TwoFloor from "assets/floor/19Uni/19-uni2.png";
-import ThreeFloor from "assets/floor/19Uni/19-uni3.png";
+import OneFloor from "assets/floor/22Bellevue/22-bellevue-1.png";
+import TwoFloor from "assets/floor/22Bellevue/22-bellevue-2.png";
+import ThreeFloor from "assets/floor/22Bellevue/22-bellevue-3.png";
 
-import styles from "./sogo.module.css";
+import styles from "./coho.module.css";
 
 const floor = [
   {
@@ -33,42 +37,50 @@ const floor = [
 ];
 
 const Content = {
-  title: "CoHo (Community Housing)",
-  path: "CoHo",
-  path2: "CoHo-room",
-  path3: "CoHo-rate",
+  title: "22 Bellevue Street",
+  path: "22Bellevue",
+  path2: "22Bellevue-room",
+  path3: "22Bellevue-rate",
   available: "Junior ✅ Senior ✅",
-  bed_laundry: "Full-size bed · 3 washers · 3 dryers",
-  rooms:
-    "2 ten-person units · 2 nine-person units · 2 eight-person units · 3 seven-person units · 1 six-person unit · 3 five-person units · 6 four-person units · 4 three-person units",
+  bed_laundry: "Full-size bed",
+  rooms: "One unit with 7 single rooms",
   moreInfo:
     "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/coho-community-housing",
   description:
-    "CoHo (Community Housing) is Tufts newest housing option for juniors and seniors. Located just behind Wren Hall (between Capen Street Ext and Boston Avenue), this group of woodframe houses is home to 137 students. These houses were all fully renovated during the between 2018 and 2019.",
+    "Behind Wren Hall. Laundry equipments weren't functional during the 2021-2022 school year.",
   location: "Uphill",
   pic: pic,
 };
 
 const Pro = [
   {
-    title: "Full-size Bed",
-    pic: Bed,
+    title: "In-house/close to Laundry Equipments",
+    pic: washer,
+  },
+  {
+    title: "Single Person Bathrooms",
+    pic: bathroom,
   },
   {
     title: "Private Kitchen",
     pic: kitchen,
   },
+  {
+    title: "Full-size Bed",
+    pic: Bed,
+  },
 ];
 
 const Con = [
   {
-    title: "Lack of Laundry Equipment",
-    pic: Washer,
+    title: "Far From Center of Campus",
+    pic: Location,
   },
 ];
 
-function SoGo() {
+function Bellevue22() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const dormName = getDormName(window.location.pathname, floor, Content);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -77,29 +89,23 @@ function SoGo() {
   return (
     <>
       <MediaQuery maxWidth={860}>
-        <a
-          href={"/map"}
-          style={{
-            position: "absolute",
-            padding: "5px",
-            paddingLeft: "3px",
-            left: "12px",
-            top: "20px",
-            zIndex: 1,
-            height: "15px",
-            width: "15px",
-          }}
-        >
-          <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
-        </a>
+        <BackArrow href="/coho" />
         <FloorPlan displayDetail={displayDetail} floor={floor} />
-        <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
+        <MobileDetailBottomSheet
+          title={dormName}
+          path={Content.path}
+          path2={Content.path2}
+          path3={Content.path3}
+          content={Content}
+          pro={Pro}
+          con={Con}
+        />
       </MediaQuery>
 
       <MediaQuery minWidth={861}>
         <div className={styles.container}>
           <Details
-            title={Content.title}
+            title={dormName}
             path={Content.path}
             path2={Content.path2}
             path3={Content.path3}
@@ -122,4 +128,4 @@ function SoGo() {
   );
 }
 
-export default SoGo;
+export default Bellevue22;

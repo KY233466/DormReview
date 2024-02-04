@@ -11,8 +11,18 @@ html {
   position: relative;
 }
 
-.containerExpand {
+.containerExpandMobile {
   height: calc(100% - 75px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #fcfcfc;
+}
+
+.containerExpand {
+  height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;

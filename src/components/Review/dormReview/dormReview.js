@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import Rating from "@mui/material/Rating";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -9,6 +10,9 @@ import { addDoc, doc, collection, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { getAuth } from "firebase/auth";
 import "firebase/auth";
+
+import Signin from "../../signUp/signin";
+import Signup from "../../signUp/signup";
 
 import styles from "../review.module.css";
 
@@ -22,6 +26,7 @@ const styleMobile = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  justifyContent: "center",
   overflowY: "auto",
   overflowX: "hidden",
 };
@@ -38,10 +43,12 @@ const style = {
   borderRadius: "18px",
   p: 4,
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
+  justifyContent: "center",
 };
 
-function DormReview({ name, path, path2, open, setOpen }) {
+function DormReview({ name, path, path3, open, setOpen }) {
   const handleClose = (event, reason) => {
     if (reason !== "backdropClick") {
       setOpen(false);
@@ -67,13 +74,15 @@ function DormReview({ name, path, path2, open, setOpen }) {
 
   const [histReview, setHistReview] = useState([]);
 
+  const [displaySignUp, setDisplaySignUp] = useState(true);
+
   const isMobile = useMediaQuery("(max-width:860px)");
   const isTablet = useMediaQuery("(max-width:460px)");
 
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const data = await getDoc(doc(db, path2, "rate"));
+        const data = await getDoc(doc(db, path3, "rate"));
         if (data.exists()) {
           setHistReview(data.data());
         } else {
@@ -85,7 +94,7 @@ function DormReview({ name, path, path2, open, setOpen }) {
     };
 
     getReviews();
-  }, [path2]);
+  }, [path3]);
 
   useEffect(() => {
     getAuth()
@@ -133,12 +142,12 @@ function DormReview({ name, path, path2, open, setOpen }) {
       })
         .then(() => {
           if (histReview == null) {
-            setDoc(doc(db, path2, "rate"), {
+            setDoc(doc(db, path3, "rate"), {
               Rate: rate,
               nReviews: 1,
             });
           } else {
-            setDoc(doc(db, path2, "rate"), {
+            setDoc(doc(db, path3, "rate"), {
               Rate:
                 (histReview.Rate * histReview.nReviews + rate) /
                 (histReview.nReviews + 1),
@@ -159,145 +168,167 @@ function DormReview({ name, path, path2, open, setOpen }) {
     }
   };
 
-  return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={isMobile ? styleMobile : style}>
-        {verified ? (
-          <form
-            className={isMobile ? styles.formMobile : styles.form}
-            onSubmit={handleSubmit}
+  const formContent = () => {
+    return (
+      <form
+        className={isMobile ? styles.formMobile : styles.form}
+        onSubmit={handleSubmit}
+      >
+        {warning ? (
+          <Alert
+            onClose={() => {
+              setWarning(false);
+            }}
+            severity="warning"
+            sx={{
+              width: "500px",
+              marginBottom: "5px",
+            }}
           >
-            {warning ? (
-              <Alert
-                onClose={() => {
-                  setWarning(false);
-                }}
-                severity="warning"
-                sx={{
-                  width: "500px",
-                  marginBottom: "5px",
-                }}
-              >
-                {error}
-              </Alert>
-            ) : null}
-            <div className={styles.bold}> Write a review </div>
-            <div> All posts are anonymous </div>
-            <label className={styles.question}>
-              Rate for which academic year? *
-            </label>
-            <select
-              value={year}
-              name="year"
-              required
-              onChange={(e) => setYear(e.target.value)}
+            {error}
+          </Alert>
+        ) : null}
+        <div className={styles.bold}> Write a review </div>
+        <div> All posts are anonymous </div>
+        <label className={styles.question}>
+          Rate for which academic year? *
+        </label>
+        <select
+          value={year}
+          name="year"
+          required
+          onChange={(e) => setYear(e.target.value)}
+        >
+          <option value=""> --select an option-- </option>
+          <option value="2022-2023"> 2023 - 2024 </option>
+          <option value="2022-2023"> 2022 - 2023 </option>
+          <option value="2021-2022"> 2021 - 2022 </option>
+          <option value="2020-2021"> 2020 - 2021 </option>
+          <option value="2019-2020"> 2019 - 2020 </option>
+        </select>
+        <label className={styles.question}> What is your rating? * </label>
+        <Rating
+          name="half-rating"
+          size="large"
+          value={rate}
+          defaultValue={0}
+          precision={0.5}
+          onChange={(event, newValue) => {
+            setRate(newValue);
+          }}
+          sx={{
+            marginBottom: "10px",
+          }}
+        />
+        <label className={styles.question}>What comments do you have?</label>
+        <textarea
+          maxLength="400"
+          rows="5"
+          className={styles.textarea}
+          placeholder="Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
+        <div className={styles.btnS}>
+          <button
+            onClick={handleClose}
+            type="submit"
+            style={{
+              cursor: "pointer",
+              width: "100px",
+              background: "white",
+              color: "black",
+              border: "1px solid teal",
+              fontSize: "0.9rem",
+              borderRadius: "10px",
+              padding: "5px",
+            }}
+          >
+            Cancel
+          </button>
+
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            style={{
+              cursor: "pointer",
+              width: "100px",
+              background: loader ? "#ccc" : "#2C5A7B",
+              fontSize: "0.9rem",
+              color: "white",
+              border: "none",
+              borderRadius: "10px",
+              padding: "5px",
+            }}
+          >
+            Post
+          </button>
+        </div>
+      </form>
+    );
+  };
+
+  return (
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={isMobile ? styleMobile : style}>
+          {verified ? (
+            { formContent }
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
-              <option value=""> --select an option-- </option>
-              <option value="2022-2023"> 2023 - 2024 </option>
-              <option value="2022-2023"> 2022 - 2023 </option>
-              <option value="2021-2022"> 2021 - 2022 </option>
-              <option value="2020-2021"> 2020 - 2021 </option>
-              <option value="2019-2020"> 2019 - 2020 </option>
-            </select>
-            <label className={styles.question}> What is your rating? * </label>
-            <Rating
-              name="half-rating"
-              size="large"
-              value={rate}
-              defaultValue={0}
-              precision={0.5}
-              onChange={(event, newValue) => {
-                setRate(newValue);
-              }}
-              sx={{
-                marginBottom: "10px",
-              }}
-            />
-            <label className={styles.question}>
-              What comments do you have?
-            </label>
-            <textarea
-              maxLength="400"
-              rows="5"
-              className={styles.textarea}
-              placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-            <div className={styles.btnS}>
+              {displaySignUp ? <Signup /> : <Signin />}
+              {displaySignUp ? (
+                <div onClick={() => setDisplaySignUp(false)}>
+                  Already have an account?{" "}
+                  <span
+                    style={{ textDecoration: "underline", cursor: "pointer" }}
+                  >
+                    Log In
+                  </span>
+                </div>
+              ) : (
+                <div onClick={() => setDisplaySignUp(true)}>
+                  {`Don't`} have an account?{" "}
+                  <span
+                    style={{ textDecoration: "underline", cursor: "pointer" }}
+                  >
+                    Sign Up
+                  </span>
+                </div>
+              )}
               <button
                 onClick={handleClose}
                 type="submit"
                 style={{
                   cursor: "pointer",
                   width: "100px",
-                  background: "white",
-                  color: "black",
-                  border: "1px solid teal",
-                  fontSize: "0.9rem",
-                  borderRadius: "10px",
-                  padding: "5px",
-                }}
-              >
-                Cancel
-              </button>
-
-              <button
-                onClick={handleSubmit}
-                type="submit"
-                style={{
-                  cursor: "pointer",
-                  width: "100px",
-                  background: loader ? "#ccc" : "#2C5A7B",
-                  fontSize: "0.9rem",
+                  background: "#2C5A7B",
                   color: "white",
+                  fontSize: "0.9rem",
                   border: "none",
                   borderRadius: "10px",
                   padding: "5px",
+                  margin: "30px",
                 }}
               >
-                Post
+                Close
               </button>
             </div>
-          </form>
-        ) : (
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "40px",
-            }}
-          >
-            <div>Please sign - up and verify with your Tufts email first</div>
-            <button
-              onClick={handleClose}
-              type="submit"
-              style={{
-                cursor: "pointer",
-                width: "100px",
-                background: "#2C5A7B",
-                color: "white",
-                fontSize: "0.9rem",
-                border: "none",
-                borderRadius: "10px",
-                padding: "5px",
-              }}
-            >
-              Close
-            </button>
-          </div>
-        )}
-      </Box>
-    </Modal>
+          )}
+        </Box>
+      </Modal>
+    </>
   );
 }
 

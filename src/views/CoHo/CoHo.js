@@ -1,16 +1,22 @@
-import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
-import styles from "./sogo.module.css";
-import Details from "components/details/details";
+import { useState } from "react";
+
+import { useLoadScript } from "@react-google-maps/api";
+import MediaQuery from "react-responsive";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import Details from "components/details";
+import BuildingRatingList from "./BuildingRatingList";
+import ContentBlock from "components/details/content";
+import CoHoMap from "components/Map/cohoMap";
+
 import pic from "assets/coho.jpeg";
+import cohoMap from "assets/rll-coho-map.png";
 import kitchen from "assets/Kitchen.png";
 import Bed from "assets/Bed.jpg";
 import Washer from "assets/Washer.png";
-import CoHoMap from "components/Map/cohoMap";
-import { useLoadScript } from "@react-google-maps/api";
 
-import BuildingRatingList from "./BuildingRatingList";
+import styles from "./sogo.module.css";
 
 const Content = {
   title: "CoHo (Community Housing)",
@@ -50,9 +56,9 @@ const Con = [
 
 function CoHo() {
   const [displayDetail, setDisplayDetail] = useState(true);
-  const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
   const [zoom] = useState(18.7);
   const [toggleList, setToggleList] = useState([]);
+  const isMobile = useMediaQuery("(max-width:860px)");
   const [center] = useState({
     lat: 42.41024428222851,
     lng: -71.12156863095187,
@@ -71,7 +77,7 @@ function CoHo() {
     googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
   });
 
-  if (!isLoaded)
+  if (!isMobile && !isLoaded)
     return (
       <div
         style={{
@@ -91,48 +97,76 @@ function CoHo() {
   }
 
   return (
-    <div className={styles.container}>
-      <Details
-        title={Content.title}
-        path={Content.path}
-        path2={Content.path2}
-        path3={Content.path3}
-        available={Content.available}
-        bed_laundry={Content.bed_laundry}
-        rooms={Content.rooms}
-        moreInfo={Content.moreInfo}
-        description={Content.description}
-        location={Content.location}
-        pic={Content.pic}
-        pro={Pro}
-        con={Con}
-        changeDetail={() => changeDetail()}
-        fetchReviews={false}
-        alternativeBlock={
-          <BuildingRatingList
-            toggleList={toggleList}
-            setToggleList={setToggleList}
+    <>
+      <MediaQuery maxWidth={860}>
+        <div className={styles.containerMobile}>
+          <ContentBlock
+            title={Content.title}
+            path={Content.path}
+            path2={Content.path2}
+            path3={Content.path3}
+            available={Content.available}
+            bed_laundry={Content.bed_laundry}
+            rooms={Content.rooms}
+            moreInfo={Content.moreInfo}
+            description={Content.description}
+            location={Content.location}
+            pic={Content.pic}
+            pro={Pro}
+            con={Con}
+            changeDetail={() => changeDetail()}
+            fetchReviews={false}
+            altRatingDisplayBlock={
+              <div>
+                <img
+                  src={cohoMap}
+                  alt="CoHo Map"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+                <BuildingRatingList
+                  toggleList={toggleList}
+                  setToggleList={setToggleList}
+                />
+              </div>
+            }
           />
-        }
-      />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}
-      <div className={styles.rightContainer}>
-        <CoHoMap center={center} zoom={zoom} />
+        </div>
+      </MediaQuery>
 
-        {/* Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          {" "}
-          Harleston{" "}
-        </a>{" "}
-        to view what it would look like.{" "}
-      </div>{" "} */}
-      </div>
-    </div>
+      <MediaQuery minWidth={861}>
+        <div className={styles.container}>
+          <Details
+            title={Content.title}
+            path={Content.path}
+            path2={Content.path2}
+            path3={Content.path3}
+            available={Content.available}
+            bed_laundry={Content.bed_laundry}
+            rooms={Content.rooms}
+            moreInfo={Content.moreInfo}
+            description={Content.description}
+            location={Content.location}
+            pic={Content.pic}
+            pro={Pro}
+            con={Con}
+            changeDetail={() => changeDetail()}
+            fetchReviews={false}
+            altRatingDisplayBlock={
+              <BuildingRatingList
+                toggleList={toggleList}
+                setToggleList={setToggleList}
+              />
+            }
+          />
+          {displayDetail ? <div className={styles.placeholder}> </div> : null}
+          <div className={styles.rightContainer}>
+            <CoHoMap center={center} zoom={zoom} />
+          </div>
+        </div>
+      </MediaQuery>
+    </>
   );
 }
 

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
+import Chip from "@mui/material/Chip";
 
 import DormReview from "./dormReview/dormReview";
 import RoomReview from "./roomReview/roomReview";
@@ -19,29 +20,51 @@ function Review({ path, path2, path3, isMobile }) {
   return (
     <div className={styles.container}>
       <div style={{ display: "flex", flexDirection: "row", gap: "8px" }}>
-        <div
+        <Chip
           className={isMobile ? styles.btnMobile : styles.btn}
+          sx={{
+            borderRadius: "25px",
+            margin: "15px 0 5px 0",
+            padding: isMobile ? "5px" : "22px 4px",
+            fontWeight: 800,
+            fontSize: isMobile ? 12 : 16,
+            color: "white",
+            backgroundColor: "#e96a34",
+            "&:hover, &:focus": { backgroundColor: "#974421" },
+          }}
           onClick={handleOpen}
-        >
-          <HomeIcon
-            className={isMobile ? styles.btnIconMobile : styles.btnIcon}
-          />
-          Write review for dorm
-        </div>
-        <div
+          icon={
+            <HomeIcon
+              sx={{ marginRight: "7px", color: "#fad1bf !important" }}
+            />
+          }
+          label="Review the Dorm"
+        />
+        <Chip
           className={isMobile ? styles.btnMobile : styles.btn}
+          sx={{
+            borderRadius: "25px",
+            margin: "15px 0 5px 0",
+            padding: isMobile ? "5px" : "22px 4px",
+            fontWeight: 800,
+            fontSize: isMobile ? 12 : 16,
+            color: "white",
+            backgroundColor: "#e96a34",
+            "&:hover, &:focus": { backgroundColor: "#974421" },
+          }}
           onClick={handleOpenR}
-        >
-          <MeetingRoomIcon
-            className={isMobile ? styles.btnIconMobile : styles.btnIcon}
-          />
-          Write review for room
-        </div>
+          icon={
+            <MeetingRoomIcon
+              sx={{ marginRight: "7px", color: "#fad1bf !important" }}
+            />
+          }
+          label="Review A Room"
+        />
       </div>
       <DormReview
         name={path}
         path={path}
-        path2={path3}
+        path3={path3}
         open={open}
         setOpen={setOpen}
       />

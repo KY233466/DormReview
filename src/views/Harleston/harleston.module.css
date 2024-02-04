@@ -89,7 +89,7 @@ body video {
 }
 
 html, body {
-  overscroll-behavior: "none";
+  overscroll-behavior: none;
 }
 
 .container {

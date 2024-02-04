@@ -4,21 +4,11 @@ import SignupModal from "./signup_modal";
 import styles from "./signup.module.css";
 
 const Signin_signup = () => {
-  // const { logOut, user } = useUserAuth();
   const { user } = useUserAuth();
-  // const handleLogout = async () => {
-  //   try {
-  //     await logOut();
-  //     console.log("logged out");
-  //     // navigate("/");
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
 
   return (
     <div className={styles.signinsignup}>
-      {user ? null : (
+      {!user && (
         <div className={styles.subsectionM}>
           <LoginModal />
           <SignupModal />

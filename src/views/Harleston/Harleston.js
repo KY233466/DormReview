@@ -1,8 +1,8 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-import Details from "components/details/details";
+import BackArrow from "components/BackArrow";
+import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
@@ -86,23 +86,17 @@ function Harleston() {
   return (
     <>
       <MediaQuery maxWidth={860}>
-        <a
-          href={"/map"}
-          style={{
-            position: "absolute",
-            padding: "5px",
-            paddingLeft: "3px",
-            left: "12px",
-            top: "20px",
-            zIndex: 1,
-            height: "15px",
-            width: "15px",
-          }}
-        >
-          <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
-        </a>
+        <BackArrow href="/map" />
         <FloorPlan displayDetail={displayDetail} floor={floor} />
-        <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
+        <MobileDetailBottomSheet
+          title={Content.title}
+          path={Content.path}
+          path2={Content.path2}
+          path3={Content.path3}
+          content={Content}
+          pro={Pro}
+          con={Con}
+        />
       </MediaQuery>
 
       <MediaQuery minWidth={861}>

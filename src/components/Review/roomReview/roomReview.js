@@ -10,6 +10,9 @@ import { db } from "../../../firebase";
 import { getAuth } from "firebase/auth";
 import "firebase/auth";
 
+import Signin from "../../signUp/signin";
+import Signup from "../../signUp/signup";
+
 import styles from "../review.module.css";
 
 const styleMobile = {
@@ -73,6 +76,8 @@ function RoomReview({ name, path, open, setOpen }) {
 
   const isTablet = useMediaQuery("(max-width:460px)");
   const isMobile = useMediaQuery("(max-width:860px)");
+
+  const [displaySignUp, setDisplaySignUp] = useState(true);
 
   useEffect(() => {
     getAuth()
@@ -159,6 +164,7 @@ function RoomReview({ name, path, open, setOpen }) {
             onChange={(e) => setYear(e.target.value)}
           >
             <option value=""> --select an option-- </option>
+            <option value="2022-2023"> 2023 - 2024 </option>
             <option value="2022-2023"> 2022 - 2023 </option>
             <option value="2021-2022"> 2021 - 2022 </option>
             <option value="2020-2021"> 2020 - 2021 </option>
@@ -318,6 +324,93 @@ function RoomReview({ name, path, open, setOpen }) {
     );
   };
 
+  const formContent = () => {
+    return (
+      <form
+        className={isMobile ? styles.formMobile : styles.form}
+        onSubmit={handleSubmit}
+      >
+        {warning ? (
+          <Alert
+            onClose={() => {
+              setWarning(false);
+            }}
+            severity="warning"
+            sx={{
+              width: "500px",
+              marginBottom: "5px",
+            }}
+          >
+            {error}
+          </Alert>
+        ) : null}
+        <div className={styles.bold}> Write a review for room </div>
+        <div style={{ marginBottom: "5px" }}> All posts are anonymous </div>
+        <label className={styles.question}>What was the room number? *</label>
+        <input
+          style={{
+            width: "150px",
+          }}
+          type="text"
+          pattern="[0-9]"
+          id="room"
+          name="room"
+          onChange={(e) => setRoom(e.target.value)}
+          required
+        ></input>
+        <label className={styles.question}>What comments do you have?</label>
+        <textarea
+          id="textarea"
+          name="textarea"
+          maxLength="400"
+          cols="50"
+          rows="2"
+          className={styles.textarea}
+          placeholder="Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
+        <hr />
+        {formSection1()}
+        {formSection2()}
+        <div className={styles.btnS}>
+          <button
+            onClick={handleClose}
+            type="submit"
+            style={{
+              cursor: "pointer",
+              width: "100px",
+              background: "white",
+              color: "black",
+              border: "1px solid teal",
+              fontSize: "0.9rem",
+              borderRadius: "10px",
+              padding: "5px",
+            }}
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            style={{
+              cursor: "pointer",
+              width: "100px",
+              background: loader ? "#ccc" : "#2C5A7B",
+              fontSize: "0.9rem",
+              color: "white",
+              border: "none",
+              borderRadius: "10px",
+              padding: "5px",
+            }}
+          >
+            Post
+          </button>
+        </div>
+      </form>
+    );
+  };
+
   return (
     <Modal
       open={open}
@@ -329,16 +422,31 @@ function RoomReview({ name, path, open, setOpen }) {
         {!verified ? (
           <div
             style={{
-              width: "100%",
-              height: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
-              gap: "40px",
             }}
           >
-            <div>Please sign - up and verify with your Tufts email first</div>
+            {displaySignUp ? <Signup /> : <Signin />}
+            {displaySignUp ? (
+              <div onClick={() => setDisplaySignUp(false)}>
+                Already have an account?{" "}
+                <span
+                  style={{ textDecoration: "underline", cursor: "pointer" }}
+                >
+                  Log In
+                </span>
+              </div>
+            ) : (
+              <div onClick={() => setDisplaySignUp(true)}>
+                {`Don't`} have an account?{" "}
+                <span
+                  style={{ textDecoration: "underline", cursor: "pointer" }}
+                >
+                  Sign Up
+                </span>
+              </div>
+            )}
             <button
               onClick={handleClose}
               type="submit"
@@ -351,98 +459,14 @@ function RoomReview({ name, path, open, setOpen }) {
                 border: "none",
                 borderRadius: "10px",
                 padding: "5px",
+                margin: "30px",
               }}
             >
               Close
             </button>
           </div>
         ) : (
-          <form
-            className={isMobile ? styles.formMobile : styles.form}
-            onSubmit={handleSubmit}
-          >
-            {warning ? (
-              <Alert
-                onClose={() => {
-                  setWarning(false);
-                }}
-                severity="warning"
-                sx={{
-                  width: "500px",
-                  marginBottom: "5px",
-                }}
-              >
-                {error}
-              </Alert>
-            ) : null}
-            <div className={styles.bold}> Write a review for room </div>
-            <div style={{ marginBottom: "5px" }}> All posts are anonymous </div>
-            <label className={styles.question}>
-              What was the room number? *
-            </label>
-            <input
-              style={{
-                width: "150px",
-              }}
-              type="text"
-              pattern="[0-9]"
-              id="room"
-              name="room"
-              onChange={(e) => setRoom(e.target.value)}
-              required
-            ></input>
-            <label className={styles.question}>
-              What comments do you have?
-            </label>
-            <textarea
-              id="textarea"
-              name="textarea"
-              maxLength="400"
-              cols="50"
-              rows="2"
-              className={styles.textarea}
-              placeholder="Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-            <hr />
-            {formSection1()}
-            {formSection2()}
-            <div className={styles.btnS}>
-              <button
-                onClick={handleClose}
-                type="submit"
-                style={{
-                  cursor: "pointer",
-                  width: "100px",
-                  background: "white",
-                  color: "black",
-                  border: "1px solid teal",
-                  fontSize: "0.9rem",
-                  borderRadius: "10px",
-                  padding: "5px",
-                }}
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSubmit}
-                type="submit"
-                style={{
-                  cursor: "pointer",
-                  width: "100px",
-                  background: loader ? "#ccc" : "#2C5A7B",
-                  fontSize: "0.9rem",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "10px",
-                  padding: "5px",
-                }}
-              >
-                Post
-              </button>
-            </div>
-          </form>
+          { formContent }
         )}
       </Box>
     </Modal>

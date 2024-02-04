@@ -1,21 +1,24 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-import Details from "components/details/details";
+import BackArrow from "components/BackArrow";
+import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 
-import pic from "../../assets/11Bellevue.png";
+import getDormName from "common/string";
+
+import pic from "assets/11Bellevue.png";
 import bathroom from "assets/bathroom.png";
-import elevator from "assets/elevator.png";
+import kitchen from "assets/Kitchen.png";
 import Location from "assets/location.png";
+import Bed from "assets/Bed.jpg";
 
-import OneFloor from "assets/floor/Harleston/1Harleston.png";
-import TwoFloor from "assets/floor/Harleston/2Harleston.png";
-import ThreeFloor from "assets/floor/Harleston/3Harleston.png";
+import OneFloor from "assets/floor/11Bellevue/11-bellevue-1.png";
+import TwoFloor from "assets/floor/11Bellevue/11-bellevue-2.png";
+import ThreeFloor from "assets/floor/11Bellevue/11-bellevue-3.png";
 
-import styles from "././coho.module.css";
+import styles from "./coho.module.css";
 
 const floor = [
   {
@@ -39,11 +42,11 @@ const Content = {
   path3: "11Bellevue-rate",
   available: "Junior ✅ Senior ✅",
   bed_laundry: "Full-size bed",
-  rooms: "7 single rooms ",
+  rooms: "7 single rooms",
   moreInfo:
     "https://students.tufts.edu/residential-life-learning/campus-housing/continuing-undergrad/coho-community-housing",
   description:
-    "Close to Breed Memorial Hall, the Interfaith Center, and an array of stores, including the Campus Mini Mart and Dunkin' Donuts",
+    "It is named after Charles W. Tu, older brother of the Tufts mathematics professor Loring W. Tu and a professor of electrical and computer engineering at UCSD. Read more here: https://alumniandfriends.tufts.edu/news/mathematics-professor-honors-his-brothers. It is close to an array of stores, including the Campus Mini Mart and Dunkin' Donuts.",
   location: "Uphill",
   pic: pic,
 };
@@ -54,8 +57,12 @@ const Pro = [
     pic: bathroom,
   },
   {
-    title: "Elevator",
-    pic: elevator,
+    title: "Private Kitchen",
+    pic: kitchen,
+  },
+  {
+    title: "Full-size Bed",
+    pic: Bed,
   },
 ];
 
@@ -68,51 +75,32 @@ const Con = [
 
 function Bellevue11() {
   const [displayDetail, setDisplayDetail] = useState(true);
-  const pathname = window.location.pathname;
+  const dormName = getDormName(window.location.pathname, floor, Content);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
   }
 
-  const getDormName = () => {
-    if (pathname.includes("coho")) {
-      let pathArray = pathname.split("/");
-      const dormPath = pathArray[pathArray.length - 1];
-
-      if (pathArray.length > 3) {
-        return floor.find((f) => f.unit === dormPath).name;
-      }
-    }
-
-    return Content.title;
-  };
-
   return (
     <>
       <MediaQuery maxWidth={860}>
-        <a
-          href={"/map"}
-          style={{
-            position: "absolute",
-            padding: "5px",
-            paddingLeft: "3px",
-            left: "12px",
-            top: "20px",
-            zIndex: 1,
-            height: "15px",
-            width: "15px",
-          }}
-        >
-          <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
-        </a>
+        <BackArrow href="/coho" />
         <FloorPlan displayDetail={displayDetail} floor={floor} />
-        <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
+        <MobileDetailBottomSheet
+          title={dormName}
+          path={Content.path}
+          path2={Content.path2}
+          path3={Content.path3}
+          content={Content}
+          pro={Pro}
+          con={Con}
+        />
       </MediaQuery>
 
       <MediaQuery minWidth={861}>
         <div className={styles.container}>
           <Details
-            title={getDormName()}
+            title={getDormName(window.location.pathname, floor, Content)}
             path={Content.path}
             path2={Content.path2}
             path3={Content.path3}

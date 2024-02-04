@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -6,6 +7,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+
+import { useUserAuth } from "../../context/userAuthContext";
+
 import Signin from "components/signUp/signin";
 import Signup from "components/signUp/signup";
 
@@ -24,9 +28,16 @@ const mobileStyle = {
 };
 
 export default function SimpleDialog(props) {
+  const { user } = useUserAuth();
   const { onClose, selectedValue, open } = props;
   const [isSigninOpen, setIsSigninOpen] = useState(false);
-  const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(true);
+
+  useEffect(() => {
+    if (user === null) {
+      setIsSignupOpen(true);
+    }
+  }, [user]);
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -42,26 +53,28 @@ export default function SimpleDialog(props) {
   const handleOpenSignup = () => setIsSignupOpen(true);
 
   return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle
-        sx={{
-          minWidth: 150,
-          fontWeight: 800,
-          paddingTop: "30px",
-        }}
-      >
-        Hi!
-      </DialogTitle>
-      <List sx={{ pt: 0 }}>
-        <ListItem>
-          <ListItemButton onClick={handleOpenSignin}>Login</ListItemButton>
-        </ListItem>
-      </List>
-      <List sx={{ pt: 0, marginBottom: "20px" }}>
-        <ListItem>
-          <ListItemButton onClick={handleOpenSignup}>Sign up</ListItemButton>
-        </ListItem>
-      </List>
+    <>
+      <Dialog onClose={handleClose} open={open}>
+        <DialogTitle
+          sx={{
+            minWidth: 150,
+            fontWeight: 800,
+            paddingTop: "30px",
+          }}
+        >
+          Hi!
+        </DialogTitle>
+        <List sx={{ pt: 0 }}>
+          <ListItem>
+            <ListItemButton onClick={handleOpenSignin}>Login</ListItemButton>
+          </ListItem>
+        </List>
+        <List sx={{ pt: 0, marginBottom: "20px" }}>
+          <ListItem>
+            <ListItemButton onClick={handleOpenSignup}>Sign up</ListItemButton>
+          </ListItem>
+        </List>
+      </Dialog>
 
       <Modal
         open={isSigninOpen || isSignupOpen}
@@ -74,6 +87,6 @@ export default function SimpleDialog(props) {
           {isSignupOpen && <Signup />}
         </Box>
       </Modal>
-    </Dialog>
+    </>
   );
 }

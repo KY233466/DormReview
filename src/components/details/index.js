@@ -7,6 +7,7 @@ import Header from "../Header/header";
 import ProCon from "../ProCon";
 import Review from "../Review";
 import RatingDisplay from "../RatingDisplay/RatingDisplay";
+import Content from "./content";
 import styles from "./details.module.css";
 
 function Details({
@@ -25,7 +26,8 @@ function Details({
   pro,
   con,
   changeDetail,
-  alternativeBlock,
+  altRatingDisplayBlock,
+  altReviewBlock,
 }) {
   const dormName = title;
 
@@ -56,11 +58,34 @@ function Details({
     <div className={styles.container}>
       {displayLeft && (
         <div className={styles.leftContainer}>
-          <Header key={dormName} title={dormName} location={location} />
+          <Content
+            dormName={dormName}
+            title={title}
+            location={location}
+            pic={pic}
+            altRatingDisplayBlock={altRatingDisplayBlock}
+            available={available}
+            bed_laundry={bed_laundry}
+            path={path}
+            path2={path2}
+            path3={path3}
+            rooms={rooms}
+            pro={pro}
+            con={con}
+            moreInfo={moreInfo}
+            description={description}
+            fetchReviews={fetchReviews}
+            altReviewBlock={altReviewBlock}
+          />
+          {/* <Header key={dormName} title={dormName} location={location} />
           <img alt="dorm" src={pic} className={styles.dormPic} />
           <div className={styles.info}>
             <div className={styles.sum}>
-              {alternativeBlock ? alternativeBlock : <RatingDisplay />}
+              {altRatingDisplayBlock ? (
+                altRatingDisplayBlock
+              ) : (
+                <RatingDisplay path3={path3} />
+              )}
               <div> {available} </div>
               <div> {bed_laundry} </div>
               <div style={{ fontSize: "14px" }}> {rooms} </div>
@@ -82,12 +107,14 @@ function Details({
             </div>
             {fetchReviews ? (
               <>
-                <hr /> <Review path={path} path2={path2} path3={path3} />
+                <hr />
+                {altReviewBlock ? altReviewBlock :
+                <Review path={path} path2={path2} path3={path3} />}
               </>
             ) : (
               <div style={{ paddingBottom: "20px" }}></div>
             )}
-          </div>
+          </div> */}
         </div>
       )}
       <div className={styles.btn} onClick={() => changeLeft()}>

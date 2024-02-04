@@ -171,20 +171,6 @@ function Landing() {
                 marginBottom: "20px",
               }}
             >
-              {/* <div> All dorms except CoHo are open for reviews. </div>
-                <div>
-                  Please go to{" "}
-                  <a
-                    style={{
-                      textDecoration: "underline",
-                    }}
-                    href="https://dorm-review.com/harleston"
-                  >
-                    Harleston
-                  </a>{" "}
-                  to view what processed floor plan would be like.
-                </div> */}
-
               <div style={{ fontSize: "0.8rem", width: "100%" }}>
                 Have something to say or want to build DormReview together?{" "}
                 <a

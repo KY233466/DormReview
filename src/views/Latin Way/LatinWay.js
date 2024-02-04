@@ -1,10 +1,11 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+
+import BackArrow from "components/BackArrow";
 
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 import FloorPlan from "components/FloorPlan/FloorPlan";
-import Details from "components/details/details";
+import Details from "components/details";
 
 import pic from "assets/latin-way1.jpeg";
 import bathroom from "assets/bathroom.png";
@@ -82,21 +83,7 @@ function LatinWay() {
   return (
     <>
       <MediaQuery maxWidth={860}>
-        <a
-          href={"/map"}
-          style={{
-            position: "absolute",
-            padding: "5px",
-            paddingLeft: "3px",
-            left: "12px",
-            top: "20px",
-            zIndex: 1,
-            height: "15px",
-            width: "15px",
-          }}
-        >
-          <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
-        </a>
+        <BackArrow href="/map" />
         <FloorPlan displayDetail={displayDetail} floor={floor} />
         <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} />
       </MediaQuery>
