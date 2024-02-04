@@ -466,7 +466,7 @@ function RoomReview({ name, path, open, setOpen }) {
             </button>
           </div>
         ) : (
-          { formContent }
+          formContent()
         )}
       </Box>
     </Modal>

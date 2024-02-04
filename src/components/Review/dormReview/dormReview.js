@@ -82,11 +82,13 @@ function DormReview({ name, path, path3, open, setOpen }) {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const data = await getDoc(doc(db, path3, "rate"));
-        if (data.exists()) {
-          setHistReview(data.data());
-        } else {
-          setHistReview(null);
+        if (path) {
+          const data = await getDoc(doc(db, path3, "rate"));
+          if (data.exists()) {
+            setHistReview(data.data());
+          } else {
+            setHistReview(null);
+          }
         }
       } catch (error) {
         console.error("Error fetching documents:", error);
@@ -278,7 +280,7 @@ function DormReview({ name, path, path3, open, setOpen }) {
       >
         <Box sx={isMobile ? styleMobile : style}>
           {verified ? (
-            { formContent }
+            formContent()
           ) : (
             <div
               style={{
