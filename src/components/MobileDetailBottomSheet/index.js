@@ -25,22 +25,6 @@ const MobileDetailBottomSheet = ({
   altReviewBlock,
 }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [reviews, setReviews] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getReviews = async () => {
-      try {
-        const data = await getDocs(collection(db, path3));
-        setReviews(data.docs.map((doc) => ({ ...doc.data() })));
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching documents:", error);
-      }
-    };
-
-    getReviews();
-  }, [path3]);
 
   return (
     <BottomSheet

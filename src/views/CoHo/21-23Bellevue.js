@@ -5,6 +5,8 @@ import BackArrow from "components/BackArrow";
 import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import getDormName from "common/string";
 
@@ -48,19 +50,6 @@ const floor = [
     name: "Laundry Room",
   },
 ];
-
-const paths = {
-  "23 Bellevue Street": {
-    path: "23Bellevue",
-    path2: "23Bellevue-room",
-    path3: "23Bellevue-rate",
-  },
-  "21 Bellevue Street": {
-    path: "21Bellevue",
-    path2: "21Bellevue-room",
-    path3: "21Bellevue-rate",
-  },
-};
 
 const Content = {
   title: "21-23 Bellevue Street",
@@ -106,7 +95,7 @@ const Con = [
 function Bellevue2123() {
   const [displayDetail, setDisplayDetail] = useState(true);
   const dormName = getDormName(window.location.pathname, floor, Content);
-  const path = paths[dormName];
+  const { buildingConfig, unitConfig } = config(Content.title, dormName);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -119,12 +108,15 @@ function Bellevue2123() {
         <FloorPlan displayDetail={displayDetail} floor={floor} />
         <MobileDetailBottomSheet
           title={dormName}
-          path={path.path}
-          path2={path.path2}
-          path3={path.path3}
+          path={unitConfig.path}
+          path2={unitConfig.path2}
+          path3={unitConfig.path3}
           content={Content}
           pro={Pro}
           con={Con}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
         />
       </MediaQuery>
 
@@ -132,9 +124,9 @@ function Bellevue2123() {
         <div className={styles.container}>
           <Details
             title={dormName}
-            path={path.path}
-            path2={path.path2}
-            path3={path.path3}
+            path={unitConfig.path}
+            path2={unitConfig.path2}
+            path3={unitConfig.path3}
             available={Content.available}
             bed_laundry={Content.bed_laundry}
             rooms={Content.rooms}
@@ -145,6 +137,9 @@ function Bellevue2123() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />

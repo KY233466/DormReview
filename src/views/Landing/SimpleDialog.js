@@ -34,9 +34,7 @@ export default function SimpleDialog(props) {
   const [isSignupOpen, setIsSignupOpen] = useState(true);
 
   useEffect(() => {
-    if (user === null) {
-      setIsSignupOpen(true);
-    }
+    setIsSignupOpen(user === null);
   }, [user]);
 
   const handleClose = () => {

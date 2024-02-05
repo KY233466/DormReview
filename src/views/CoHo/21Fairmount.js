@@ -5,6 +5,8 @@ import BackArrow from "components/BackArrow";
 import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import getDormName from "common/string";
 
@@ -74,6 +76,7 @@ const Con = [
 
 function Fairmount21() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const { buildingConfig } = config(Content.title);
   const dormName = getDormName(window.location.pathname, floor, Content);
 
   function changeDetail() {
@@ -93,6 +96,9 @@ function Fairmount21() {
           content={Content}
           pro={Pro}
           con={Con}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
         />
       </MediaQuery>
 
@@ -113,6 +119,9 @@ function Fairmount21() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />

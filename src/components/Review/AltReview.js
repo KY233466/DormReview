@@ -56,6 +56,8 @@ function AltReview({ paths }) {
     setValue(newValue);
   };
 
+  console.log(paths, path);
+
   const contentBlock = () => {
     return (
       <div className={styles.container}>
@@ -121,23 +123,20 @@ function AltReview({ paths }) {
 
   return (
     <div className={styles.container}>
-      {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}> */}
       <Tabs
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
       >
         {paths.map((p, index) => (
-          <Tab label={p.name} key={index} {...a11yProps(index)} />
+          <Tab label={p.label} key={index} {...a11yProps(index)} />
         ))}
       </Tabs>
-      {/* </Box> */}
-      <CustomTabPanel value={value} index={0}>
-        {contentBlock()}
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        {contentBlock()}
-      </CustomTabPanel>
+      {paths.map((index) => (
+        <CustomTabPanel key={index} value={value} index={index}>
+          {contentBlock()}
+        </CustomTabPanel>
+      ))}
     </div>
   );
 }

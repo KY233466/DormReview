@@ -5,6 +5,8 @@ import BackArrow from "components/BackArrow";
 import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import getDormName from "common/string";
 
@@ -76,6 +78,7 @@ const Con = [
 function Bellevue11() {
   const [displayDetail, setDisplayDetail] = useState(true);
   const dormName = getDormName(window.location.pathname, floor, Content);
+  const { buildingConfig } = config(Content.title, dormName);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -94,6 +97,9 @@ function Bellevue11() {
           content={Content}
           pro={Pro}
           con={Con}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
         />
       </MediaQuery>
 
@@ -114,6 +120,9 @@ function Bellevue11() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />

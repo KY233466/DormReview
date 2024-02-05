@@ -2,10 +2,11 @@ import { useState } from "react";
 import MediaQuery from "react-responsive";
 
 import BackArrow from "components/BackArrow";
-import RatingDisplay from "components/RatingDisplay/RatingDisplay";
 import Details from "components/details";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 import AltReview from "components/Review/AltReview";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import pic from "assets/50Winthrop.png";
 import bathroom from "assets/bathroom.png";
@@ -37,27 +38,6 @@ const floor = [
     pic: OneFloor,
     unit: "1",
     name: "50 Winthrop Street - Unit 1",
-  },
-];
-
-const paths = [
-  {
-    name: "Unit 1",
-    path: "50Winthrop-1",
-    path2: "50Winthrop-1-room",
-    path3: "50Winthrop-1-rate",
-  },
-  {
-    name: "Unit 2",
-    path: "50Winthrop-2",
-    path2: "50Winthrop-2-room",
-    path3: "50Winthrop-2-rate",
-  },
-  {
-    name: "Unit 3",
-    path: "50Winthrop-3",
-    path2: "50Winthrop-3-room",
-    path3: "50Winthrop-3-rate",
   },
 ];
 
@@ -100,21 +80,9 @@ const Con = [
   },
 ];
 
-const altRatingDisplayBlock = () => {
-  return (
-    <div style={{ marginBottom: "7px" }}>
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>Unit 3</div>
-      <RatingDisplay path3={paths[2].path3} />
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>Unit 2</div>
-      <RatingDisplay path3={paths[1].path3} />
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>Unit 1</div>
-      <RatingDisplay path3={paths[0].path3} />
-    </div>
-  );
-};
-
 function Winthrop50() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const { buildingConfig, unitConfig } = config(Content.title);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -140,8 +108,10 @@ function Winthrop50() {
           content={Content}
           pro={Pro}
           con={Con}
-          altRatingDisplayBlock={altRatingDisplayBlock()}
-          altReviewBlock={<AltReview paths={paths} />}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
+          altReviewBlock={<AltReview paths={unitConfig} />}
         />
       </MediaQuery>
 
@@ -159,8 +129,10 @@ function Winthrop50() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
-            altRatingDisplayBlock={altRatingDisplayBlock()}
-            altReviewBlock={<AltReview paths={paths} />}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
+            altReviewBlock={<AltReview paths={unitConfig} />}
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <div

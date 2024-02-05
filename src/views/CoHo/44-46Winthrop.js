@@ -5,6 +5,8 @@ import BackArrow from "components/BackArrow";
 import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import getDormName from "common/string";
 
@@ -33,19 +35,6 @@ const floor = [
     name: "44 Winthrop Street",
   },
 ];
-
-const paths = {
-  "44 Winthrop Street": {
-    path: "44Winthrop",
-    path2: "44Winthrop-room",
-    path3: "44Winthrop-rate",
-  },
-  "46 Winthrop Street": {
-    path: "46Winthrop",
-    path2: "46Winthrop-room",
-    path3: "46Winthrop-rate",
-  },
-};
 
 const Content = {
   title: "44-46 Winthrop Street",
@@ -89,7 +78,7 @@ const Con = [
 function Winthrop4446() {
   const [displayDetail, setDisplayDetail] = useState(true);
   const dormName = getDormName(window.location.pathname, floor, Content);
-  const path = paths[dormName];
+  const { buildingConfig, unitConfig } = config(Content.title, dormName);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -102,12 +91,15 @@ function Winthrop4446() {
         <FloorPlan displayDetail={displayDetail} floor={floor} />
         <MobileDetailBottomSheet
           title={dormName}
-          path={path.path}
-          path2={path.path2}
-          path3={path.path3}
+          path={unitConfig.path}
+          path2={unitConfig.path2}
+          path3={unitConfig.path3}
           content={Content}
           pro={Pro}
           con={Con}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
         />
       </MediaQuery>
 
@@ -115,9 +107,9 @@ function Winthrop4446() {
         <div className={styles.container}>
           <Details
             title={dormName}
-            path={path.path}
-            path2={path.path2}
-            path3={path.path3}
+            path={unitConfig.path}
+            path2={unitConfig.path2}
+            path3={unitConfig.path3}
             available={Content.available}
             bed_laundry={Content.bed_laundry}
             rooms={Content.rooms}
@@ -128,6 +120,9 @@ function Winthrop4446() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />

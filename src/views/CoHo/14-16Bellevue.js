@@ -2,11 +2,12 @@ import { useState } from "react";
 import MediaQuery from "react-responsive";
 
 import BackArrow from "components/BackArrow";
-import RatingDisplay from "components/RatingDisplay/RatingDisplay";
 import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 import AltReview from "components/Review/AltReview";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import pic from "assets/1416Bellevue.png";
 import bathroom from "assets/bathroom.png";
@@ -38,21 +39,6 @@ const floor = [
     pic: OneFloor,
     unit: "1",
     name: "14 & 16 Bellevue Street",
-  },
-];
-
-const paths = [
-  {
-    name: "14 Bellevue",
-    path: "14Bellevue-1",
-    path2: "14Bellevue-1-room",
-    path3: "14Bellevue-1-rate",
-  },
-  {
-    name: "16 Bellevue",
-    path: "16Bellevue-2",
-    path2: "16Bellevue-2-room",
-    path3: "16Bellevue-2-rate",
   },
 ];
 
@@ -95,23 +81,9 @@ const Con = [
   },
 ];
 
-const altRatingDisplayBlock = () => {
-  return (
-    <div style={{ marginBottom: "7px" }}>
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>
-        6 Capen Street
-      </div>
-      <RatingDisplay path3={paths[1].path3} />
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>
-        4 Capen Street
-      </div>
-      <RatingDisplay path3={paths[0].path3} />
-    </div>
-  );
-};
-
 function Bellevue1416() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const { buildingConfig, unitConfig } = config(Content.title);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -127,8 +99,10 @@ function Bellevue1416() {
           content={Content}
           pro={Pro}
           con={Con}
-          altRatingDisplayBlock={altRatingDisplayBlock()}
-          altReviewBlock={<AltReview paths={paths} />}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
+          altReviewBlock={<AltReview paths={unitConfig} />}
         />
       </MediaQuery>
 
@@ -146,8 +120,10 @@ function Bellevue1416() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
-            altRatingDisplayBlock={altRatingDisplayBlock()}
-            altReviewBlock={<AltReview paths={paths} />}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
+            altReviewBlock={<AltReview paths={unitConfig} />}
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />

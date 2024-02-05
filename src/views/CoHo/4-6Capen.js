@@ -1,11 +1,12 @@
 import { useState } from "react";
 import MediaQuery from "react-responsive";
 
-import RatingDisplay from "components/RatingDisplay/RatingDisplay";
 import BackArrow from "components/BackArrow";
 import Details from "components/details";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 import AltReview from "components/Review/AltReview";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import pic from "assets/4-6Capen.png";
 import bathroom from "assets/bathroom.png";
@@ -15,21 +16,6 @@ import washer from "assets/Washer.png";
 import Bed from "assets/Bed.jpg";
 
 import styles from "./coho.module.css";
-
-const paths = [
-  {
-    name: "4 Capen Street",
-    path: "4Capen",
-    path2: "4Capen-room",
-    path3: "4Capen-rate",
-  },
-  {
-    name: "6 Capen Street",
-    path: "6Capen",
-    path2: "6Capen-room",
-    path3: "6Capen-rate",
-  },
-];
 
 const Content = {
   title: "4-6 Capen Street",
@@ -66,21 +52,6 @@ const Pro = [
   },
 ];
 
-const altRatingDisplayBlock = () => {
-  return (
-    <div style={{ marginBottom: "7px" }}>
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>
-        6 Capen Street
-      </div>
-      <RatingDisplay path3={paths[1].path3} />
-      <div style={{ fontStyle: "italic", fontWeight: "100" }}>
-        4 Capen Street
-      </div>
-      <RatingDisplay path3={paths[0].path3} />
-    </div>
-  );
-};
-
 const Con = [
   {
     title: "Far From Center of Campus",
@@ -90,6 +61,7 @@ const Con = [
 
 function Capen46() {
   const [displayDetail, setDisplayDetail] = useState(true);
+  const { buildingConfig, unitConfig } = config(Content.title);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -115,8 +87,10 @@ function Capen46() {
           content={Content}
           pro={Pro}
           con={Con}
-          altRatingDisplayBlock={altRatingDisplayBlock()}
-          altReviewBlock={<AltReview paths={paths} />}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
+          altReviewBlock={<AltReview paths={unitConfig} />}
         />
       </MediaQuery>
 
@@ -134,8 +108,10 @@ function Capen46() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
-            altRatingDisplayBlock={altRatingDisplayBlock()}
-            altReviewBlock={<AltReview paths={paths} />}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
+            altReviewBlock={<AltReview paths={unitConfig} />}
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <div

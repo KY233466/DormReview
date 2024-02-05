@@ -5,6 +5,8 @@ import BackArrow from "components/BackArrow";
 import MobileDetailBottomSheet from "components/MobileDetailBottomSheet";
 import Details from "components/details";
 import FloorPlan from "components/FloorPlan/FloorPlan";
+import AltRatingDisplayBlock from "./AltRatingDisplayBlock";
+import { config } from "./CoHoConfig";
 
 import getDormName from "common/string";
 
@@ -41,19 +43,6 @@ const floor = [
     name: "21 University Ave",
   },
 ];
-
-const paths = {
-  "19 University Ave": {
-    path: "19University",
-    path2: "19University-room",
-    path3: "19University-rate",
-  },
-  "21 University Ave": {
-    path: "21University",
-    path2: "21University-room",
-    path3: "21University-rate",
-  },
-};
 
 const Content = {
   title: "19-21 University Avenue",
@@ -99,7 +88,22 @@ const Con = [
 function SoGo() {
   const [displayDetail, setDisplayDetail] = useState(true);
   const dormName = getDormName(window.location.pathname, floor, Content);
-  const path = paths[dormName];
+  /*
+    There are 3 types of dorms:
+    
+    1. Building with only one unit
+    2. Building with multiple units, and have separate url paths for each
+      like coho/19-21University/1 for 21 University
+      and coho/19-21University/2 for 19 University
+    3. Building with multiple units, but they share the same url path, because 
+      there isn't a floor plan
+
+    For type #1, only buildingConfig is needed
+    For type #2, buildingConfig and unitConfig are both needed
+    For type #3, buildingConfig and unitConfig are both needed, but the
+      second parameter, aka unitName, shouldn't be passed in
+  */
+  const { buildingConfig, unitConfig } = config(Content.title, dormName);
 
   function changeDetail() {
     setDisplayDetail(!displayDetail);
@@ -112,12 +116,15 @@ function SoGo() {
         <FloorPlan displayDetail={displayDetail} floor={floor} />
         <MobileDetailBottomSheet
           title={dormName}
-          path={path.path}
-          path2={path.path2}
-          path3={path.path3}
+          path={unitConfig.path}
+          path2={unitConfig.path2}
+          path3={unitConfig.path3}
           content={Content}
           pro={Pro}
           con={Con}
+          altRatingDisplayBlock={
+            <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+          }
         />
       </MediaQuery>
 
@@ -125,9 +132,9 @@ function SoGo() {
         <div className={styles.container}>
           <Details
             title={dormName}
-            path={path.path}
-            path2={path.path2}
-            path3={path.path3}
+            path={unitConfig.path}
+            path2={unitConfig.path2}
+            path3={unitConfig.path3}
             available={Content.available}
             bed_laundry={Content.bed_laundry}
             rooms={Content.rooms}
@@ -138,6 +145,9 @@ function SoGo() {
             pro={Pro}
             con={Con}
             changeDetail={() => changeDetail()}
+            altRatingDisplayBlock={
+              <AltRatingDisplayBlock unitsConfig={buildingConfig} />
+            }
           />
           {displayDetail ? <div className={styles.placeholder}> </div> : null}
           <FloorPlan displayDetail={displayDetail} floor={floor} />
