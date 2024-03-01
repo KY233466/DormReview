@@ -145,6 +145,7 @@ const Signup = () => {
   return (
     <>
       <div className={styles.container2}>
+        <h1 style={{ marginBottom: "10px" }}>All Reviews Are Anonymous!</h1>
         <h2 style={{ marginBottom: "10px" }}>
           To make sure all reviews are left by Tufts students, please signup
           with your Tufts email
