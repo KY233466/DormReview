@@ -97,7 +97,9 @@ const CoHoBuildingRating = ({ toggleList, setToggleList }) => {
                     }}
                   />
                 ) : (
-                  <RatingDisplay path3={d.path} />
+                  <div>
+                    <RatingDisplay path3={d.path3} />
+                  </div>
                 )}
               </ListItemButton>
 
@@ -124,7 +126,7 @@ const CoHoBuildingRating = ({ toggleList, setToggleList }) => {
                         >
                           {u.label}
                         </Link>
-                        <RatingDisplay path3={u.path} />
+                        <RatingDisplay path3={u.path3} />
                       </ListItemButton>
                     </List>
                   ))}
