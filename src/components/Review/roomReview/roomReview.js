@@ -5,10 +5,8 @@ import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Alert from "@mui/material/Alert";
 
-import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { getAuth } from "firebase/auth";
-import "firebase/auth";
 
 import Signin from "../../signUp/signin";
 import Signup from "../../signUp/signup";
@@ -57,8 +55,6 @@ function RoomReview({ name, path, open, setOpen }) {
     }
   };
 
-  const userCollectionRef = collection(db, path);
-
   const [room, setRoom] = useState(-1);
   const [rate, setRate] = useState(-1);
   const [message, setMessage] = useState("");
@@ -83,21 +79,9 @@ function RoomReview({ name, path, open, setOpen }) {
     getAuth()
       .currentUser?.reload()
       .then(() => {
-        if (getAuth().currentUser != null) {
-          setUid(getAuth().currentUser.uid);
-        }
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }, [getAuth().currentUser]);
-
-  useEffect(() => {
-    getAuth()
-      .currentUser?.reload()
-      .then(() => {
         if (getAuth().currentUser?.emailVerified) {
           setVerified(true);
+          setUid(getAuth().currentUser.uid);
         }
       })
       .catch((err) => {
@@ -127,6 +111,9 @@ function RoomReview({ name, path, open, setOpen }) {
       if (checkWaitlist) {
         setLottery(lottery.toString() + " (waitlist)");
       }
+
+      const { addDoc, collection } = import("firebase/firestore");
+      const userCollectionRef = collection(db, path);
 
       addDoc(userCollectionRef, {
         dName: name,
@@ -411,6 +398,52 @@ function RoomReview({ name, path, open, setOpen }) {
     );
   };
 
+  const notVerifiedContent = () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {displaySignUp ? <Signup /> : <Signin />}
+        {displaySignUp ? (
+          <div onClick={() => setDisplaySignUp(false)}>
+            Already have an account?{" "}
+            <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Log In
+            </span>
+          </div>
+        ) : (
+          <div onClick={() => setDisplaySignUp(true)}>
+            {`Don't`} have an account?{" "}
+            <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Sign Up
+            </span>
+          </div>
+        )}
+        <button
+          onClick={handleClose}
+          type="submit"
+          style={{
+            cursor: "pointer",
+            width: "100px",
+            background: "#2C5A7B",
+            color: "white",
+            fontSize: "0.9rem",
+            border: "none",
+            borderRadius: "10px",
+            padding: "5px",
+            margin: "30px",
+          }}
+        >
+          Close
+        </button>
+      </div>
+    );
+  };
+
   return (
     <Modal
       open={open}
@@ -418,56 +451,8 @@ function RoomReview({ name, path, open, setOpen }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={isTablet ? styleMobile : style}>
-        {!verified ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            {displaySignUp ? <Signup /> : <Signin />}
-            {displaySignUp ? (
-              <div onClick={() => setDisplaySignUp(false)}>
-                Already have an account?{" "}
-                <span
-                  style={{ textDecoration: "underline", cursor: "pointer" }}
-                >
-                  Log In
-                </span>
-              </div>
-            ) : (
-              <div onClick={() => setDisplaySignUp(true)}>
-                {`Don't`} have an account?{" "}
-                <span
-                  style={{ textDecoration: "underline", cursor: "pointer" }}
-                >
-                  Sign Up
-                </span>
-              </div>
-            )}
-            <button
-              onClick={handleClose}
-              type="submit"
-              style={{
-                cursor: "pointer",
-                width: "100px",
-                background: "#2C5A7B",
-                color: "white",
-                fontSize: "0.9rem",
-                border: "none",
-                borderRadius: "10px",
-                padding: "5px",
-                margin: "30px",
-              }}
-            >
-              Close
-            </button>
-          </div>
-        ) : (
-          formContent()
-        )}
+      <Box width={450} sx={isTablet ? styleMobile : style}>
+        {!verified ? notVerifiedContent() : formContent()}
       </Box>
     </Modal>
   );

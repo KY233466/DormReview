@@ -6,10 +6,9 @@ import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { addDoc, doc, collection, getDoc, setDoc } from "firebase/firestore";
+import { doc, collection, getDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { getAuth } from "firebase/auth";
-import "firebase/auth";
 
 import Signin from "../../signUp/signin";
 import Signup from "../../signUp/signup";
@@ -37,7 +36,6 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 550,
-  height: 500,
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "18px",
@@ -58,8 +56,6 @@ function DormReview({ name, path, path3, open, setOpen }) {
       setLoader(false);
     }
   };
-
-  const userCollectionRef = collection(db, path);
 
   const [rate, setRate] = useState(-1);
   const [uid, setUid] = useState(0);
@@ -135,6 +131,9 @@ function DormReview({ name, path, path3, open, setOpen }) {
       setError("Please select school year");
       setLoader(false);
     } else {
+      const { addDoc, setDoc } = import("firebase/firestore");
+      const userCollectionRef = collection(db, path);
+
       addDoc(userCollectionRef, {
         dName: name,
         rate: rate,
@@ -270,6 +269,52 @@ function DormReview({ name, path, path3, open, setOpen }) {
     );
   };
 
+  const notVerifiedContent = () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {displaySignUp ? <Signup /> : <Signin />}
+        {displaySignUp ? (
+          <div onClick={() => setDisplaySignUp(false)}>
+            Already have an account?{" "}
+            <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Log In
+            </span>
+          </div>
+        ) : (
+          <div onClick={() => setDisplaySignUp(true)}>
+            {`Don't`} have an account?{" "}
+            <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+              Sign Up
+            </span>
+          </div>
+        )}
+        <button
+          onClick={handleClose}
+          type="submit"
+          style={{
+            cursor: "pointer",
+            width: "100px",
+            background: "#2C5A7B",
+            color: "white",
+            fontSize: "0.9rem",
+            border: "none",
+            borderRadius: "10px",
+            padding: "5px",
+            margin: "30px",
+          }}
+        >
+          Close
+        </button>
+      </div>
+    );
+  };
+
   return (
     <>
       <Modal
@@ -279,55 +324,7 @@ function DormReview({ name, path, path3, open, setOpen }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={isMobile ? styleMobile : style}>
-          {verified ? (
-            formContent()
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              {displaySignUp ? <Signup /> : <Signin />}
-              {displaySignUp ? (
-                <div onClick={() => setDisplaySignUp(false)}>
-                  Already have an account?{" "}
-                  <span
-                    style={{ textDecoration: "underline", cursor: "pointer" }}
-                  >
-                    Log In
-                  </span>
-                </div>
-              ) : (
-                <div onClick={() => setDisplaySignUp(true)}>
-                  {`Don't`} have an account?{" "}
-                  <span
-                    style={{ textDecoration: "underline", cursor: "pointer" }}
-                  >
-                    Sign Up
-                  </span>
-                </div>
-              )}
-              <button
-                onClick={handleClose}
-                type="submit"
-                style={{
-                  cursor: "pointer",
-                  width: "100px",
-                  background: "#2C5A7B",
-                  color: "white",
-                  fontSize: "0.9rem",
-                  border: "none",
-                  borderRadius: "10px",
-                  padding: "5px",
-                  margin: "30px",
-                }}
-              >
-                Close
-              </button>
-            </div>
-          )}
+          {verified ? formContent() : notVerifiedContent()}
         </Box>
       </Modal>
     </>
