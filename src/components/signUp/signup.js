@@ -182,7 +182,7 @@ const Signup = () => {
           <Form.Group controlId="formBasicPassword">
             <Form.Control
               type="password"
-              placeholder="Password"
+              placeholder="Create a Password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
